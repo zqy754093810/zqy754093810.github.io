@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="\begin{align}\left\{ \frac{1}{a} \right\}\end{align}\begin{align}\left\{ { \frac{1}{a}  } \right\}\end{align}">
+<meta name="description" content="1. 估计量的衡量标准对于参数估计问题，目前存在着很多估计算法。那么如何去衡量一个估计器（estimator, 也称估计量或估计算法）的性能，我们主要考量以下三个方面  无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Test">
+<meta property="og:title" content="克拉美-罗下界">
 <meta property="og:url" content="http://zqy754093810.github.io/2018/10/28/Test/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="\begin{align}\left\{ \frac{1}{a} \right\}\end{align}\begin{align}\left\{ { \frac{1}{a}  } \right\}\end{align}">
+<meta property="og:description" content="1. 估计量的衡量标准对于参数估计问题，目前存在着很多估计算法。那么如何去衡量一个估计器（estimator, 也称估计量或估计算法）的性能，我们主要考量以下三个方面  无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T13:04:12.620Z">
+<meta property="og:updated_time" content="2018-10-28T13:21:12.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Test">
-<meta name="twitter:description" content="\begin{align}\left\{ \frac{1}{a} \right\}\end{align}\begin{align}\left\{ { \frac{1}{a}  } \right\}\end{align}">
+<meta name="twitter:title" content="克拉美-罗下界">
+<meta name="twitter:description" content="1. 估计量的衡量标准对于参数估计问题，目前存在着很多估计算法。那么如何去衡量一个估计器（estimator, 也称估计量或估计算法）的性能，我们主要考量以下三个方面  无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>Test | Qiuyun's blog</title>
+  <title>克拉美-罗下界 | Qiuyun's blog</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Test</h1>
+          <h1 class="post-title" itemprop="name headline">克拉美-罗下界</h1>
         
 
         <div class="post-meta">
@@ -299,7 +299,29 @@
       
 
       
-        <p>\begin{align}<br>\left\{ \frac{1}{a} \right\}<br>\end{align}<br>\begin{align}<br>\left\{ { \frac{1}{a}  } \right\}<br>\end{align}</p>
+        <h1 id="1-估计量的衡量标准"><a href="#1-估计量的衡量标准" class="headerlink" title="1. 估计量的衡量标准"></a>1. 估计量的衡量标准</h1><p>对于参数估计问题，目前存在着很多估计算法。那么如何去衡量一个估计器（estimator, 也称估计量或估计算法）的性能，我们主要考量以下三个方面</p>
+<ol>
+<li>无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb{E}[\hat{\theta}]=\mathbb{E}[\theta]$。我们称满足这个条件的估计量为<font color="red"><strong>无偏估计量</strong></font>。</li>
+<li>有效性(availability)。有效性刻画估计量到真实值的偏离程度，$D(\hat{\theta})=\mathbb{E}[(\hat{\theta}-\mathbb{E}[\hat{\theta}])^2]$，即若存在多种无偏估计器，我们称<font color="red"><strong>估计量方差最小</strong></font>的估计器是有效的。</li>
+<li>一致性(consistency)。设$\hat{\theta}$为未知参数$\theta$的估计量，若当样本数$N\rightarrow \infty$时，对于任意$\epsilon&gt;0$，有$\lim\limits_{N\rightarrow \infty} P\left\{ {|\hat{\theta}-\theta|&lt;\epsilon}\right\}=1$。我们称$\hat{\theta}$与$\theta$是一致的。<font color="red"><strong>一致性所体现的是，当样本总数逐渐增加时，估计量逐渐收敛于真实值</strong></font>。</li>
+</ol>
+<p>基于这三点考量，那么很自然我们会问，<strong>如何衡量一个无偏估计器是否是有效的</strong>。统计信号处理理论中的<font color="red"><strong>克拉美罗下界</strong></font>（Cramer-Rao Lower Bound，CRLB）就是衡量一个无偏估计器的有力工具。</p>
+<h1 id="2-克拉美-罗下界（Scale-Parameter-标量参数）"><a href="#2-克拉美-罗下界（Scale-Parameter-标量参数）" class="headerlink" title="2. 克拉美-罗下界（Scale Parameter 标量参数）"></a>2. 克拉美-罗下界（Scale Parameter 标量参数）</h1><p>对于估计参数$\theta$为标量时，假定PDF满足<strong>“正则”</strong>条件<br>\begin{align}<br>\mathbb{E}\left[{\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} }\right]=0\quad (\ \text{for any }\theta \ )<br>\end{align}<br>其中数学期望对$p(\boldsymbol{x};\theta)$取。那么无偏估计量$\hat{\theta}$的方差必然满足<br>\begin{align}<br>D(\hat{\theta}) \geq \frac{1}{-\mathbb{E}\left[{ \frac{\partial ^2\ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]}=\frac{1}{\mathbb{E}\left[{   \left(\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\right)^2}\right]}<br>\end{align}<br>其中导数是在$\theta$的真实值处求，数学期望是对$p(\boldsymbol{x};\theta)$取。因此，我们可以说一个无偏估计量$g(\boldsymbol{x})$达到CRLB，<strong>当且仅当</strong>，该估计量满足<br>\begin{align}<br>\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} =\mathbf{I}(\theta)(g(\boldsymbol{x})-\theta)<br>\end{align}<br>其中，$\mathbf{I}(\theta)=-\mathbb{E}\left[{ \frac{\partial ^2\ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]$，称为Fisher information。证明见附录A。</p>
+<p><font color="red"><strong>Remarks:</strong> </font> CRLB是衡量一个无偏估计器是否有效的重要工具，也就是说，给定一个无偏估计器，我们可以利用克拉美-罗下界去判断这个估计器是否是最优的。</p>
+<h1 id="3-Example：线性高斯模型（Linear-Gaussian-model）"><a href="#3-Example：线性高斯模型（Linear-Gaussian-model）" class="headerlink" title="3. Example：线性高斯模型（Linear Gaussian model）"></a>3. Example：线性高斯模型（Linear Gaussian model）</h1><p>\begin{align}<br>\boldsymbol{x}=\boldsymbol{h}\theta+\boldsymbol{w}, \quad \boldsymbol{w}\sim \mathcal{N}(\boldsymbol{0},\boldsymbol{C}_{\boldsymbol{w} })<br>\end{align}<br>其中$\theta$是未知参数，$\boldsymbol{x}\in \mathbb{R}^p$是观测值（observed signal），$\boldsymbol{w}$是均值为$\boldsymbol{0}$，协方差矩阵为$\boldsymbol{C}_{\boldsymbol{w} }$的高斯噪声。</p>
+<p>我们考虑如下估计器<br>\begin{align}<br>\hat{\theta}=(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{x}<br>\end{align}<br>对于该模型，其似然函数$p(\boldsymbol{x};\theta)$为<br>\begin{align}<br>p(\boldsymbol{x};\theta)=\frac{1}{(2\pi)^{p/2}|\boldsymbol{C}_{\boldsymbol{w} }|^{1/2} } \exp \left[{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{h}\theta)^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}(\boldsymbol{x}-\boldsymbol{h}\theta)}\right]<br>\end{align}<br>因此</p>
+<ol>
+<li><p>无偏性<br>\begin{align}<br>\mathbb{E}[\hat{\theta}]=\int_{\boldsymbol{x} } \hat{\theta} p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}<br>\end{align}<br>我们可以将$p(\boldsymbol{x};\theta)$看作为自变量为$\boldsymbol{x}$均值为$\boldsymbol{h}\theta$，协方差矩阵为$\boldsymbol{C}_{\boldsymbol{w} }$的高斯PDF，即$\int_{\boldsymbol{x} }\boldsymbol{x}p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}=\boldsymbol{h}\theta$。因此$\mathbb{E}[\hat{\theta}]=(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h}\theta=\theta$，即$\hat{\theta}$为无偏估计量。</p>
+</li>
+<li><p>有效性<br>\begin{align}<br>\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}&amp;=(\boldsymbol{x}-\boldsymbol{h}\theta)^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h}\\<br>\frac{\partial^2 \ln p(\boldsymbol{x};\theta)}{\partial \theta^2}&amp;=-\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h}<br>\end{align}<br>关于矩阵求导不太熟悉的朋友可以看下这个网站：<a href="https://en.wikipedia.org/wiki/Matrix_calculus" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Matrix_calculus</a>。<br>基于上述表述，该系统模型的CRLB为<br>\begin{align}<br>-\frac{1}{-\mathbb{E}\left[{ \frac{\partial ^2\ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]}=\frac{1}{\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h} }<br>\end{align}<br>而估计器$\hat{\theta}$的方差为<br>\begin{align}<br>D(\hat{\theta})=\left({(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1} }\right) \boldsymbol{C}_{\boldsymbol{w} } \left({(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1} }\right)^T=(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}<br>\end{align}<br>由于$\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h}$是一维的，有$(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}=\frac{1}{\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h} }$，因此，该估计量是有效的，即该无偏估计量$\theta$的方差可以达到CRLB。</p>
+</li>
+<li><p>一致性<br>将系统模型$\boldsymbol{x}=\boldsymbol{h}\theta+\boldsymbol{w}$代入估计器中，有<br>\begin{align}<br>\hat{\theta}<br>&amp;=(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}(\boldsymbol{h}\theta+\boldsymbol{w})\\<br>&amp;=\theta+(\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{w}<br>\end{align}<br>若假设噪声能量一定，即$\boldsymbol{C}_{\boldsymbol{w} }$元素值固定，随着观测样本$p\rightarrow\infty$，则噪声的方差<br>\begin{align}<br>D((\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{h})^{-1}\boldsymbol{h}^T\boldsymbol{C}_{\boldsymbol{w} }^{-1}\boldsymbol{w})=\frac{1}{\boldsymbol{h}^T\boldsymbol{c}_{\boldsymbol{w} }^{-1}\boldsymbol{h} }<br>\end{align}<br>从公式可以看出，假设噪声$\boldsymbol{w}$的每个元素具有相同的方差，则必然$\lim\limits_{p\rightarrow \infty}\boldsymbol{h}^T\boldsymbol{c}_{\boldsymbol{w} }^{-1}\boldsymbol{h}\rightarrow \infty$。因此，当$p\rightarrow \infty$时，我们可以将估计量$\hat{\theta}$看作<br>\begin{align}<br>\hat{\theta}=\theta+n,\quad n\sim\mathcal{N}(0,(\boldsymbol{h}^T\boldsymbol{C}_\boldsymbol{w}^{-1}\boldsymbol{h})^{-1}) \ \  \text{and} \ \lim\limits_{p\rightarrow \infty}\boldsymbol{h}^T\boldsymbol{c}_{\boldsymbol{w} }^{-1}\boldsymbol{h}\rightarrow \infty<br>\end{align}<br>因此，对于任意$\epsilon&gt;0$，有<br>\begin{align}<br>\lim\limits_{N\rightarrow \infty} P\left\{ {|\hat{\theta}-\theta|&lt;\epsilon}\right\}=1<br>\end{align}<br>即，该估计量满足一致性。</p>
+</li>
+</ol>
+<h1 id="4-附录"><a href="#4-附录" class="headerlink" title="4. 附录"></a>4. 附录</h1><p>由于$\hat{\theta}$是无偏估计，即<br>\begin{align}<br>&amp;\int_{\boldsymbol{x} } (\hat{\theta}-\theta)p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}=0\\<br>\end{align}<br>等式两边对$\theta$求偏导有<br>\begin{align}<br>&amp;\int (\hat{\theta}-\theta)\frac{\partial p(\boldsymbol{x};\theta)}{\partial \theta}\text{d}\boldsymbol{x}=1\\<br>\Rightarrow&amp; \int (\hat{\theta}-\theta)\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}=1\\<br>\Rightarrow &amp;  \int (\hat{\theta}-\theta)\sqrt{p(\boldsymbol{x};\theta)}\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\sqrt{p(\boldsymbol{x};\theta)}\text{d}\boldsymbol{x}=1<br>\end{align}<br>由于柯西-施瓦茨不等式<br>\begin{align}<br>\int f^2(x)\text{d}x \int g^2(x)\text{d}x \geq\left({\int  f(x)g(x)\text{d}x}\right)^2<br>\end{align}<br>当且仅当$f(x)=g(x)$时，取等号。</p>
+<p>根据柯西-施瓦茨不等式（Cauchy-Schwarz inequality），有<br>\begin{align}<br>&amp;\left({ \int (\hat{\theta}-\theta)^2{p(\boldsymbol{x};\theta)}\text{d}\boldsymbol{x} }\right)<br>\left({\int \left(\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\right)^2p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x} }\right)\geq 1\\<br>\Rightarrow &amp;\int (\hat{\theta}-\theta)^2{p(\boldsymbol{x};\theta)}\text{d}\boldsymbol{x}\geq  \frac{1}{\left({\int \left(\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\right)^2p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x} }\right)}<br>\end{align}<br>即<br>\begin{align}<br>D(\hat{\theta})\geq \frac{1}{\mathbb{E}\left[{\left(\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\right)^2}\right]}<br>\end{align}<br>现在只需证明<br>\begin{align}<br>\mathbb{E}\left[{\left(\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\right)^2}\right]=-\mathbb{E}\left[{ \frac{\partial ^2\ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]<br>\end{align}<br>证：由正则条件$\mathbb{E}\left[{\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} }\right]=0$，等式两边对$\theta$求偏导，有<br>\begin{align}<br>&amp;\frac{\partial }{\partial \theta} \int  \frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}=0\\<br>\Rightarrow&amp; \int \left[{\frac{\partial^2 \ln p(\boldsymbol{x};\theta)}{\partial \theta^2}p(\boldsymbol{x};\theta)+\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta}\frac{\partial p(\boldsymbol{x};\theta)}{\partial \theta} }\right]\text{d}\boldsymbol{x}=0\\<br>\Rightarrow &amp; \int \frac{\partial^2 \ln p(\boldsymbol{x};\theta)}{\partial \theta^2}p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}=-\int  \left({\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} }\right)^2p(\boldsymbol{x};\theta)\text{d}\boldsymbol{x}<br>\end{align}</p>
+<p>现在证明，若估计量$\hat{\theta}=\text{g}(\boldsymbol{x})$可以达到CRLB，则有<br>\begin{align}<br>\frac{\partial \ln p(\boldsymbol{x};\theta)}{\partial \theta} =\mathbf{I}(\theta)(g(\boldsymbol{x})-\theta)<br>\end{align}<br>其中，$\mathbf{I}(\theta)=-\mathbb{E}\left[{ \frac{\partial ^2\ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]$。</p>
+<p>证：等式两边同时对$\theta$求偏导，有<br>\begin{align}<br>\frac{\partial^2 \ln p(\boldsymbol{x};\theta)}{\partial \theta^2} =\frac{\partial \mathbf{I}(\theta)}{\partial \theta}(g(\boldsymbol{x})-\theta)-\mathbf{I}(\theta)<br>\end{align}<br>等式两边同时对乘上$p(\boldsymbol{x};\theta)$，并对$\boldsymbol{x}$积分，得<br>\begin{align}<br>\mathbb{E}\left[{\frac{\partial^2 \ln p(\boldsymbol{x};\theta)}{\partial \theta^2} }\right]=-\mathbf{I}(\theta)<br>\end{align}<br>证毕。</p>
 
       
     </div>
@@ -384,8 +406,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -427,6 +458,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-估计量的衡量标准"><span class="nav-number">1.</span> <span class="nav-text">1. 估计量的衡量标准</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-克拉美-罗下界（Scale-Parameter-标量参数）"><span class="nav-number">2.</span> <span class="nav-text">2. 克拉美-罗下界（Scale Parameter 标量参数）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Example：线性高斯模型（Linear-Gaussian-model）"><span class="nav-number">3.</span> <span class="nav-text">3. Example：线性高斯模型（Linear Gaussian model）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-附录"><span class="nav-number">4.</span> <span class="nav-text">4. 附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
