@@ -366,9 +366,7 @@
         
           <h1 id="1-估计量的衡量标准"><a href="#1-估计量的衡量标准" class="headerlink" title="1. 估计量的衡量标准"></a>1. 估计量的衡量标准</h1><p>对于参数估计问题，目前存在着很多估计算法。那么如何去衡量一个估计器（estimator, 也称估计量或估计算法）的性能，我们主要考量以下三个方面</p>
 <ol>
-<li>无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb{E}[\hat{\theta}]=\mathbb{E}[\theta]$。我们称满足这个条件的估计量为<font color="red"><strong>无偏估计量</strong></font>。</li>
-<li>有效性(availability)。有效性刻画估计量到真实值的偏离程度，$D(\hat{\theta})=\mathbb{E}[(\hat{\theta}-\mathbb{E}[\hat{\theta}])^2]$，即若存在多种无偏估计器，我们称<font color="red"><strong>估计量方差最小</strong></font>的估计器是有效的。</li>
-<li>一致性(consistency)。设$\hat{\theta}$为未知参数$\theta$的估计量，若当样本数$N\rightarrow \infty$时，对于任意$\epsilon&gt;0$，有$\lim\limits_{N\rightarrow \infty} P\left\{ {|\hat{\theta}-\theta|&lt;\epsilon}\right\}=1$。我们称$\hat{\theta}$与$\theta$是一致的。<font color="red"><strong>一致性所体现的是，当样本总数逐渐增加时，估计量逐渐收敛于真实值</strong></font>。
+<li>无偏性(unbiased)。对于参数估计问题，设未知参数$\theta$，估计器模型$\hat{\theta}$。则有$\mathbb{E}[\hat{\theta}]=\theta$。对于估计对象为随机变量，则有$\mathbb{E}[\hat{\theta}]=\mathbb{E}[\theta]$。我们称满足这个条件的估计量为<font color="red"><strong>无偏估计量</strong></font>。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/28/克拉美-罗下界/" rel="contents">
