@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言　　在众多的信号处理学科领域，噪声一直是衡量算法或系统抗噪声性能的一种指标，笔者是通信专业的学生。对于一个通信系统而言，衡量一个通信系统的质量有两个最重要的指标，一个是有效性，一个是可靠性。有效性的衡量标准是传输带宽，而可靠性的衡量准则是误码率。在误码率的计算中，取决于信噪比和码间串扰等因素。另外，信噪比的定义是信号的能量与噪声的能量的比值。那么如何合理的用数学模型来描述噪声呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高斯噪声与中心极限定理">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/29/高斯噪声与中心极限定理/index.html">
+<meta property="og:site_name" content="Qiuyun&#39;s blog">
+<meta property="og:description" content="前言　　在众多的信号处理学科领域，噪声一直是衡量算法或系统抗噪声性能的一种指标，笔者是通信专业的学生。对于一个通信系统而言，衡量一个通信系统的质量有两个最重要的指标，一个是有效性，一个是可靠性。有效性的衡量标准是传输带宽，而可靠性的衡量准则是误码率。在误码率的计算中，取决于信噪比和码间串扰等因素。另外，信噪比的定义是信号的能量与噪声的能量的比值。那么如何合理的用数学模型来描述噪声呢？">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-29T11:54:17.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高斯噪声与中心极限定理">
+<meta name="twitter:description" content="前言　　在众多的信号处理学科领域，噪声一直是衡量算法或系统抗噪声性能的一种指标，笔者是通信专业的学生。对于一个通信系统而言，衡量一个通信系统的质量有两个最重要的指标，一个是有效性，一个是可靠性。有效性的衡量标准是传输带宽，而可靠性的衡量准则是误码率。在误码率的计算中，取决于信噪比和码间串扰等因素。另外，信噪比的定义是信号的能量与噪声的能量的比值。那么如何合理的用数学模型来描述噪声呢？">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/29/高斯噪声与中心极限定理/">
+
+
+
+
+
+  <title>高斯噪声与中心极限定理 | Qiuyun's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qiuyun's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">qiuyunzou@qq.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/29/高斯噪声与中心极限定理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuyun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高斯噪声与中心极限定理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T19:41:42+08:00">
+                2018-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/统计信号处理/" itemprop="url" rel="index">
+                    <span itemprop="name">统计信号处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/29/高斯噪声与中心极限定理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/高斯噪声与中心极限定理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+    
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>　　<br>在众多的信号处理学科领域，<strong>噪声一直是衡量算法或系统抗噪声性能的一种指标</strong>，笔者是通信专业的学生。<font color="red"><strong>对于一个通信系统而言，衡量一个通信系统的质量有两个最重要的指标，一个是有效性，一个是可靠性</strong></font>。有效性的衡量标准是传输带宽，而可靠性的衡量准则是误码率。在误码率的计算中，取决于信噪比和码间串扰等因素。另外，信噪比的定义是信号的能量与噪声的能量的比值。那么如何合理的用数学模型来描述噪声呢？<br><a id="more"></a>　　<br>在长达四年的本科学习中，笔者发现，通信专业的书中一般<strong>假设噪声服从高斯分布</strong>（复信号服从循环对称高斯分布，其实部和虚部分别服从高斯分布）。笔者很是不解，<strong>为什么噪声是高斯的</strong>？记得在“通信原理”课上，当我问老师的时候，老师回答说“中心极限定理”。事实上，<strong>很多信号处理领域的学生一直不明白为什么噪声是高斯的</strong>，包括很多通信专业的学生。<font color="red"><strong>笔者觉得“为什么噪声是高斯的”这个问题是一个很重要的问题，它直接关系到绝大多数的理论的合理性。</strong></font><br> 　　<br>实际系统中，由于存在众多噪声源，且大多噪声源（电子噪声，电磁噪声等）满足相互独立假设，当噪声源数量足够多时，且<font color="red"><strong>每个噪声源对于总体的贡献可忽略不计</strong></font>，根据中心极限定理可知，这些噪声源的累加的结果服从高斯分布。此篇推导是笔者在考研的时候完成的，现在重新整理与大家分享。由于本人所学知识有限，诚恳地希望读者批评指正。</p>
+<h1 id="辛钦大数定律"><a href="#辛钦大数定律" class="headerlink" title="辛钦大数定律"></a>辛钦大数定律</h1><p>设随机变量$X_1,X_2,\cdots ,X_n$是相互独立同分布的随机变量序列，且具有相同的数学期望$\mathbb{E}[X_i]=\mu,\ (i\in [n])$，作前$n$个随机变量的算数平均值$\frac{1} {n}\sum\nolimits_{i=1}^nX_i$，则$\forall \varepsilon &gt;0$，有<br>\begin{align}<br>\lim\limits_{n\rightarrow \infty} P\left\{ {\left|{\frac{1} {n}\sum\limits_{i=1}^nX_i-\mu}\right|&lt; \varepsilon }\right\}=1<br>\end{align}</p>
+<p><strong>证：</strong>我们只在随机变量$D(x_i)= { {\sigma }^{2} }  \ (i\in [n])$存在，这一条件下证明上述结果。<br>因为<br>\begin{align}<br>\mathbb{E}\left({\frac{1} {n}\sum\limits_{i=1}^nX_i}\right)=\frac{1} {n}\sum\nolimits_{i=1}^n\mathbb{E}[X_i]=\mu<br>\end{align}<br>根据独立性，有<br>\begin{align}<br>D\left({\frac{1} {n}\sum\limits_{i=1}^nX_i}\right)=\frac{1} {n^2}\sum\limits_{i=1}^nD(x_i)=\frac{\sigma^2} {n}<br>\end{align}<br>由切比雪夫不等式<font color="red">【见附录A】</font>，有<br>\begin{align}<br>1-\frac{\sigma^2/n} {\varepsilon^2}<br>\leq<br>P\left\{ {\left|{\frac{1} {n}\sum\limits_{i=1}^nX_i-\mu}\right|&lt; \varepsilon }\right\}<br>\leq<br>1<br>\end{align}<br>当$n\to \infty $时，由夹逼准则，可得<br>\begin{align}<br>\lim\limits_{n\rightarrow \infty} P\left\{ {\left|{\frac{1} {n}\sum\nolimits_{i=1}^nX_i-\mu}\right|&lt; \varepsilon }\right\}=1<br>\end{align}</p>
+<font color="red"><strong>Remarks: </strong></font>
+
+<ol>
+<li>辛钦大数定理所说明的是，当随机变量个数$n\rightarrow \infty$时，这些随机变量的算术平均$\frac{1} {n}\sum\nolimits_{i=1}^nX_i$逐渐趋于概率均值$\mu$。</li>
+<li>另一方面，假设$\left\{ {x_i}\right\} (i\in [n])$为随机变量$X$的样本，<font color="red">则当样本个数$n\rightarrow \infty$时，有样本均值趋于统计均值</font>，即$\frac{1} {n}\sum\nolimits_{i=1}^nx_i=\mathbb{E}[X]$。</li>
+</ol>
+<h1 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h1><p>大多数情况下，数字特征（均值，方差，各阶距）不能完全确定随机变量的分布（除少数分布，如高斯分布，仅需要一阶矩和二阶矩就可以确定概率分布，详见附录B），<strong>我们需要一种与概率分布对应的一种表示，并且相对于概率分布更有利于计算</strong>。特征函数就是这样的一种与随机变量对应的表示，既能完全决定随机变量的分布函数，又具有良好的性质。</p>
+<p><strong>定义：</strong>设$X$为实随机变量，其概率密度为$p_X(x)$，我们称<br>\begin{align}<br>\phi_X(t)=\mathbb{E}[\exp(itX)]=\int e^{itx}p_X(x)\text{d}x<br>\end{align}<br>为随机变量$X$的特征函数（characteristic funciton）这里的$t$是任意实数。</p>
+<p>设随机变量$X$的特征函数为$\phi_X(t)$，则存在以下特性：</p>
+<ol>
+<li>若随机变量具有相同的特征函数，则它们具有相同的概率分布，即若随机变量$Y$的特征函数$\phi_Y(t)=\phi_X(t)$，则有$p_Y(y)=p_X(x)$。</li>
+<li>独立同分布随机变量和的特征函数，等于每个随机变量特征函数的乘积。</li>
+<li>设$Z=aX$，则有$\phi_Z(t)=\phi_X(at)$。</li>
+</ol>
+<p><strong>Remarks:</strong>  从特征函数的定义上可以看出，$X$的特征函数$\phi_X(t)$也是概率密度$p_X(x)$的<strong>傅里叶变换的共轭复数</strong>。而，<strong>傅里叶变换正是一种将信号从时域投影到频域的信号分解技术</strong>，其存在的意义，就是将信号转换到频域更有利于相应的处理。因此，不难看出，特征函数与概率密度是对应关系。<strong>关于特征函数的这些特性，笔者将在附录B中给出详细证明。</strong></p>
+<h1 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h1><p>设随机变量$X_1,\cdots ,X_n$相互独立同分布，且具有相同的数学期望和方差，即$\mathbb{E}( { {x}_{i} } )=\mu $，$D( { {x}_{i} } )= { {\sigma }^{2} } $，则随机变量之和的归一化变量<br>\begin{align}<br>Y_n=<br>\frac{\sum\limits_{i=1}^nX_i-\mathbb{E}\left(\sum\limits_{i=1}^nX_i\right)}<br>{\sqrt{D\left(\sum\limits_{i=1}^nX_i\right)} }<br>=\frac{\sum\limits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}<br>\end{align}<br>的分布函数$ { {F}_ {  { { Y}_{n} } }  } (x)$对$\forall x$，满足<br>\begin{align}<br>\lim\limits_{n\rightarrow \infty}F_{Y_n}(x)<br>=\lim\limits_{n\rightarrow \infty}P\left\{ {\frac{\sum\limits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}\leq x}\right\}<br>=\int^x_{-\infty}\frac{1} {\sqrt{2\pi} } e^{-t^2/2}\text{d}t=\Phi(x)<br>\end{align}<br>即，$\lim\limits_{n\rightarrow \infty}\frac{\sum\nolimits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}\sim \mathcal{N(0,1)}$。</p>
+<p><strong>证：</strong><br>$\underline{\text{step 1} } $：设$Z_i=X_i-\mu$，则$Z_i \  (i\in[n])$相互独立，且$\mathbb{E}[Z_i]=0$，$D(Z_i)=\sigma^2$。设$Z_i$的特征函数为$\phi_{Z_i}(t)$，根据特征函数的性质3，随机变量$\frac{1} {\sqrt{n}\sigma}Z_i$的特征函数为$\phi_{Z_i}(\frac{1} {\sqrt{n}\sigma}t)$。而<br>\begin{align}<br>Y_n=\frac{\sum\limits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}=\sum\limits_{i=1}^n\left({\frac{Z_i} {\sqrt{n}\sigma} } \right)<br>\end{align}<br>根据，特征函数的性质2，得到$Y_n$的特征函数为$\prod\limits_{i=1}^n\left[{\phi_{Z_i}\left({\frac{1} {\sqrt{n}\sigma }t}\right)}\right]$。</p>
+<p>$\underline{\text{step 2} } $：对$\phi_Z(t)$在$t=0$处，进行二阶泰勒展开，有<br>\begin{align}<br>\phi_{Z_i}(t)=\phi_{Z_i}(0)+\phi’_{Z_i}(t)|_{t=0}t+\phi’’_{Z_i}(t)(t)|_{t=0}t^2+o(t^2)<br>\end{align}<br>其中<br>\begin{align}<br>\phi_{Z_i}(0)&amp;=\int_{-\infty}^{+\infty}p_{Z_i}(z)\text{d}z=1\\<br>\phi’_{Z_i}(t)|_{t=0}&amp;=\left[{\int_{-\infty}^{+\infty}jz e^{jtz}p_{Z_i}(z)\text{d}z}\right]_{t=0}=0\\<br>\phi’’_{Z_i}(t)|_{t=0}&amp;=-\left[{\int_{-\infty}^{+\infty}z^2e^{jtz}p_{Z_i}(z)\text{d}z}\right]_{t=0}=-\sigma^2<br>\end{align}<br>故<br>\begin{align}<br>\phi_{Z_i}(t)=1-\frac{\sigma^2} {2}t^2+o(t^2)<br>\end{align}<br>相应地<br>\begin{align}<br>\phi_{Y_n}(t)<br>=\prod\limits_{i=1}^n\left[{\phi_{Z_i}\left({\frac{1} {\sqrt{n}\sigma }t}\right)}\right]<br>=\left[{1-\frac{1} {2n}t^2+o\left({\frac{t^2} {n\sigma^2} } \right)}\right]^n<br>\end{align}</p>
+<p>$\underline{\text{step 3} } $：<br>\begin{align}<br>\lim\limits_{n\rightarrow \infty} \phi_{Y_n}(t)<br>&amp;=\lim\limits_{n\rightarrow \infty} \left[{1-\frac{1} {2n}t^2+o\left({\frac{t^2} {n\sigma^2} } \right)}\right]^n\\<br>&amp;=\lim\limits_{n\rightarrow \infty} \left({1-\frac{1} {2n}t^2}\right)^n\\<br>&amp;=\lim\limits_{n\rightarrow \infty} \left({1-\frac{1} {2n}t^2}\right)^{\frac{2n} {t^2}\times \frac{t^2} {2} } \\<br>&amp;=e^{-t^2/2}<br>\end{align}<br>其中，最后一个公式成立，根据极限公式$\lim\limits_{x\rightarrow \infty}\left({1+\frac{1} {x} } \right)^x=e$。因此，随机变量$Y_{n}=\lim\limits_{n\rightarrow \infty}\frac{\sum\nolimits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}$的特征函数为$\phi_{Y_n}(t)=e^{-t^2/2}$。</p>
+<p>$\underline{\text{step 4} } $：又因为标准正态分布的特征函数为$e^{-t^2/2}$【见附录C】，因此有<br>\begin{align}<br>Y_{n}=\lim\limits_{n\rightarrow \infty}\frac{\sum\nolimits_{i=1}^nX_i-n\mu} {\sqrt{n}\sigma}\sim \mathcal{N}(0,1)<br>\end{align}</p>
+<p><font color="red"><strong>Remarks</strong></font>：</p>
+<ol>
+<li>本文所介绍的中心极限定理，是独立同分布的中心极限定理。这里假设$n$个相互独立的随机变量具有相同的均值和方差，因此该中心极限定理的条件相对较强，这中类型的中心极限定理，也称为独立同分布的中心极限定理</li>
+<li>若假设$n$个相互独立的变量，具有不同的均值和方差，即$\mathbb{E}[X_i]=\mu_i$，$D(X_i)=\sigma_i^2,(i\in[n])$。该情况为独立同分布的中心极限定理的扩展，称为李亚普诺夫定理。</li>
+<li>中心极限定理告诉我们，当相互独立的变量个数足够多，且每个个体对总体的贡献在$n\rightarrow \infty$时，均可忽略不计时，那么这些随机变量的算术平均，服从高斯分布，这也是为什么噪声服从高斯分布，这种假设的合理性解释。</li>
+</ol>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="A-切比雪夫不等式"><a href="#A-切比雪夫不等式" class="headerlink" title="A. 切比雪夫不等式"></a>A. 切比雪夫不等式</h2><p>设随机变量$X$具有数学期望$\mathbb{E}[X]=\mu$，方差$DX=\sigma^2$，则对于任意的正数$\varepsilon$，有<br>\begin{align}<br>P\left\{ {|X-\mu|\geq \varepsilon}\right\}\leq\frac{\sigma^2} {\varepsilon^2}<br>\end{align}</p>
+<p><strong>证：</strong>设$X$的概率密度为$p_X(x)$，则有<br>\begin{align}<br>P\left\{ {|X-\mu|\geq \varepsilon}\right\}<br>&amp;\leq \int_{|x-\mu|\geq \varepsilon} \frac{|x-\mu|^2} {\varepsilon^2}p_X(x)\text{d}x\\<br>&amp;\leq \frac{1} {\varepsilon^2}\int_{-\infty}^{\infty} {(x-\mu)^2}p_X(x)\text{d}x\\<br>&amp;=\frac{\sigma^2} {\varepsilon}<br>\end{align}</p>
+<h2 id="B-特征函数性质的证明"><a href="#B-特征函数性质的证明" class="headerlink" title="B.  特征函数性质的证明"></a>B.  特征函数性质的证明</h2><ol>
+<li><p>若随机变量具有相同的特征函数，则它们具有相同的概率分布。<br><strong>证</strong>：设随机变量$X$，$Y$具有相同的特征函数，即$\phi_X(t)=\phi_Y(t)$，则有<br>\begin{align}<br>\phi_X(t)=\int_{-\infty}^{+\infty} p_X(x)e^{itx}\text{d}x=\int_{-\infty}^{+\infty} p_Y(y)e^{ity}\text{d}y<br>\quad \Rightarrow \quad p_X(x)=p_Y(y)<br>\end{align}<br>反之，亦成立。</p>
+</li>
+<li><p>独立同分布随机变量和的特征函数，等于每个随机变量特征函数的乘积。<br><strong>证</strong>：设随机变量$X$，$Y$的特征函数分别为$\phi_X(t)$，$\phi_Y(t)$，令$Z=X+Y$，则随机变量$Z$的概率密度，可以由卷积公式得到<br>\begin{align}<br>p_Z(z)=p_X(x)*p_Y(y)=\int_{-\infty}^{+\infty}p_X(x)p_Y(z-x)\text{d}x<br>\end{align}<br>则随机变量$Z$的特征函数为<br>\begin{align}<br>\phi_Z(t)<br>&amp;=\int_{-\infty}^{+\infty} p_Z(z)e^{itz}\text{d}z\\<br>&amp;=\int_{-\infty}^{+\infty} \left({\int_{-\infty}^{+\infty}p_X(x)p_Y(z-x)\text{d}x}\right)e^{itz}\text{d}z\\<br>&amp;=\int_{-\infty}^{+\infty} \left({\int_{-\infty}^{+\infty}p_X(x)p_Y(y)\text{d}x}\right)e^{it(x+y)}\text{d}(x+y)\\<br>&amp;=\left({\int_{-\infty}^{+\infty}p_X(x)e^{jtx}\text{d}x}\right)\left({\int_{-\infty}^{+\infty}p_Y(y)e^{jty}\text{d}y}\right)\\<br>&amp;=\phi_X(t)\phi_Y(t)<br>\end{align}</p>
+</li>
+<li><p>设$Z=aX$，则有$\phi_Z(t)=\phi_X(at)$。<br><strong>证</strong>：设随机变量$X$的概率密度为$p_X(x)$，则随机变量$Z$的累积分布函数（CDF）可以表示为<br>\begin{align}<br>P(Z\leq z)=P\left({X\leq \frac{z} {a} } \right)=\int^{z/a}_{-\infty}p_X(x)\text{d}x<br>\end{align}<br>由于概率密度与累积分布函数互为导数关系，即<br>\begin{align}<br>p_Z(z)&amp;=\frac{\partial P(Z\leq z)} {\partial z}=\frac{\partial } {\partial z}\int^{z/a}_{-\infty}p_X(x)\text{d}x=\frac{1} {a}p_X(z/a)<br>\end{align}<br>因此，随机变量$Z=aX$的特征函数，表示为<br>\begin{align}<br>\phi_Z(t)<br>&amp;=\int_{-\infty}^{+\infty} p_Z(z)e^{itz}\text{d}z\\<br>&amp;=\int_{-\infty}^{+\infty}\frac{1} {a}p_X(x)e^{it(ax)}\text{d}(ax)\\<br>&amp;=\int_{-\infty}^{+\infty}p_X(x)e^{i(at)x}\text{d}x\\<br>&amp;=\phi_X(at)<br>\end{align}</p>
+</li>
+</ol>
+<h2 id="C-高斯分布的特征函数"><a href="#C-高斯分布的特征函数" class="headerlink" title="C. 高斯分布的特征函数"></a>C. 高斯分布的特征函数</h2><p>设随机变量$X\sim \mathcal{N}(a,A)$，则其特征函数为<br>\begin{align}<br>\phi_X(t)=e^{ita-\frac{At^2} {2} }<br>\end{align}<br>特别地，当$X\sim \mathcal{N}(0,1)$时，有$\phi_X(t)=e^{-\frac{t^2} {2} } $。<br><strong>证</strong>：随机变量$X$的特征函数为<br>\begin{align}<br>\phi_X(t)=\int_{-\infty}^{+\infty} e^{itx} \frac{1} {\sqrt{2\pi A} } \exp\left[-\frac{(x-a)^2} {2A}\right]\text{d}x<br>\end{align}<br>作变量替换$y=\frac{x-\mu} {\sqrt{A} } $，即$x=\sqrt{A}y+\mu$，则<br>\begin{align}<br>\phi_X(t)<br>&amp;=\int_{-\infty}^{+\infty} e^{it(\sqrt{A}y+\mu)} \frac{1} {\sqrt{2\pi A} } \exp\left(-\frac{y^2} {2}\right)\text{d}y\cdot \sqrt{A}\\<br>&amp;=\frac{1} {\sqrt{2\pi} }  e^{it\mu} \cdot \int_{-\infty}^{+\infty} e^{it\sqrt{A}y-\frac{y^2} {2} } \text{d}y\\<br>&amp;=\frac{1} {\sqrt{2\pi} } e^{it\mu-\frac{At^2} {2} } \underbrace{\int_{-\infty}^{+\infty}e^{-\frac{(y-it\sqrt{A})^2} {2} } \text{d}y}_{(\text{I})}\\<br>&amp;=e^{it\mu-\frac{At^2} {2} }<br>\end{align}<br>其中，对于$\text{(I)}$的值，我们可以利用概率的归一性进行计算，即<br>\begin{align}<br>\int_{-\infty}^{+\infty} \frac{1} {\sqrt{2\pi} }  e^{-(y-a)^2/2}\text{d}y=1<br>\end{align}<br>因此，可以得到<br>\begin{align}<br>\int_{-\infty}^{+\infty}  e^{-(y-a)^2/2}\text{d}y=\sqrt{2\pi}<br>\end{align}<br>值得注意的是，$\text{(I)}$中的均值部分为$it\sqrt{A}$，是虚数，但是积分是对实数变量$y$积分，实际上，$\int_{-\infty}^{+\infty}e^{-\frac{(y-it\sqrt{A})^2} {2} } \text{d}y=\int_{-\infty}^{+\infty}e^{-\frac{y^2} {2} } \text{d}y$，具体我们可以由复高斯概率密度得到。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/28/克拉美-罗下界/" rel="next" title="克拉美-罗下界">
+                <i class="fa fa-chevron-left"></i> 克拉美-罗下界
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Qiuyun">
+            
+              <p class="site-author-name" itemprop="name">Qiuyun</p>
+              <p class="site-description motion-element" itemprop="description">少一点利主义的追求，多一些不为什么的坚持</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#辛钦大数定律"><span class="nav-number">2.</span> <span class="nav-text">辛钦大数定律</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征函数"><span class="nav-number">3.</span> <span class="nav-text">特征函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中心极限定理"><span class="nav-number">4.</span> <span class="nav-text">中心极限定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-切比雪夫不等式"><span class="nav-number">5.1.</span> <span class="nav-text">A. 切比雪夫不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-特征函数性质的证明"><span class="nav-number">5.2.</span> <span class="nav-text">B.  特征函数性质的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-高斯分布的特征函数"><span class="nav-number">5.3.</span> <span class="nav-text">C. 高斯分布的特征函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qiuyun.Zou</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = '';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EANk1CNCNbaSSP7dmYpRrTh8-gzGzoHsz',
+        appKey: 'Df4Uzzs5dBqfgMifqzI6YVJj',
+        placeholder: '请在此处评论...',
+        avatar:'',
+        guest_info:guest,
+        pageSize:'' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+</body>
+</html>
