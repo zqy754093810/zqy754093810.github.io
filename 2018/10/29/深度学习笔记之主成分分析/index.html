@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="学习的方法方式有很多种，做笔记是其中一种比较好的选择。我本人从大学本科阶段就有写一些学习笔记的习惯。从一开始是用word来记录，那时候还不会latex，所以用的是mathtype。这个工具比较容易上手，所见即所得嘛。那时候写写笔记，装装逼发给别人看看也确实会满足个人虚荣心，不过却实有帮助一些人。 到了研究生阶段，开始写blog。这一点主要是因为这时候我已经掌握了latex的代码编写规则。此外，刚好">
+<meta name="description" content="Definitions（定义）主成分分析（principal components analysis, PCA）简称PCA，是一种广泛应用于数据降维（data dimensionality reduction）、有损数据压缩（lossy data compression）、特征提取（feature extraction）以及数据可视化等的一种技术，也被称为Karhunen-Lo`eve变换。 关于">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开通个人blog">
-<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/27/开通个人blog/index.html">
+<meta property="og:title" content="深度学习笔记之主成分分析">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/29/深度学习笔记之主成分分析/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="学习的方法方式有很多种，做笔记是其中一种比较好的选择。我本人从大学本科阶段就有写一些学习笔记的习惯。从一开始是用word来记录，那时候还不会latex，所以用的是mathtype。这个工具比较容易上手，所见即所得嘛。那时候写写笔记，装装逼发给别人看看也确实会满足个人虚荣心，不过却实有帮助一些人。 到了研究生阶段，开始写blog。这一点主要是因为这时候我已经掌握了latex的代码编写规则。此外，刚好">
+<meta property="og:description" content="Definitions（定义）主成分分析（principal components analysis, PCA）简称PCA，是一种广泛应用于数据降维（data dimensionality reduction）、有损数据压缩（lossy data compression）、特征提取（feature extraction）以及数据可视化等的一种技术，也被称为Karhunen-Lo`eve变换。 关于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T16:01:47.644Z">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/10/29/深度学习笔记之主成分分析/matrix_mutiple.jpg">
+<meta property="og:updated_time" content="2018-10-29T12:17:52.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开通个人blog">
-<meta name="twitter:description" content="学习的方法方式有很多种，做笔记是其中一种比较好的选择。我本人从大学本科阶段就有写一些学习笔记的习惯。从一开始是用word来记录，那时候还不会latex，所以用的是mathtype。这个工具比较容易上手，所见即所得嘛。那时候写写笔记，装装逼发给别人看看也确实会满足个人虚荣心，不过却实有帮助一些人。 到了研究生阶段，开始写blog。这一点主要是因为这时候我已经掌握了latex的代码编写规则。此外，刚好">
+<meta name="twitter:title" content="深度学习笔记之主成分分析">
+<meta name="twitter:description" content="Definitions（定义）主成分分析（principal components analysis, PCA）简称PCA，是一种广泛应用于数据降维（data dimensionality reduction）、有损数据压缩（lossy data compression）、特征提取（feature extraction）以及数据可视化等的一种技术，也被称为Karhunen-Lo`eve变换。 关于">
+<meta name="twitter:image" content="http://qiuyun-blog.cn/2018/10/29/深度学习笔记之主成分分析/matrix_mutiple.jpg">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/27/开通个人blog/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/29/深度学习笔记之主成分分析/">
 
 
 
 
 
-  <title>开通个人blog | Qiuyun's blog</title>
+  <title>深度学习笔记之主成分分析 | Qiuyun's blog</title>
   
 
 
@@ -262,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/27/开通个人blog/">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/29/深度学习笔记之主成分分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qiuyun">
@@ -279,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">开通个人blog</h1>
+          <h1 class="post-title" itemprop="name headline">深度学习笔记之主成分分析</h1>
         
 
         <div class="post-meta">
@@ -291,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T10:28:14+08:00">
-                2018-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T19:59:49+08:00">
+                2018-10-29
               </time>
             
 
@@ -314,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -332,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/27/开通个人blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/27/开通个人blog/" itemprop="commentCount"></span>
+                <a href="/2018/10/29/深度学习笔记之主成分分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/深度学习笔记之主成分分析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,8 +363,27 @@
       
 
       
-        <p>学习的方法方式有很多种，做笔记是其中一种比较好的选择。我本人从大学本科阶段就有写一些学习笔记的习惯。从一开始是用word来记录，那时候还不会latex，所以用的是mathtype。这个工具比较容易上手，所见即所得嘛。那时候写写笔记，装装逼发给别人看看也确实会满足个人虚荣心，不过却实有帮助一些人。</p>
-<p>到了研究生阶段，开始写blog。这一点主要是因为这时候我已经掌握了latex的代码编写规则。此外，刚好那时候，国内开始有一些博客论坛开始支持latex公式，所以在研一的时候，我开通了一个CSDN账号。CSDN那个账号到现在浏览量不是很多，但是所写的博客却也是我在学习过程中的积累。<br><a id="more"></a><br>CSDN博客，我一直在用。不过近段时间，CSDN博客改版了。有一些功能，在下实在不敢苟同，比如：不支持公式组环境以及公式没有之前版本美观等。由于我所研究的领域，较多的是公式推导等工作。公式写下来，通常一大堆，多行公式也是家常便饭。无奈之下，我便心生开通个人博客的想法。经过一番努力，所创建的博客网站及其功能也大致能满足在下之需求。今后我会尽可能地利用到这个博客网站记录工作、学习、生活的点滴。O(∩_∩)O</p>
+        <h1 id="Definitions（定义）"><a href="#Definitions（定义）" class="headerlink" title="Definitions（定义）"></a>Definitions（定义）</h1><p>主成分分析（principal components analysis, PCA）简称PCA，是一种广泛应用于数据降维（data dimensionality reduction）、有损数据压缩（lossy data compression）、特征提取（feature extraction）以及数据可视化等的一种技术，也被称为Karhunen-Lo`eve变换。</p>
+<p>关于PCA的定义主要有两种：</p>
+<ul>
+<li>PCA是一种将数据投影到低维线性空间（principal subspace，主成子空间）使得投影之后的差异最大的正交投影。</li>
+<li>PCA是一种最小化平均投影成本（average projection cost），投影点与数据点之间的均方距离最小，即数据损失精度最小。<a id="more"></a>
+</li>
+</ul>
+<h1 id="Example-（例子）"><a href="#Example-（例子）" class="headerlink" title="Example （例子）"></a>Example （例子）</h1><p>我们通过一个有损压缩的例子来介绍PCA。假设我们有$m$个数据点$\left\{ { \boldsymbol{x}^{(1)},\cdots,\boldsymbol{x}^{(m)} }\right\}$，其中数据维度为$\boldsymbol{x}^{(1)}\in \mathbb{R}^n$。因此，存储这些数据，需要$m\times n$个单元。为了节省存储单元，我们考虑<font color="red"><strong>有损压缩</strong></font>。有损压缩，意味着我们可以用较少的存储单元储存数据，当然，这会损失些精度。因此我们要尽量的减少精度的损失。</p>
+<p>我们将这些数据压缩成低维数据，即每一个$\boldsymbol{x}^{(i)}\in \mathbb{R}^n$都可以找到一个对应的$\boldsymbol{c}\in \mathbb{R}^l, (n\gg l)$。这里，我们用映射$f:\mathbb{R}^n\rightarrow \mathbb{R}^l$来表示，即$f(\boldsymbol{x})=\boldsymbol{c}$。对应的解压缩，我们用函数$\text{g}:\mathbb{R}^l\rightarrow \mathbb{R}^n$来表示，即$\hat{\boldsymbol{x} }=\text{g}(f(\boldsymbol{x}))$。</p>
+<p>为了解压缩尽量简单，我们限制解压缩是经过一个线性变换矩阵$\boldsymbol{D}$来完成，则解压缩信号表示为$\text{g}(c)=\boldsymbol{D}\boldsymbol{c}$。这里，我们限制矩阵$\boldsymbol{D}$是列正交矩阵（矩阵中列两两正交）。一般来说，增大$\boldsymbol{D}$的能量，需要降低$\boldsymbol{c}$的能量，因此，我们对$\boldsymbol{D}$进行归一化处理（归一化与未归一化大部分情况的结果是相等的，但也存在一些情况下归一化的情况更好，因此通常我们会对$\boldsymbol{D}$进行归一化处理）。</p>
+<p>我们从矩阵乘法的角度来理解$\boldsymbol{x}=\boldsymbol{Dc}$。通常，我们理解矩阵乘法从图的左图出发，但一般不会考虑右图的理解方式。这里，我们从右图的理解方式出发。由于$\boldsymbol{D}$是列正交的，因此$\left\{ { \boldsymbol{d}_i}\right\}_{i\in [l]}$张成了一个$l$空间，而$\left\{ { \boldsymbol{d}_i}\right\}_{i\in [l]}$则是这个$\mathbb{R}^l$空间的一组<font color="red"><strong>完备正交基</strong></font>。$\boldsymbol{x}$在基$\boldsymbol{d}_i$上的投影即为$c_i$。我们用$\left\{ { \boldsymbol{d}_i}\right\}_{i\in [l]}$线性表出$\boldsymbol{x}$。<br>\begin{align}<br>\boldsymbol{x}=\sum\limits_{i\in[l]} c_i\boldsymbol{d}_i<br>\end{align}<br><img src="/2018/10/29/深度学习笔记之主成分分析/matrix_mutiple.jpg" alt="矩阵相乘示意图"><br>为了使得解压之后的数据损失尽可能少的精度，我们需要通过使得如下损失函数（也称，代价函数 cost function）最小来得到压缩数据的具体表达式<br>\begin{align}<br>\mathcal{R}= || \boldsymbol{x}-\boldsymbol{Dc} ||_2<br>\end{align}<br>损失函数是关于$\boldsymbol{c}$的线性变换$(\boldsymbol{x}-\boldsymbol{Dc})$的范数，因此是convex的（所有的范数均是convex function）。</p>
+<p>通过导数工具，有<br>\begin{align}<br>\frac{\partial \mathcal{R} }{\partial \boldsymbol{c} }<br>&amp;=\frac{\partial }{\partial \boldsymbol{c} } \left(\boldsymbol{x}^T\boldsymbol{x}-2\boldsymbol{x}^T\boldsymbol{Dc}+\boldsymbol{c}^T\boldsymbol{D}^T\boldsymbol{D}\boldsymbol{c}\right)\\<br>&amp;\overset{(a)}{=}\frac{\partial }{\partial \boldsymbol{c} } \left(\boldsymbol{x}^T\boldsymbol{x}-2\boldsymbol{x}^T\boldsymbol{Dc}+\boldsymbol{c}^T\boldsymbol{c}\right)\\<br>&amp;=-2\boldsymbol{D}^T\boldsymbol{x}-2\boldsymbol{c}<br>\end{align}<br>其中$(a)$成立，由于$\boldsymbol{D}$是列正交矩阵，因此$\boldsymbol{D}^T\boldsymbol{D}=\mathbf{I}_l$。通过令偏导为0，我们找到函数的<font color="red"><strong>驻点</strong></font>$：\boldsymbol{c}^{*}=\boldsymbol{D}^T\boldsymbol{x}$。</p>
+<p>给定解压矩阵$\boldsymbol{D}$，我们从损失精度最小的角度出发，得到了压缩数据的表达式$\boldsymbol{c}=\boldsymbol{D}^T\boldsymbol{x}$，对应解压缩数据为$r(\boldsymbol{x})=\boldsymbol{D}\boldsymbol{D}^T\boldsymbol{x}$。<font color="red"><strong>为此，我们仍需要确定$\boldsymbol{D}$的形式</strong></font>。这里，我们仍然从损失精度最小的角度出发<br>\begin{align}<br>\boldsymbol{D}^{*}=\underset{\boldsymbol{D} }{\text{arg} \min} ||\boldsymbol{x}-\boldsymbol{DD}^T\boldsymbol{x}||\quad s.t. \quad \boldsymbol{D}^T\boldsymbol{D}=\mathbf{I}_{l}<br>\end{align}<br>显然，我们要从从这个方程中解出$\boldsymbol{D}$来是不可能的。</p>
+<p>但是，我们是有$n$个$\boldsymbol{x}^{(i)}$数据的，定义$\boldsymbol{X}\in \mathbb{R}^{m\times n}$，其中$\boldsymbol{X}_{i:}=(\boldsymbol{x}^{(i)})^T$<br>\begin{align}<br>\boldsymbol{D}^*<br>&amp;=\underset{\boldsymbol{D} }{\text{arg} \min }||\boldsymbol{X}^T-\boldsymbol{D}\boldsymbol{D}^T\boldsymbol{X}^T||_F\\<br>&amp;=\underset{\boldsymbol{D} }{\text{arg} \min} ||\boldsymbol{X}-\boldsymbol{X}\boldsymbol{D}\boldsymbol{D}^T||_F\\<br>&amp;=\underset{\boldsymbol{D} }{\text{arg} \min} \text{Tr}\left[{(\boldsymbol{X}-\boldsymbol{X}\boldsymbol{D}\boldsymbol{D}^T)^T(\boldsymbol{X}-\boldsymbol{X}\boldsymbol{D}\boldsymbol{D}^T) }\right]\\<br>&amp;=\underset{\boldsymbol{D} }{\text{arg} \min} \text{Tr}\left({\boldsymbol{X}^T\boldsymbol{X} }\right)-\text{Tr}(\boldsymbol{D}^T\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{D})\\<br>&amp;=\underset{\boldsymbol{D} }{\text{arg} \max} \text{Tr}(\boldsymbol{D}^T\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{D})<br>\end{align}</p>
+<p>这里$\boldsymbol{D}$是列正交矩阵，即$\boldsymbol{D}^T\boldsymbol{D}=\mathbf{I}_l$。为使$\text{Tr}(\boldsymbol{D}^T\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{D})$最大，因此选择$\boldsymbol{X}^T\boldsymbol{X}$最大的$l$个特征矢量作为$\boldsymbol{D}$的列向量。对应地，<br>\begin{align}<br>\boldsymbol{X}^T\boldsymbol{X}\left[{\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_l}\right]=\left[{\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_l}\right]\text{Diag}(\lambda_1,\cdots,\lambda_l)<br>\end{align}<br>其中$\boldsymbol{\xi}_i$表示最大的$l$个特征值$\lambda_i\in [l]$对应的特征矢量，$[l]$表示最大的$l$个特征值组成的结合。因此$\max \text{Tr}(\boldsymbol{D}^T\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{D})=\sum_i^l \lambda_i$。</p>
+<font color="red"><strong>Remarks:</strong></font>
+
+<ul>
+<li>基于上述表述，我们知道矩阵$\boldsymbol{D}$选择数据矩阵$\boldsymbol{X}^T\boldsymbol{X}$的最大$l$个特征值$\lambda_i\in [l]$所对应的特征向量$\boldsymbol{\xi}_i$作为其列，最大程度的保留了矩阵$\boldsymbol{X}^T\boldsymbol{X}$的能量。</li>
+<li>这里所得到$\boldsymbol{D}=\left[{\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_l}\right]$并不是驻点，如果$|||\boldsymbol{X}^T-\boldsymbol{D}\boldsymbol{D}^T\boldsymbol{X}^T||_F$对$\boldsymbol{D}$求偏导，并令偏导为零，得到$\boldsymbol{D}=\boldsymbol{0}$，显然这并不是最后的计算结果。</li>
+</ul>
 
       
     </div>
@@ -387,14 +408,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/10/29/高斯噪声与中心极限定理/" rel="next" title="高斯噪声与中心极限定理">
+                <i class="fa fa-chevron-left"></i> 高斯噪声与中心极限定理
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/28/克拉美-罗下界/" rel="prev" title="克拉美-罗下界">
-                克拉美-罗下界 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/29/矩阵正态分布/" rel="prev" title="矩阵正态分布">
+                矩阵正态分布 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -504,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Definitions（定义）"><span class="nav-number">1.</span> <span class="nav-text">Definitions（定义）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example-（例子）"><span class="nav-number">2.</span> <span class="nav-text">Example （例子）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
