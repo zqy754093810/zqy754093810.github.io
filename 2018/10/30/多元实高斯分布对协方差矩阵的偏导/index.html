@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Gaussian,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="少一点利主义的追求，多一些不为什么的坚持">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qiuyun&#39;s blog">
-<meta property="og:url" content="http://qiuyun-blog.cn/categories/随笔/index.html">
+<meta name="description" content="假设$N$维实随机矢量$\mathbf{X}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{X}\sim \mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{z}|\mathbf{a},\mathbf{A} }\right)=">
+<meta name="keywords" content="Gaussian">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多元实高斯分布对协方差的偏导">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="少一点利主义的追求，多一些不为什么的坚持">
+<meta property="og:description" content="假设$N$维实随机矢量$\mathbf{X}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{X}\sim \mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{z}|\mathbf{a},\mathbf{A} }\right)=">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-30T11:33:28.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qiuyun&#39;s blog">
-<meta name="twitter:description" content="少一点利主义的追求，多一些不为什么的坚持">
+<meta name="twitter:title" content="多元实高斯分布对协方差的偏导">
+<meta name="twitter:description" content="假设$N$维实随机矢量$\mathbf{X}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{X}\sim \mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{z}|\mathbf{a},\mathbf{A} }\right)=">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/categories/随笔/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/">
 
 
 
 
 
-  <title>分类: 随笔 | Qiuyun's blog</title>
+  <title>多元实高斯分布对协方差的偏导 | Qiuyun's blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -247,53 +249,180 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>随笔<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuyun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/27/开通个人blog/" itemprop="url">
-              
-                <span itemprop="name">开通个人blog</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">多元实高斯分布对协方差的偏导</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-27T10:28:14+08:00" content="2018-10-27">
-          10-27
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T19:26:57+08:00">
+                2018-10-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础数学/" itemprop="url" rel="index">
+                    <span itemprop="name">基础数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+    
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>假设$N$维实随机矢量$\mathbf{X}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{X}\sim \mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})$<br>\begin{align}<br>\mathcal{N}\left({\mathbf{z}|\mathbf{a},\mathbf{A} }\right)<br>=(2\pi)^{-\frac{N}{2} }|\mathbf{A}|^{-\frac{1}{2} }\exp \left({-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}\right)<br>\end{align} <a id="more"></a><br>其对协方差矩阵的偏导为<br>\begin{align}<br>\frac{\partial \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})}{\partial \mathbf{A} }&amp;=(2\pi)^{-\frac{N}{2} }\frac{\partial |\mathbf{A}|^{-\frac{1}{2} }}{\partial \mathbf{A} }\exp \left(-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)\\<br>&amp;\quad +(2\pi)^{-\frac{N}{2} }|\mathbf{A}|^{-\frac{1}{2} }\frac{\partial }{\partial \mathbf{A} }\exp \left[-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right]\\<br>&amp;\overset{(a)}{=}-\frac{1}{2}\mathbf{A}^{-1}\mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})+\frac{1}{2}\boldsymbol{A}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}\mathcal{N}(\mathbf{z}|\mathbf{a},\mathbf{A})<br>\end{align}<br>这里最为主要的是偏导$\frac{\partial |\mathbf{A}|^{-\frac{1}{2} }}{\partial \mathbf{A} }$和$\frac{\partial }{\partial \mathbf{A} }\exp \left({-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}\right)$的计算。我们给出其详细计算过程如下<br>\begin{align}<br>\frac{\partial |\mathbf{A}|^{-\frac{1}{2} }}{\partial \mathbf{A} }=-\frac{1}{2}|\mathbf{A}|^{-\frac{3}{2} } (|\mathbf{A}|\mathbf{A}^{-1})=-\frac{1}{2}|\mathbf{A}|^{-\frac{1}{2} }\mathbf{A}^{-1}<br>\end{align}<br>这里利用到偏导数公式$\frac{\partial |\mathbf{A}|}{\partial \mathbf{A} }=|\mathbf{A}|\mathbf{A}^{-1}$。</p>
+<p>另外<br>\begin{align}<br>&amp;\quad \frac{\partial }{\partial \mathbf{A} }\exp \left[-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right]\\<br>&amp;=\exp\left(-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)\left(-\frac{1}{2}\frac{\partial }{\partial \mathbf{A} }(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)<br>\end{align}<br>其中<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=\left({<br>\begin{matrix}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{11} }&amp; \cdots&amp; \frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{A_{1N} }\\<br>\vdots&amp; \ddots&amp; \vdots\\<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{N1} }&amp; \cdots&amp; \frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{NN} }<br>\end{matrix}<br>}\right)<br>\end{align}<br>计算该矩阵元素如下<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{ij} }<br>&amp;=\text{tr}\left\{ {\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A}^{-1} }\frac{\partial \mathbf{A}^{-1} }{\partial A_{ij} }}\right\}\\<br>&amp;\overset{(b)}{=}\text{tr}\left\{ {-(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}\frac{\partial \mathbf{A} }{\partial A_{ij} }\mathbf{A} }\right\}\\<br>&amp;=\text{tr}\left\{ {-(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}\boldsymbol{e}_i\boldsymbol{e}_j^T\mathbf{A} }\right\}\\<br>&amp;=-\boldsymbol{e}_j^T\mathbf{A}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}\boldsymbol{e}_i<br>\end{align}<br>这里步骤$(b)$利用到偏导公式$\frac{\partial g(\mathbf{U})}{\partial x}=\text{tr}\left\{ {\frac{\partial g(\mathbf{U})}{\partial \mathbf{U} }\frac{\partial \mathbf{U} }{\partial x} }\right\}$以及$\frac{\partial \mathbf{U}^{-1} }{\partial x}=-\mathbf{U}\frac{\partial \mathbf{U} }{\partial x}\mathbf{U}$。因此，可以得到<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=-\boldsymbol{A}^T(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^T<br>\end{align}<br>若假设$\mathbf{A}$是对称矩阵, 则有<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=-\boldsymbol{A}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}<br>\end{align}</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gaussian/" rel="tag"># Gaussian</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/29/矩阵奇异值分解/" rel="next" title="矩阵奇异值分解">
+                <i class="fa fa-chevron-left"></i> 矩阵奇异值分解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -301,6 +430,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -524,6 +660,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
