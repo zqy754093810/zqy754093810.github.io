@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="少一点利主义的追求，多一些不为什么的坚持">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qiuyun&#39;s blog">
-<meta property="og:url" content="http://qiuyun-blog.cn/categories/基础数学/index.html">
+<meta name="description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习笔记之线性回归与逻辑回归">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="少一点利主义的追求，多一些不为什么的坚持">
+<meta property="og:description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-03T14:32:11.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qiuyun&#39;s blog">
-<meta name="twitter:description" content="少一点利主义的追求，多一些不为什么的坚持">
+<meta name="twitter:title" content="深度学习笔记之线性回归与逻辑回归">
+<meta name="twitter:description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/categories/基础数学/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/">
 
 
 
 
 
-  <title>分类: 基础数学 | Qiuyun's blog</title>
+  <title>深度学习笔记之线性回归与逻辑回归 | Qiuyun's blog</title>
   
 
 
@@ -143,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -279,131 +280,179 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>基础数学<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuyun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" itemprop="url">
-              
-                <span itemprop="name">多元实高斯分布对协方差的偏导</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">深度学习笔记之线性回归与逻辑回归</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-30T19:26:57+08:00" content="2018-10-30">
-          10-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T22:11:18+08:00">
+                2018-11-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/03/深度学习笔记之线性回归与逻辑回归/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/03/深度学习笔记之线性回归与逻辑回归/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+    
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/29/矩阵奇异值分解/" itemprop="url">
-              
-                <span itemprop="name">矩阵奇异值分解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-29T20:42:19+08:00" content="2018-10-29">
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/29/矩阵求逆引理及其证明/" itemprop="url">
-              
-                <span itemprop="name">矩阵求逆引理及其证明</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-29T20:26:25+08:00" content="2018-10-29">
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/29/矩阵正态分布/" itemprop="url">
-              
-                <span itemprop="name">矩阵正态分布</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-29T20:21:38+08:00" content="2018-10-29">
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2><p>给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线性模型来尽可能准确预测实值输出标记。<br><a id="more"></a><br>假设样本由$1(即，d=1)$个属性描述，线性回归试图学得如下线性模型<br>\begin{align}<br>f(x_i)=wx_i+b<br>\end{align}<br>使得$f(x_i)\approx y_i$。其中$w$和$b$需要通过最小化均方误差(mean square error, MSE)得到<br>\begin{align}<br>(w,b)=\underset{(w,b)}{\text{arg} \min} \sum\limits_{i=1}^m \left({f(x_i)-y_i}\right)^2<br>\end{align}<br>通过最小化MSE得$(w^<em>,b^</em>)$，即找到一根直线，使得所有样本到直线$y=wx+b$上的欧式距离最短。</p>
+<p>对于数据集合$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，定义如下误差函数<br>\begin{align}<br>J=\sum\limits_{i=1}^m (y_i-(wx_i+b))^2<br>\end{align}<br>通过导数工具<br>\begin{align}<br>\frac{\partial J}{\partial b}&amp;=0 \quad \Rightarrow b=\frac{1}{m}\sum\limits_i^m(y_i-wx_i)=\bar{y}-w\bar{x}<br>\end{align}<br>其中$\bar{y}=\frac{1}{m}\sum_{i=1}^my_i$，$\bar{x}=\frac{1}{m}\sum_{i=1}^mx_i$。为求$w$,将$b$的表达式代入误差函数$J$中，对$w$求偏导<br>\begin{align}<br>\frac{\partial J}{\partial w}<br>&amp;=\frac{\partial }{\partial w}\left[ { \sum\limits_{i=1}^m (y_i-\bar{y})-w( x_i-\bar{x} )  }\right]^2\\<br>&amp;=-2\sum\limits_{i=1}^m  [ (y_i-\bar{y} )-w( x_i-\bar{x} ) ] ( x_i -\bar{x} )<br>\end{align}<br>让其为0，得到<br>\begin{align}<br>w=\frac{\sum\limits_{i=1}^m(y_i-\bar{y})(x_i-\bar{x})}{\sum\limits_{i=1}^m(x_i-\bar{x})^2}<br>\end{align}</p>
+<h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><p>在上一小节中，我们假设样本只要一个属性描述。这里我们假设样本有$d(d&gt;1)$个属性描述，此时，我们尝试学得多元线性模型<br>\begin{align}<br>f(\mathbf{x}_i)=\mathbf{w}^T\mathbf{x}_i+d<br>\end{align}<br>使得$f(\mathbf{x}_i)\approx y_i$，我们称之为多元线性回归（multivariate linear regression）。</p>
+<p>对于该例子，为了简化计算过程，这里我们直接固定$d=0$，得到如下<br>\begin{align}<br>\mathbf{y}=\mathbf{X}^T\mathbf{w}<br>\end{align}<br>其中$\mathbf{X}=[\mathbf{x}_1,\cdots,\mathbf{x}_m]$，$\mathbf{w}=[w_1,\cdots,w_m]^T$，以及$\mathbf{y}=[y_1,\cdots,y_m]^T$。</p>
+<p>定义如下误差函数<br>\begin{align}<br>J=||\mathbf{y}-\mathbf{X}^T\mathbf{w}||^2<br>\end{align}<br>通过对$\mathbf{w}$求导，并令导数为零得到<br>\begin{align}<br>\frac{\partial J}{\partial \mathbf{w} }=(\mathbf{XX}^T)^{-1}\mathbf{X}\mathbf{y}<br>\end{align}</p>
+<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><p>上一节中，我们介绍了线性回归。线性回归通过学得线性模型，对输入$\mathbf{x}$输出预测值$y$。而逻辑回归对线性回归做了压缩处理，将$f(x)$的值阈从$(-\infty,+\infty)$压缩到了$(0,1)$区间。我们通过判断输出与$\frac{1}{2}$的大小比较，输出‘ 1 ’或者‘ 0 ’。这主要归功于Sigmoid函数<br>\begin{align}<br>f(x)=\frac{1}{1+e^{-x} }<br>\end{align}<br>虽然逻辑回归的名字是回归，但其实逻辑回归是一种分类学习方法。</p>
+<p>对于数据集合$\left\{ {(\mathbf{x}_i,y_i)}\right\}_{i=1}^m$，逻辑回归学得如下模型<br>\begin{align}<br>y=f(\mathbf{w}^T\mathbf{x}+b) \ \Longleftrightarrow \ \ln \frac{y}{1-y}=\mathbf{w}^T\mathbf{x}+b<br>\end{align}<br>我们设$y$后验概率$p(y=1|\mathbf{x})$，则有<br>\begin{align}<br>\ln \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} =\mathbf{w}^T\mathbf{x}+\mathbf{b}<br>\end{align}<br>解方程，得<br>\begin{align}<br>p(y=1|\mathbf{x})&amp;=\frac{e^{\mathbf{w}^T\mathbf{x}+b} }{1+e^{\mathbf{w}^T\mathbf{x}+b} }\\<br>p(y=0|\mathbf{x})&amp;=\frac{1}{1+e^{\mathbf{w}^T\mathbf{x}+b} }<br>\end{align}<br>参数$(\mathbf{w},b)$通过最大似然函数确定。<br>\begin{align}<br>\ell(\mathbf{w},b)=\log \prod\limits_{i} p(y_i|\mathbf{x}_i;\mathbf{w},b)<br>\end{align}</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" rel="next" title="多元实高斯分布对协方差的偏导">
+                <i class="fa fa-chevron-left"></i> 多元实高斯分布对协方差的偏导
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -411,6 +460,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -431,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -494,6 +559,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一元线性回归"><span class="nav-number">1.1.</span> <span class="nav-text">一元线性回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多元线性回归"><span class="nav-number">2.</span> <span class="nav-text">多元线性回归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -625,6 +706,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
