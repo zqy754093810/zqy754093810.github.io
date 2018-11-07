@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/信号系统笔记之连续时间傅里叶变换/v5.jpg">
 <meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/信号系统笔记之连续时间傅里叶变换/v6.jpg">
 <meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/信号系统笔记之连续时间傅里叶变换/v7.jpg">
-<meta property="og:updated_time" content="2018-11-07T04:52:41.050Z">
+<meta property="og:updated_time" content="2018-11-07T04:57:01.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信号系统笔记之连续时间傅里叶变换">
 <meta name="twitter:description" content="引言　学习傅里叶级数之后，我们得到一个结论，任何满足狄利克雷条件（Dirichlet Conditions）的周期信号$f(t)$可以分解为一串虚指数信号的线性加权和，即傅里叶级数。然而实际上，我们需要处理的信号大多为非周期信号。因此，要想对非周期信号进行频域分析，我们需要得到一个属于非周期信号的“傅里叶级数”。">
@@ -401,7 +401,7 @@
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言　"></a>引言　</h1><p>学习傅里叶级数之后，我们得到一个结论，任何满足<strong>狄利克雷条件</strong>（Dirichlet Conditions）的周期信号$f(t)$可以分解为一串<strong>虚指数信号的线性加权和</strong>，即傅里叶级数。然而实际上，我们需要处理的信号大多为非周期信号。因此，要想对非周期信号进行频域分析，我们需要得到一个属于非周期信号的“傅里叶级数”。<br><a id="more"></a><br>在周期信号的分解中，我们选择信号的分解区间为$(a-\text{T}/2,a+\text{T}/2)$。<font color="red"><strong>当周期信号的周期$\text{T}\to\infty$时</strong></font>，周期信号就转换为非周期信号（周期$\text{T}\to\infty$），此时分解区间为$(-\infty,+\infty)$。</p>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言　"></a>引言　</h1><p>学习傅里叶级数之后，我们得到一个结论，任何满足<strong>狄利克雷条件</strong>（Dirichlet Conditions）的周期信号$f(t)$可以分解为一串<strong>虚指数信号的线性加权和</strong>，即傅里叶级数。然而实际上，我们需要处理的信号大多为非周期信号。因此，要想对非周期信号进行频域分析，我们需要得到一个属于非周期信号的“傅里叶级数”。<br><a id="more"></a><br>在周期信号的分解中，我们选择信号的分解区间为$(a-T/2,a+T/2)$。<font color="red"><strong>当周期信号的周期$T\to\infty$时</strong></font>，周期信号就转换为非周期信号（周期$T\to\infty$），此时分解区间为$(-\infty,+\infty)$。</p>
 <p>为了能够透彻整个傅里叶级数到傅里叶变换的过程，笔者先从黎曼积分讲起。然后再推导非周期信号的傅里叶变换公式。</p>
 <h1 id="黎曼积分"><a href="#黎曼积分" class="headerlink" title="黎曼积分"></a>黎曼积分</h1><p>黎曼是德国数学家，数学分析大师，物理学家，被后人誉为<strong>定积分之父</strong>。对数学分析和微分几何做出了重要贡献，其中一些为广义相对论的发展铺平了道路。他的名字出现在黎曼ζ函数，黎曼积分，黎曼几何，黎曼引理，黎曼流形，黎曼映照定理，黎曼-希尔伯特问题，黎曼思路回环矩阵和黎曼曲面中。<br><img src="/2018/11/07/信号系统笔记之连续时间傅里叶变换/v1.jpg" alt="图1"></p>
 <p>如何求函数$f(t)$在区间$[a,b]$上的面积呢？于是，黎曼想到将区间$[a,b]$划分为无数个子区间，设第$i$个区间的宽度为$\Delta x_i$，然后在该区间上任取一点$\xi_i\left(\xi_i\in [x_{i-1},x_i]\right)$，用$f(\xi_i)\triangle x_i$来表示该小柱条的面积。令$\lambda=\max \left\{\triangle x_i\right\}$，当$\lambda \to 0$时，函数$f(t)$在区间$[a,b]$上的面积可以表示为<br>\begin{align}<br>S=\lim_{\lambda\rightarrow 0} \sum_{i=1}^n f(\xi_i)\triangle x_i<br>\end{align}<br>通常采用等分切割处理，并选择区间最右端的函数值为小柱条的高，因此<br>\begin{align}<br>S=\lim_{n\rightarrow \infty} \sum_{i=1}^n f\left(a-\frac{b-a}{n}i\right)\frac{b-a}{n}<br>\end{align}<br>为了定义这个运算，黎曼翻阅书籍，由于该运算是极限求和，因此选取了求和单词Sum的首字母，并对其进行拉长也就是现在的积分符号$\int$。因此上式写为<br>\begin{align}<br>S=\int_a^b f(x)\text{d}x<br>\end{align}<br>心细的朋友应该会发现，即使$\lambda \to 0$，但还是存在误差，设每一个小柱条与该区间实际面积之差为$\triangle s_i$，那么总体误差为<br>\begin{align}<br>\triangle S=\sum_{i\rightarrow \infty}\triangle s_i<br>\end{align}<br>无穷个无穷小之和可能不为无穷小，因此式子的$S=\int_a^bf(x)\text{d}x$的成立还需证明$\Delta {S}\to 0$。这种工作一般需要数学家去完成，这里不进行扩展。至此，我们有了极限求和的思想。</p>
