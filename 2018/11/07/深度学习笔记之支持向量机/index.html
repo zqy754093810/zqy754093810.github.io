@@ -79,17 +79,25 @@
 
 
 
-<meta name="description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
+<meta name="description" content="支持向量机定义的引出给定训练样本集$D=\left\{ {(\boldsymbol{x}_1,y_1),\cdots,(\boldsymbol{x}_m,y_m)}\right\},y_i\in \left\{ {-1,+1}\right\}$。分类最基本的出发点是找到一个超平面来区分训练样本集中的不同类别。事实上，可能存在很多这样的超平面。我们需要制定衡量标准（如：欧式距离）来确定最合适的超平面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习笔记之线性回归与逻辑回归">
-<meta property="og:url" content="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/index.html">
+<meta property="og:title" content="深度学习笔记之支持向量机">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
+<meta property="og:description" content="支持向量机定义的引出给定训练样本集$D=\left\{ {(\boldsymbol{x}_1,y_1),\cdots,(\boldsymbol{x}_m,y_m)}\right\},y_i\in \left\{ {-1,+1}\right\}$。分类最基本的出发点是找到一个超平面来区分训练样本集中的不同类别。事实上，可能存在很多这样的超平面。我们需要制定衡量标准（如：欧式距离）来确定最合适的超平面">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T07:11:41.564Z">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM1.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM2.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM3.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM4.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/kener.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM5.jpg">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM6.jpg">
+<meta property="og:updated_time" content="2018-11-07T02:33:00.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习笔记之线性回归与逻辑回归">
-<meta name="twitter:description" content="线性回归一元线性回归给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线">
+<meta name="twitter:title" content="深度学习笔记之支持向量机">
+<meta name="twitter:description" content="支持向量机定义的引出给定训练样本集$D=\left\{ {(\boldsymbol{x}_1,y_1),\cdots,(\boldsymbol{x}_m,y_m)}\right\},y_i\in \left\{ {-1,+1}\right\}$。分类最基本的出发点是找到一个超平面来区分训练样本集中的不同类别。事实上，可能存在很多这样的超平面。我们需要制定衡量标准（如：欧式距离）来确定最合适的超平面">
+<meta name="twitter:image" content="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/SVM1.jpg">
 
 
 
@@ -119,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/">
 
 
 
 
 
-  <title>深度学习笔记之线性回归与逻辑回归 | Qiuyun's blog</title>
+  <title>深度学习笔记之支持向量机 | Qiuyun's blog</title>
   
 
 
@@ -294,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/11/03/深度学习笔记之线性回归与逻辑回归/">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/11/07/深度学习笔记之支持向量机/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qiuyun">
@@ -311,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深度学习笔记之线性回归与逻辑回归</h1>
+          <h1 class="post-title" itemprop="name headline">深度学习笔记之支持向量机</h1>
         
 
         <div class="post-meta">
@@ -323,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T22:11:18+08:00">
-                2018-11-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T09:56:18+08:00">
+                2018-11-07
               </time>
             
 
@@ -364,8 +372,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/03/深度学习笔记之线性回归与逻辑回归/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/03/深度学习笔记之线性回归与逻辑回归/" itemprop="commentCount"></span>
+                <a href="/2018/11/07/深度学习笔记之支持向量机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/07/深度学习笔记之支持向量机/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -393,13 +401,24 @@
       
 
       
-        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2><p>给定数据集$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，其中$\mathbf{x}_i=[x_{i1},\cdots,x_{id}]^T$，$y_i\in \mathbb{R}$。线性回归（Linear regression）试图学得一个线性模型来尽可能准确预测实值输出标记。<br><a id="more"></a><br>假设样本由$1(即，d=1)$个属性描述，线性回归试图学得如下线性模型<br>\begin{align}<br>f(x_i)=wx_i+b<br>\end{align}<br>使得$f(x_i)\approx y_i$。其中$w$和$b$需要通过最小化均方误差(mean square error, MSE)得到<br>\begin{align}<br>(w,b)^{\ast}=\underset{(w,b)}{\text{arg} \min} \sum\limits_{i=1}^m \left({f(x_i)-y_i}\right)^2<br>\end{align}<br>通过最小化MSE得$(w,b)^{\ast}$，即找到一根直线，使得所有样本到直线$y=wx+b$上的欧式距离最短。</p>
-<p>对于数据集合$\text{D}=\left\{ {(\mathbf{x}_1,y_1),(\mathbf{x}_2,y_2),\cdots,(\mathbf{x}_m,y_m)}\right\}$，定义如下误差函数<br>\begin{align}<br>J=\sum\limits_{i=1}^m (y_i-(wx_i+b))^2<br>\end{align}<br>通过导数工具<br>\begin{align}<br>\frac{\partial J}{\partial b}&amp;=0 \quad \Rightarrow b=\frac{1}{m}\sum\limits_i^m(y_i-wx_i)=\bar{y}-w\bar{x}<br>\end{align}<br>其中$\bar{y}=\frac{1}{m}\sum_{i=1}^my_i$，$\bar{x}=\frac{1}{m}\sum_{i=1}^mx_i$。为求$w$，将$b$的表达式代入误差函数$J$中，对$w$求偏导<br>\begin{align}<br>\frac{\partial J}{\partial w}<br>&amp;=\frac{\partial }{\partial w}\left[ { \sum\limits_{i=1}^m (y_i-\bar{y})-w( x_i-\bar{x} )  }\right]^2\\<br>&amp;=-2\sum\limits_{i=1}^m  [ (y_i-\bar{y} )-w( x_i-\bar{x} ) ] ( x_i -\bar{x} )<br>\end{align}<br>让其为0，得到<br>\begin{align}<br>w=\frac{\sum\limits_{i=1}^m(y_i-\bar{y})(x_i-\bar{x})}{\sum\limits_{i=1}^m(x_i-\bar{x})^2}<br>\end{align}</p>
-<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>在上一小节中，我们假设样本只要一个属性描述。这里我们假设样本有$d(d&gt;1)$个属性描述，此时，我们尝试学得多元线性模型<br>\begin{align}<br>f(\mathbf{x}_i)=\mathbf{w}^T\mathbf{x}_i+d<br>\end{align}<br>使得$f(\mathbf{x}_i)\approx y_i$，我们称之为多元线性回归（multivariate linear regression）。</p>
-<p>对于该例子，为了简化计算过程，这里我们直接固定$d=0$，得到如下<br>\begin{align}<br>\mathbf{y}=\mathbf{X}^T\mathbf{w}<br>\end{align}<br>其中$\mathbf{X}=[\mathbf{x}_1,\cdots,\mathbf{x}_m]$，$\mathbf{w}=[w_1,\cdots,w_m]^T$，以及$\mathbf{y}=[y_1,\cdots,y_m]^T$。</p>
-<p>定义如下误差函数<br>\begin{align}<br>J=||\mathbf{y}-\mathbf{X}^T\mathbf{w}||^2<br>\end{align}<br>通过对$\mathbf{w}$求导，并令导数为零得到<br>\begin{align}<br>\frac{\partial J}{\partial \mathbf{w} }=(\mathbf{XX}^T)^{-1}\mathbf{X}\mathbf{y}<br>\end{align}</p>
-<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><p>上一节中，我们介绍了线性回归。线性回归通过学得线性模型，对输入$\mathbf{x}$输出预测值$y$。而逻辑回归对线性回归做了压缩处理，将$f(x)$的值阈从$(-\infty,+\infty)$压缩到了$(0,1)$区间。我们通过判断输出与$\frac{1}{2}$的大小比较，输出‘ 1 ’或者‘ 0 ’。这主要归功于Sigmoid函数<br>\begin{align}<br>f(x)=\frac{1}{1+e^{-x} }<br>\end{align}<br>虽然逻辑回归的名字是回归，但其实逻辑回归是一种分类学习方法。</p>
-<p>对于数据集合$\left\{ {(\mathbf{x}_i,y_i)}\right\}_{i=1}^m$，逻辑回归学得如下模型<br>\begin{align}<br>y=f(\mathbf{w}^T\mathbf{x}+b) \ \Longleftrightarrow \ \ln \frac{y}{1-y}=\mathbf{w}^T\mathbf{x}+b<br>\end{align}<br>我们设$y$后验概率$p(y=1|\mathbf{x})$，则有<br>\begin{align}<br>\ln \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} =\mathbf{w}^T\mathbf{x}+\mathbf{b}<br>\end{align}<br>解方程，得<br>\begin{align}<br>p(y=1|\mathbf{x})&amp;=\frac{e^{\mathbf{w}^T\mathbf{x}+b} }{1+e^{\mathbf{w}^T\mathbf{x}+b} }\\<br>p(y=0|\mathbf{x})&amp;=\frac{1}{1+e^{\mathbf{w}^T\mathbf{x}+b} }<br>\end{align}<br>参数$(\mathbf{w},b)$通过最大似然函数确定。<br>\begin{align}<br>\ell(\mathbf{w},b)=\log \prod\limits_{i} p(y_i|\mathbf{x}_i;\mathbf{w},b)<br>\end{align}</p>
+        <h1 id="支持向量机定义的引出"><a href="#支持向量机定义的引出" class="headerlink" title="支持向量机定义的引出"></a>支持向量机定义的引出</h1><p>给定训练样本集$D=\left\{ {(\boldsymbol{x}_1,y_1),\cdots,(\boldsymbol{x}_m,y_m)}\right\},y_i\in \left\{ {-1,+1}\right\}$。分类最基本的出发点是找到一个超平面来区分训练样本集中的不同类别。事实上，可能存在很多这样的超平面。我们需要制定衡量标准（如：欧式距离）来确定最合适的<strong>超平面</strong>。<br><a id="more"></a><br>如图1所示的二维平面，直观上看，红色直线那个相对于其他更为适合，因为该直线对训练样本局部扰动的“容忍性”最好。现在，从数学角度来确定该超平面。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM1.jpg" alt="SVM1"></p>
+<p>在样本空间中，超平面通过如下线性方程组来描述<br>\begin{align}<br>\boldsymbol{w}^T\boldsymbol{x}+b=0<br>\end{align}<br>其中$\boldsymbol{w}=\left\{ {w_1,\cdots,w_d}\right\}^T$为<strong>超平面法向量</strong>，决定超平面的方向；$b$为<strong>位移项</strong>，决定了超平面与原点之间的距离。样本空间中任意点$\boldsymbol{x}$到超平面$\boldsymbol{w}^T\boldsymbol{x}+b=0$的距离为<br>\begin{align}<br>r=\frac{|\boldsymbol{w}^T\boldsymbol{x}+b|}{||\boldsymbol{w}||}<br>\end{align}<br>空间任意点到超平面的距离，可以参考点到直线距离，类比得到。</p>
+<p>假设超平面$(\boldsymbol{w},b)$能够将样本正确分类，即对于任意的$(\boldsymbol{x},y_i)\in D$，若$y_i=+1$，则有$\boldsymbol{w}^T\boldsymbol{x}_i+b&gt;0$；若$y_i=-1$，则有$\boldsymbol{w}^T\boldsymbol{x}_i+b&lt;0$。给定超平面，定义如下两个平面<br>\begin{align}<br>\left\{<br>\begin{matrix}<br>\boldsymbol{w}^T\boldsymbol{x}_i+b\geq +1,\ y_i=+1\\<br>\boldsymbol{w}^T\boldsymbol{x}_i+b\leq -1,\  y_i=+1<br>\end{matrix}<br>\right.<br>\end{align}<br>样本中，距离超平面距离最小的两个或者（在一类样本点中可能存在到超平面距离相同的点）训练样本点，我们称其为<strong>支持向量</strong>（support vector），两异类支持向量到超平面的距离之和，即两平面之间的距离，称之为<strong>间隔</strong>（margin）。间隔的代数表达为$\gamma=\frac{2}{||\boldsymbol{w}||}$，如图2所示。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM2.jpg" alt="SVM1"></p>
+<p>为了增加超平面的鲁棒性，因此需要找到最大间隔的超平面，即<br>\begin{align}<br>\max_{(\boldsymbol{w},b)} \ &amp;\frac{1}{||\boldsymbol{w}||}\\<br>\text{s.t.} \  &amp;y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\geq 1 \quad (i=1,\cdots,m)<br>\end{align}<br>该问题等价于<br>\begin{align}<br>\min_{(\boldsymbol{w},b)} \ &amp; \frac{1}{2}||\boldsymbol{w}||^2\\<br>\text{s.t.} \  &amp;y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\geq 1 \quad (i=1,\cdots,m)<br>\end{align}<br>这就是<strong>支持向量机</strong>（support vector machine, SVM）的基本型。</p>
+<h1 id="对偶（Dual）"><a href="#对偶（Dual）" class="headerlink" title="对偶（Dual）"></a>对偶（Dual）</h1><h2 id="问题的引出"><a href="#问题的引出" class="headerlink" title="问题的引出"></a>问题的引出</h2><p>我们希望找到最大化间隔的超平面<br>\begin{align}<br>f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b<br>\end{align}<br>这里我们假设训练样本是线性可分的（上一节中，我们假设样本是两类的）。我们注意到，求解参数$(\boldsymbol{w},b)$本身就是一个凸优化问题，可以通过凸优化工具箱进行计算。另外，我们还可以通过解该问题的对偶问题，来得到最优解。<strong>这样所带来的好处是，将一种最优化（最小化）问题转化为另一种最优化（最大化）问题，而后者相对于前者更容易计算</strong>。</p>
+<h2 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h2><p>对于求解标准的优化问题<br>\begin{align}<br>\min  \ &amp;f_0(\boldsymbol{x})\\<br>\text{s.t.} \ &amp;f_i(\boldsymbol{x})\leq 0, i=1\cdots,m\\<br>&amp;h_j(\boldsymbol{x})=0, j=1,\cdots,p<br>\end{align}<br>其中$\boldsymbol{x}\in \mathbb{R}^n$。我们假设条件$f_i(\boldsymbol{x})=0$与$h_j(\boldsymbol{x})=0$所构成的定义域集合$\mathcal{D}$是非空的。并且假设$p^{\star}$是最优值。</p>
+<p>拉个朗日对偶的基本思想，是将该优化问题增广成目标函数$L(\boldsymbol{x},\boldsymbol{\lambda},\boldsymbol{v})$，其中$L$表示映射$L:\mathbb{R}^n\times \mathbb{R}^m\times \mathbb{R}^p\rightarrow \mathbb{R}$。<br>\begin{align}<br>L(\boldsymbol{x},\boldsymbol{\lambda},\boldsymbol{v})=f_0(\boldsymbol{x})+\sum\limits_{i=1}^m\lambda_if_i(\boldsymbol{x})+\sum\limits_{i=1}^pv_ih_i(\boldsymbol{x})<br>\end{align}<br>定义拉格朗日对偶函数$g:\mathbb{R}^m\times \mathbb{R}^p\rightarrow \mathbb{R}$表示目标函数$L(\boldsymbol{x},\boldsymbol{\lambda},\boldsymbol{v})$关于$\boldsymbol{x}$的下确界<br>\begin{align}<br>g(\boldsymbol{\lambda},\boldsymbol{v})=\inf_{\boldsymbol{x}\in \mathcal{D} } L(\boldsymbol{x},\boldsymbol{\lambda},\boldsymbol{v})<br>\end{align}<br>此时，通过计算可知$g(\boldsymbol{\lambda},\boldsymbol{v})$是最优值$p^{\star}$的下界<br>\begin{align}<br>g(\boldsymbol{\lambda},\boldsymbol{v})\leq p^{\star}<br>\end{align}<br>这个结论很容易得到，假设$\tilde{\boldsymbol{x} }\in \mathcal{D}$，对于$\boldsymbol{\lambda}&gt;0$，有<br>\begin{align}<br>\sum\limits_{i=1}^m\lambda_if_i(\tilde{\boldsymbol{x} })+\sum\limits_{i=1}^pv_ih_i(\tilde{\boldsymbol{x} })\leq 0<br>\end{align}<br>因此，我们可以得到<br>\begin{align}<br>L(\tilde{\boldsymbol{x} },\boldsymbol{\lambda},\boldsymbol{v})=f_0(\tilde{\boldsymbol{x} })+\sum\limits_{i=1}^m\lambda_if_i(\tilde{\boldsymbol{x} })+\sum\limits_{i=1}^pv_ih_i(\tilde{\boldsymbol{x} })\leq f_0(\tilde{\boldsymbol{x} })<br>\end{align}<br>即<br>\begin{align}<br>g(\boldsymbol{\lambda},\boldsymbol{v})=\inf_{\boldsymbol{x}\in \mathcal{D} } L(\boldsymbol{x},\boldsymbol{\lambda},\boldsymbol{v})\leq L(\tilde{\boldsymbol{x} },\boldsymbol{\lambda},\boldsymbol{v})\leq f_0(\tilde{\boldsymbol{x} })<br>\end{align}<br>我们通过图3来进行理解。图中，实曲线表示$f_0(\boldsymbol{x})$曲线，虚曲线表示$f_1(\boldsymbol{x})$，由于限制条件$f_1(\boldsymbol{x})\leq 0$，因此$\boldsymbol{x}$的区间为$[-0.46,+0.46]$。显然该定义区间上的最优解为$\boldsymbol{x}^{\star}=-0.46,p^{\star}=1.54$。图中，带点的虚线族表达$L(\lambda,v)$，$\lambda=0.1,0.2,\cdots,1.0$。我们可以看到，$L(\lambda,v)$相对于$p^{\star}$更小。我们需要调整$\lambda$找到使得$L(\lambda,v)$最大的$p^{\star}$的下确界。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM3.jpg" alt="SVM1"></p>
+<h2 id="超平面的对偶问题"><a href="#超平面的对偶问题" class="headerlink" title="超平面的对偶问题"></a>超平面的对偶问题</h2><p>利用拉格朗日乘子法，得到目标函数<br>\begin{align}<br>L(\boldsymbol{w},b,\boldsymbol{\alpha})=\frac{1}{2}||\boldsymbol{w}||^2+\sum\limits_{i=1}^m\alpha_i(1-y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b))<br>\end{align}<br>其中$\alpha_i\geq 0$。令$L(\boldsymbol{w},b,\boldsymbol{\alpha})$对$\boldsymbol{w}$和$b$的偏导数为$0$可得<br>\begin{align}<br>\boldsymbol{w}&amp;=\sum\limits_{i=1}^m \alpha_iy_i\boldsymbol{x}_i\\<br>0&amp;=\sum\limits_{i=1}^m\alpha_iy_i<br>\end{align}<br>代入$L(\boldsymbol{w},b,\boldsymbol{\alpha})$中，再考虑约束条件，有<br>\begin{align}<br>\max_{\boldsymbol{\alpha} }\ &amp;\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m \alpha_i\alpha_jy_iy_j\boldsymbol{x}_i^T\boldsymbol{x}_j\\<br>\text{s.t.}\ &amp; \sum\limits_{i=1}^m\alpha_iy_i=0\\<br>&amp;\alpha_i\geq 0, \ i=1,\cdots,m<br>\end{align}<br>解出$\boldsymbol{\alpha}$之后，即可得到模型<br>\begin{align}<br>f(\boldsymbol{x})<br>&amp;=\boldsymbol{w}^T\boldsymbol{x}+b\\<br>&amp;=\sum\limits_{i=1}^m\alpha_iy_i\boldsymbol{x}_i^T\boldsymbol{x}+b<br>\end{align}<br>由于该过程为拉格朗日对偶得出的解，因此，所得的解，还需满足KKT条件（found in boyd’s convex optimization）。<br>\begin{align}<br>\left\{<br>\begin{matrix}<br>\alpha_i\geq 0\\<br>y_if(\boldsymbol{x}_i)-1\geq 0\\<br>\alpha_i(y_if(\boldsymbol{x}_i)-1)=0<br>\end{matrix}<br>\right.<br>\end{align}</p>
+<p>具体求解$\boldsymbol{\alpha}$的过程，是一个二次规划问题，具体方法如SMO（sequential minimal optimization）。SMO方法，每次更新$\boldsymbol{\alpha}$向量中的两个元素(如，$\alpha_i$和$\alpha_j$)，固定其余参数。利用$\boldsymbol{\alpha}^T\boldsymbol{y}=0$得到$\alpha_i$和$\alpha_j$的更新。</p>
+<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><p>在之前的内容中，我们假设训练样本是线性可分的。然而实际中，在原始样本空间，可能并不存在这样一个能够完全正确划分两类样本的超平面，比如图4所示“异或”问题，通过将二维平面映射到三维空间，我们可以能够切分样本点的超平面。其中，三维平面按照紫色箭头的方向投影，可以得到原始的异或点。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM4.jpg" alt="SVM1"></p>
+<p>对于这样的问题，通过将样本原始空间映射到高维空间，使得样本在高维空间中线性可分。如果样本空间是有限维的，那么一定存在一个高维空间使得样本可分。我们用$\phi:\mathbb{R}^n\rightarrow \mathbb{R}^p\ (p\gg n)$来表示这样映射，则映射之后的样本表示为$\phi(\boldsymbol{x})$。于是，我们设超平面方程为<br>\begin{align}<br>f(\boldsymbol{x})=\boldsymbol{w}^T\phi(\boldsymbol{x})+b<br>\end{align}<br>其中$(\boldsymbol{w},b)$是模型参数，类似于上一节知识，参数$(\boldsymbol{w},b)$是如下凸优化问题<br>\begin{align}<br>\min\limits_{(\boldsymbol{w},b)}\  &amp;\frac{1}{2}||\boldsymbol{w}||^2\\<br>\text{s.t.} \ &amp; y_i(\boldsymbol{w}^T\phi(\boldsymbol{x}_i)+b\geq 1)\ i=1,\cdots,m<br>\end{align}<br>其对偶问题，为<br>\begin{align}<br>\max_{\boldsymbol{\alpha} } \ &amp;\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}\sum\limits_{j=1}\alpha_i\alpha_jy_iy_j\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}_j)\\<br>\text{s.t.}\ &amp;\sum\limits_{i=1}^m\alpha_iy_i=0\\<br>&amp;\alpha_i\geq0, \ i=1,\cdots,m<br>\end{align}<br>其中$\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}_j)$的计算是非常复杂的，因此我们定义<br>\begin{align}<br>\kappa(\boldsymbol{x}_i\boldsymbol{x}_j)=\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}_j)<br>\end{align}<br>这里我们称$\kappa(\boldsymbol{x}_i\boldsymbol{x}_j)$为“<strong>核函数</strong>”。类似于上一节的知识，我们可以得到<br>\begin{align}<br>f(\boldsymbol{x})&amp;=\boldsymbol{w}^T\phi(\boldsymbol{x})+b\\<br>&amp;=\sum_{i=1}^m\alpha_iy_i\kappa(\boldsymbol{x},\boldsymbol{x}_i)+b<br>\end{align}<br>该式子表明，模型的最优解可以通过训练样本的核函数展开，这一展开式称为“<strong>支持向量展式</strong>”（support vecot expansion）</p>
+<p>那如何确定核函数或者选择合适的核函数？需要注意的是，在不知道特征映射的形式时，我们并不知道什么样的核函数是合适的，而核函数也仅是隐式地定义了这个特征空间。因此，核函数的选择成为支持向量机最大的变数。常见的核函数有以下几种<br><img src="/2018/11/07/深度学习笔记之支持向量机/kener.jpg" alt="SVM1"><br>在定义核函数的基础上，人们发展了一系列基于核函数的学习方法，统称为“核方法”（kernel methods）。最常见的，是通过“核化”（即引入核函数）来将线性学习器扩展为非线性学习器，如核线性判别分析（kernelized linear discriminant analysis, KlDA）。</p>
+<h1 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h1><p>在前面的讨论中，我们假设样本是线性可分的。然而，在现实任务中往往很难确定合适的核函数将训练样本再特征空间中线性可分<font color="red"><strong>退一步讲，即使恰好找到某个核函数使训练集在特征空间中线性可分，也很难断定这个貌似线性可分的结果，会不会造成过拟合</strong></font>（即，训练集效果好，测试集效果差）。</p>
+<p>我们通过放松样本线性可分的条件，允许一些支持向量在少数的样本上出错。为此，引入软间隔的概念。如图5所示，这里不做赘述。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM5.jpg" alt="SVM1"></p>
+<h1 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h1><p>支持向量机所完成的工作是样本分类问题，即，将样本分成两个类，或者三个类。其目的是寻找一个超平面使得样本到超平面的间隔最大。而，支持向量回归，则是通过函数$f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b$来<strong>对样本进行拟合</strong>，即我们希望$f(\boldsymbol{x})$与$y$尽可能的靠近。</p>
+<p>在回归问题中，我们通常采用模型输出$f(\boldsymbol{x})$和真实输出$y$之间的<strong>欧式距离</strong>来衡量回归的好坏。当且仅当$f(\boldsymbol{x})$与$y$完全相同，损失才为零。而，支持向量回归（support vector regression, SVR）放松了这个条件，SVR允许$f(\boldsymbol{x})$与$y$之间存在最多为$\epsilon$的误差，这就相当于以$f(\boldsymbol{x})$为中心，构建了如图6的一个宽度为$2\epsilon$的间隔带，若样本落入此间隔带中，则SVR认为是被预测正确的。<br><img src="/2018/11/07/深度学习笔记之支持向量机/SVM6.jpg" alt="SVM1"></p>
+<p>于是SVR问题形式化为<br>\begin{align}<br>\min_{\boldsymbol{w},b} \ &amp;\frac{1}{2}||\boldsymbol{w}||^2+C\sum\limits_{i=1}^m\ell_{\epsilon} (f(\boldsymbol{x}_i)-y_i) \\<br>\text{s.t.}\ &amp;f(\boldsymbol{x}_i)-y_i\leq \epsilon\\<br>&amp;y_i-f(\boldsymbol{x}_i)\leq \epsilon<br>\end{align}<br>其中$C(C&gt;0)$是常数，$\ell_{\epsilon}$是不敏感损失函数（$\epsilon$-insensitive loss function）。<br>\begin{align}<br>\ell_{\epsilon}=\left\{<br>\begin{matrix}<br>0 &amp; |z|\leq \epsilon\\<br>|z|-\epsilon &amp;\text{otherwise}<br>\end{matrix}<br>\right.<br>\end{align}<br>通过引入松弛变量(或者称，惩罚因子)$\xi_i$和$\hat{\xi}_i$，则该SVR问题重写为<br>\begin{align}<br>\min_{\boldsymbol{w},b,\xi_i,\hat{\xi}_i} \ &amp;\frac{1}{2}||\boldsymbol{w}||^2+C\sum_{i=1}^m(\xi_i+\hat{\xi}_i)\\<br>\text{s.t.}\ &amp;f(\boldsymbol{x}_i)-y_i\leq \epsilon+\xi_i,\\<br>&amp;y_i-f(\boldsymbol{x}_i)\leq \epsilon+\hat{\xi}_i,\\<br>&amp;\xi\geq 0,\hat{\xi}_i\geq 0,\ i=1\cdots,m<br>\end{align}<br>类似地，我们通过拉格朗日法找到其对偶问题。通过引入拉格朗日乘子$\mu_i\geq 0,\hat{\mu}_i\geq 0,\alpha_i\geq 0,\hat{\alpha}_\geq 0$，由拉格朗日乘子法，可以得到拉格朗日函数<br>\begin{align}<br>L(\boldsymbol{w},b,\boldsymbol{\alpha},\hat{\boldsymbol{\alpha} },\boldsymbol{\xi},\hat{\boldsymbol{\xi} },\boldsymbol{\mu},)<br>&amp;=\frac{1}{2}||\boldsymbol{w}||^2+C\sum\limits_{i=1}^m(\xi_i+\hat{\xi}_i)-\sum\limits_{i=1}^m\mu_i\xi_i-\sum\limits_{i=1}^m\hat{\mu}\hat{\xi}_i\\<br>&amp;\quad +\sum\limits_{i=1}^m \alpha_i(f(\boldsymbol{x}_i)-y_i-\epsilon-\xi_i)+\sum\limits_{i=1}^m\hat{\alpha}_i (y_i-f(\boldsymbol{x}_i)-\epsilon-\hat{\xi}_i)<br>\end{align}<br>令$L(\boldsymbol{w},b,\boldsymbol{\alpha},\hat{\boldsymbol{\alpha} },\boldsymbol{\xi},\hat{\boldsymbol{\xi} },\boldsymbol{\mu},)$对$\boldsymbol{w},b,\xi$和$\hat{\xi}_i$的偏导为$0$，可得<br>\begin{align}<br>\boldsymbol{w}&amp;=\sum\limits_{i=1}^m(\hat{\alpha}_i-\alpha_i)\boldsymbol{x}_i\\<br>0&amp;=\sum\limits_{i=1}^m (\hat{\alpha}_i-\alpha_i)\\<br>C&amp;=\alpha_i+\mu_i\\<br>C&amp;=\hat{\alpha}_i+\hat{\mu}_i<br>\end{align}<br>代入，可得SVR的对偶问题<br>\begin{align}<br>\max_{\boldsymbol{\alpha},\hat{\boldsymbol{\alpha} }} \ &amp; \sum\limits_{i=1}^m y_i(\hat{\alpha}_i-\alpha_i)-\epsilon (\hat{\alpha}_i+\alpha_i)\\<br>&amp;-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m(\hat{\alpha}_i-\alpha_i)(\hat{\alpha}_j-\alpha_j)\boldsymbol{x}_i^T\boldsymbol{x}_j\\<br>\text{s.t.} \ &amp;\sum_{i=1}^m (\hat{\alpha}_i-\alpha_i)=0,\\<br>&amp;0\leq \alpha_i,\alpha_j\leq C.<br>\end{align}<br>上述过程还需满足KKT条件，即<br>\begin{align}<br>\left\{<br>\begin{matrix}<br>\alpha_i(f(\boldsymbol{x}_i)-y_i-\epsilon-\xi_i)=0\\<br>\hat{\alpha}_i(y_i-f(\boldsymbol{x}_i)-\epsilon-\hat{\xi}_i)=0\\<br>\alpha_i\hat{\alpha}_0=0,\xi_i\hat{\xi}_i=0\\<br>(C-\alpha_i)\xi_i=0,\ (C-\hat{\alpha}_i)\hat{\xi}_i=0<br>\end{matrix}<br>\right.<br>\end{align}<br>若解出$\boldsymbol{\alpha}和\hat{\boldsymbol{\alpha} }$，最终可得<br>\begin{align}<br>f(\boldsymbol{x})=\sum_{i=1}^m (\hat{\alpha}_i-\alpha_i)\boldsymbol{x}_i^T\boldsymbol{x}+b<br>\end{align}<br>其中$b$可以由KKT条件以及$\boldsymbol{\alpha}$和$\hat{\boldsymbol{\alpha} }$得到。</p>
+<p>若考虑特征映射$\phi$，即将样本空间映射到更高维的空间，则相应的形式为<br>\begin{align}<br>f(\boldsymbol{x})=\sum_{i=1}^m(\hat{\alpha}_i-\alpha_i)\kappa(\boldsymbol{x},\boldsymbol{x}_i)+b<br>\end{align}<br>其中$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\phi(\boldsymbol{x}_i)^T\phi(\boldsymbol{x}_j)$为核函数。</p>
 
       
     </div>
@@ -424,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" rel="next" title="多元实高斯分布对协方差的偏导">
-                <i class="fa fa-chevron-left"></i> 多元实高斯分布对协方差的偏导
+              <a href="/2018/11/06/信号系统笔记之连续时间傅里叶级数/" rel="next" title="信号系统笔记之连续时间傅里叶级数">
+                <i class="fa fa-chevron-left"></i> 信号系统笔记之连续时间傅里叶级数
               </a>
             
           </div>
@@ -433,10 +452,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/03/深度学习笔记之人工智能、机器学习、深度学习之间的关系/" rel="prev" title="深度学习笔记之人工智能、机器学习、深度学习之间的关系">
-                深度学习笔记之人工智能、机器学习、深度学习之间的关系 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -573,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一元线性回归"><span class="nav-number">1.1.</span> <span class="nav-text">一元线性回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多元线性回归"><span class="nav-number">1.2.</span> <span class="nav-text">多元线性回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机定义的引出"><span class="nav-number">1.</span> <span class="nav-text">支持向量机定义的引出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对偶（Dual）"><span class="nav-number">2.</span> <span class="nav-text">对偶（Dual）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题的引出"><span class="nav-number">2.1.</span> <span class="nav-text">问题的引出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶问题"><span class="nav-number">2.2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超平面的对偶问题"><span class="nav-number">2.3.</span> <span class="nav-text">超平面的对偶问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核函数"><span class="nav-number">3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软间隔"><span class="nav-number">4.</span> <span class="nav-text">软间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量回归"><span class="nav-number">5.</span> <span class="nav-text">支持向量回归</span></a></li></ol></div>
             
 
           </div>
