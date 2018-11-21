@@ -87,7 +87,7 @@
 <meta property="og:description" content="对于线性高斯模型\begin{align}\boldsymbol{y}=\boldsymbol{Hx}+\boldsymbol{w}\end{align}其中$\boldsymbol{x}\in \mathbb{R}^N$为待估计变量，其概率密度为$\boldsymbol{X}\sim p_{\boldsymbol{X} }(\boldsymbol{x})$。$\boldsymbol{w}$是高斯">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qiuyun-blog.cn/2018/11/21/线性高斯模型的估计方法/LS.jpg">
-<meta property="og:updated_time" content="2018-11-21T03:22:22.561Z">
+<meta property="og:updated_time" content="2018-11-21T03:28:57.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性高斯模型的估计方法">
 <meta name="twitter:description" content="对于线性高斯模型\begin{align}\boldsymbol{y}=\boldsymbol{Hx}+\boldsymbol{w}\end{align}其中$\boldsymbol{x}\in \mathbb{R}^N$为待估计变量，其概率密度为$\boldsymbol{X}\sim p_{\boldsymbol{X} }(\boldsymbol{x})$。$\boldsymbol{w}$是高斯">
@@ -396,9 +396,9 @@
 
       
         <p>对于线性高斯模型<br>\begin{align}<br>\boldsymbol{y}=\boldsymbol{Hx}+\boldsymbol{w}<br>\end{align}<br>其中$\boldsymbol{x}\in \mathbb{R}^N$为待估计变量，其概率密度为$\boldsymbol{X}\sim p_{\boldsymbol{X} }(\boldsymbol{x})$。$\boldsymbol{w}$是高斯白噪声，即$\boldsymbol{w}\sim \mathcal{N}(\boldsymbol{w}|\boldsymbol{a},\boldsymbol{C}_{\boldsymbol{w} })$。信号估计所要完成的是，根据已知的模型信息，从观测向量$\boldsymbol{y}\in \mathbb{R}^M$中恢复出原始信号$\boldsymbol{x}$。为了得到确定解，一般$\boldsymbol{y}$的维度大于$\boldsymbol{x}$的维度，即模型为超定方程。<a id="more"></a></p>
-<h1 id="最小二乘法-（Least-Square-LS）"><a href="#最小二乘法-（Least-Square-LS）" class="headerlink" title="最小二乘法 （Least Square, LS）"></a>最小二乘法 （Least Square, LS）</h1><p>$\boldsymbol{x}$的最小二乘估计，通过最小化如下损失函数得到<br>\begin{align}<br>J=|\boldsymbol{y}-\boldsymbol{Hx}|^2<br>\end{align}<br>由于该损失函数是凸函数，因此我们通过计算损失函数对$\boldsymbol{x}$的导数<br>\begin{align}<br>\frac{\partial J}{\partial \boldsymbol{x} }=-2\boldsymbol{y}^T\boldsymbol{H}+2\boldsymbol{x}^T\boldsymbol{H}^T\boldsymbol{H}<br>\end{align}<br>通过令导数为零，得到该模型的最小二乘估计<br>\begin{align}<br>\boldsymbol{x}_{\text{LS} }=(\boldsymbol{H}^T\boldsymbol{H})^{-1}\boldsymbol{H}^T\boldsymbol{y}<br>\end{align}</p>
+<h1 id="最小二乘法-（Least-Square-LS）"><a href="#最小二乘法-（Least-Square-LS）" class="headerlink" title="最小二乘法 （Least Square, LS）"></a>最小二乘法 （Least Square, LS）</h1><p>$\boldsymbol{x}$的最小二乘估计，通过最小化如下损失函数得到<br>\begin{align}<br>J=||\boldsymbol{y}-\boldsymbol{Hx}||^2<br>\end{align}<br>由于该损失函数是凸函数，因此我们通过计算损失函数对$\boldsymbol{x}$的导数<br>\begin{align}<br>\frac{\partial J}{\partial \boldsymbol{x} }=-2\boldsymbol{y}^T\boldsymbol{H}+2\boldsymbol{x}^T\boldsymbol{H}^T\boldsymbol{H}<br>\end{align}<br>通过令导数为零，得到该模型的最小二乘估计<br>\begin{align}<br>\boldsymbol{x}_{\text{LS} }=(\boldsymbol{H}^T\boldsymbol{H})^{-1}\boldsymbol{H}^T\boldsymbol{y}<br>\end{align}</p>
 <blockquote>
-<p><strong>几何解释</strong>: 如图所示，由于$\boldsymbol{H}$所构成的超平面用$\mathcal{C}$表示，最小化$J=|\boldsymbol{y}-\boldsymbol{Hx}|^2$所描述的是，找到$\boldsymbol{y}$在超平面$\mathcal{C}$上的正交投影。</p>
+<p><strong>几何解释</strong>: 如图所示，由于$\boldsymbol{H}$所构成的超平面用$\mathcal{C}$表示，最小化$J=||\boldsymbol{y}-\boldsymbol{Hx}||^2$所描述的是，找到$\boldsymbol{y}$在超平面$\mathcal{C}$上的正交投影。</p>
 </blockquote>
 <p><img src="/2018/11/21/线性高斯模型的估计方法/LS.jpg" alt="LS"></p>
 <blockquote>
