@@ -87,7 +87,7 @@
 <meta property="og:description" content="Notations:   $\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({\begin{array}{cccc}a&amp;amp;0\\0&amp;amp;b\end{array}}\right)$； 粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/text1.jpg">
-<meta property="og:updated_time" content="2018-11-22T01:07:31.284Z">
+<meta property="og:updated_time" content="2018-11-22T01:12:49.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵奇异值分解">
 <meta name="twitter:description" content="Notations:   $\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({\begin{array}{cccc}a&amp;amp;0\\0&amp;amp;b\end{array}}\right)$； 粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。">
@@ -399,7 +399,7 @@
 <blockquote>
 <ul>
 <li>$\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({<br>\begin{array}{cccc}<br>a&amp;0<br>\\0&amp;b<br>\end{array}<br>}\right)$；</li>
-<li>粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。</li>
+<li>粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。<a id="more"></a></li>
 </ul>
 </blockquote>
 <p>#特征值与特征向量<br>矩阵的乘法对应着一种线性变换使得<font color="red">原向量在方向和长度上发生变化</font>，比如$f(\boldsymbol{x})=\boldsymbol{A}\boldsymbol{x}\quad (\boldsymbol{x}\in \mathbb{R}^n, \boldsymbol{A}\in \mathbb{R}^{m\times n})$，$f$表示从$\mathbb{R}^n$空间到$\mathbb{R}^m$空间的一种线性映射关系。我们考虑$\boldsymbol{A}$是方阵的情况。<br>\begin{align}<br>\boldsymbol{y}=\boldsymbol{Ax}<br>\end{align}<br>其中$\boldsymbol{y}\in \mathbb{R}^m$。矩阵$\boldsymbol{A}$与向量$\boldsymbol{x}$相乘，表示对$\boldsymbol{x}$进行一次方向和长度上的变换，即向量$\boldsymbol{y}$。<br>例如：$\boldsymbol{A}=\left({\begin{array}{cccc}a_{11},a_{12}\\a_{21},a_{22}\end{array} }\right)$, $\boldsymbol{x}=(b_1,b_2)^\text{T}$，则<br>\begin{align}<br>\boldsymbol{y}=\left({<br>\begin{array}{cccc}<br>a_{11}b_1+a_{12}b_2\\<br>a_{21}b_1+a_{22}b_2<br>\end{array}<br>}\right)<br>\end{align}<br>$|\boldsymbol{x}|=\sqrt{b_1^2+b_2^2},\ |\boldsymbol{y}|=\sqrt{(a_{11}b_1+a_{12}b_2)^2+(a_{21}b_1+a_{22}b_2)^2}$<br>$\angle(\boldsymbol{x},\boldsymbol{y})=\cos^{-1}\frac{b_1(a_{11}b_1+a_{12}b_2)+b_2(a_{21}b_1+a_{22}b_2)}{|\boldsymbol{x}||\boldsymbol{y}|}$<br><img src="/2018/10/29/矩阵奇异值分解/text1.jpg" alt="Text"><br>问题：对于线性变换矩阵$\boldsymbol{A}$,是否存在这样一个向量$\boldsymbol{\xi}$, 经过这种特定的变换之后保持方向不变，只是进行长度上的拉伸，即使得$\angle (\boldsymbol{\xi},\boldsymbol{y})=0,\ |\boldsymbol{y}|=|\lambda| |\boldsymbol{\xi}|$。</p>
