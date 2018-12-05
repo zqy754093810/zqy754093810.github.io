@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="导数的定义：设函数$y=f(x)$在点$x_0$的某个邻域内有定义，当自变量$x$在$x_0$处取得增量$\triangle x$（点$x+\triangle x$仍在该邻域内）时，若存在极限\begin{align}f’(x_0)=\lim_{\triangle x \rightarrow 0}\frac{f(x_0+\triangle x)-f(x_0)}{\triangle x}\end{a">
+<meta name="description" content="引言前馈神经网络参数的更新，其难点在于计算误差函数的梯度。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播。这种方法被称为误差反向传播（back propagation，BP）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="导数、方向导数和梯度">
-<meta property="og:url" content="http://qiuyun-blog.cn/2018/11/27/导数、方向导数和梯度/index.html">
+<meta property="og:title" content="误差反向传播">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/12/05/误差反向传播/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="导数的定义：设函数$y=f(x)$在点$x_0$的某个邻域内有定义，当自变量$x$在$x_0$处取得增量$\triangle x$（点$x+\triangle x$仍在该邻域内）时，若存在极限\begin{align}f’(x_0)=\lim_{\triangle x \rightarrow 0}\frac{f(x_0+\triangle x)-f(x_0)}{\triangle x}\end{a">
+<meta property="og:description" content="引言前馈神经网络参数的更新，其难点在于计算误差函数的梯度。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播。这种方法被称为误差反向传播（back propagation，BP）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T07:04:07.667Z">
+<meta property="og:updated_time" content="2018-12-05T14:49:13.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="导数、方向导数和梯度">
-<meta name="twitter:description" content="导数的定义：设函数$y=f(x)$在点$x_0$的某个邻域内有定义，当自变量$x$在$x_0$处取得增量$\triangle x$（点$x+\triangle x$仍在该邻域内）时，若存在极限\begin{align}f’(x_0)=\lim_{\triangle x \rightarrow 0}\frac{f(x_0+\triangle x)-f(x_0)}{\triangle x}\end{a">
+<meta name="twitter:title" content="误差反向传播">
+<meta name="twitter:description" content="引言前馈神经网络参数的更新，其难点在于计算误差函数的梯度。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播。这种方法被称为误差反向传播（back propagation，BP）。">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/2018/11/27/导数、方向导数和梯度/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/12/05/误差反向传播/">
 
 
 
 
 
-  <title>导数、方向导数和梯度 | Qiuyun's blog</title>
+  <title>误差反向传播 | Qiuyun's blog</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/11/27/导数、方向导数和梯度/">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/12/05/误差反向传播/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qiuyun">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">导数、方向导数和梯度</h1>
+          <h1 class="post-title" itemprop="name headline">误差反向传播</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T15:02:43+08:00">
-                2018-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T22:38:14+08:00">
+                2018-12-05
               </time>
             
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础数学/" itemprop="url" rel="index">
-                    <span itemprop="name">基础数学</span>
+                  <a href="/categories/PRML/" itemprop="url" rel="index">
+                    <span itemprop="name">PRML</span>
                   </a>
                 </span>
 
@@ -364,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/27/导数、方向导数和梯度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/27/导数、方向导数和梯度/" itemprop="commentCount"></span>
+                <a href="/2018/12/05/误差反向传播/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/05/误差反向传播/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -393,18 +393,25 @@
       
 
       
-        <p><strong>导数的定义</strong>：设函数$y=f(x)$在点$x_0$的某个邻域内有定义，当自变量$x$在$x_0$处取得增量$\triangle x$（点$x+\triangle x$仍在该邻域内）时，若存在极限<br>\begin{align}<br>f’(x_0)=\lim_{\triangle x \rightarrow 0}\frac{f(x_0+\triangle x)-f(x_0)}{\triangle x}<br>\end{align}<br>我们称函数$f(x)$在$x_0$处可导，且导数为$f’(x_0)$。<a id="more"></a></p>
-<p><strong>方向导数的定义</strong>：如果函数$f(x,y)$在点$(x_0,y_0)$可微，那么函数在该点沿任一方向$\overrightarrow{\ell}$方向的方向导数存在，且有<br>\begin{align}<br>\left.\frac{\partial f}{\partial \overrightarrow{\ell} }\right|_{(x_0,y_0)}=f_x(x_0,y_0)\cos \alpha+f_y(x_0,y_0)\cos \beta<br>\end{align}<br>其中$\cos \alpha$和$\cos \beta$是方向$\overrightarrow{\ell}$的方向余弦。</p>
-<p><strong>梯度的定义</strong>： 二元函数$f(x,y)$在点$(x_0,y_0)$处的梯度定义为<br>\begin{align}<br>\nabla f(x_0,y_0)=f_x(x_0,y_0)\overrightarrow{i}+f_y(x_0,y_0)\overrightarrow{j}<br>\end{align}</p>
-<p><strong>Remarks:</strong> </p>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>前馈神经网络参数的更新，其难点在于计算<strong>误差函数的梯度</strong>。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。<strong>我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播</strong>。这种方法被称为<strong>误差反向传播</strong>（back propagation，BP）。<a id="more"></a></p>
+<p>值得注意的是，在神经网络的文献中，“反向传播”这个术语用于指代许多不同的事物。例如，前馈神经网络有时被称为反向传播网络。反向传播这个术语还用于描述将梯度下降法应用于平方和误差函数的多层感知器的训练过程。大部分网络的训练过程包含两个阶段</p>
 <blockquote>
 <ul>
-<li>导数是一元函数所特有的概念。对于多元函数，有偏导数概念。</li>
-<li>方向导数是数值概念，没有方向。</li>
-<li>梯度的模值等于最大的方向导数。</li>
-<li>梯度有大小也有方向。</li>
+<li>第一阶段：计算误差函数关于权值的导数，反向传播方法的一个重要贡献就是提供了计算这些导数的一个高效方法。由于正式这个阶段，误差通过网络进行反向传播，因此我们用反向传播特指导数计算的过程。</li>
+<li>第二阶段：根据所计算的导数调整权值。这一步涉及到梯度下降。</li>
 </ul>
 </blockquote>
+<p>这里，我们通过单隐层的例子，介绍误差反向传播算法的过程。理解好了单隐层，可以很好得扩展到前馈神经网络（多层感知机）。</p>
+<h1 id="Example-Single-Hidden-layer"><a href="#Example-Single-Hidden-layer" class="headerlink" title="Example (Single Hidden layer)"></a>Example (Single Hidden layer)</h1><p>给定训练集$\mathcal{D}=\left\{(\boldsymbol{x}_i,\boldsymbol{y}_i)\right\}_{i=1}^m,\boldsymbol{x}_i\in \mathbb{R}^d,\boldsymbol{y}_i\in \mathbb{R}^{\ell}$，我们通过单隐层的例子进行介，假设隐含层和输出层使用的激活函数均为Sigmoid函数<br>![前馈神经网络.jpg-763.5kB][1]</p>
+<p>$\underline{\text{Step 1} }$: 对于数据$(\boldsymbol{x}_k,\boldsymbol{y}_k)$，假定神经网络的输出为$\hat{\boldsymbol{y} }_k=(\hat{y}_1^k,\cdots,\hat{y}_l^k)$，<strong>计算误差</strong>$E_k$，即<br>\begin{align}<br>\hat{y}_j^k=f(z_j-\theta^{(2)}_j)<br>\end{align}<br>则，网络的均方误差为<br>\begin{align}<br>E_k=\frac{1}{2}\sum_{j=1}^l (\hat{y}_l^k-y_j^k)^2<br>\end{align}</p>
+<p>$\underline{\text{Step 2} }:$ 计算“第二层”权重$w_{jh}^{(2)},(j=1,\cdots,\ell; h=1,\cdots,q)$。反向传播算法中参数的更新均采用如下形式<br>\begin{align}<br>v\leftarrow v+\triangle v<br>\end{align}<br>因此“第二层”权重的更新步长为<br>\begin{align}<br>\triangle w_{jh}^{(2)}<br>&amp;=-\eta \frac{\partial E_k}{\partial w_{jh}^{(2)} }\\<br>&amp;=-\eta\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial z_j}\frac{\partial z_j}{\partial w_{jh}^{(2)} }<br>\end{align}<br>其中$\frac{\partial z_j}{\partial w_{jh} }=b_h$，另外，根据Sigmoid函数的特性<br>\begin{align}<br>f’(x)=f(x)(1-f(x))<br>\end{align}<br>有<br>\begin{align}<br>g_j<br>&amp;\overset{\triangle}{=}-\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial z_j}\\<br>&amp;=-(\hat{y}_j^k-y_j^k)f’(z_j-w_0^{(2)})\\<br>&amp;=\hat{y}_j^k(1-\hat{y}_j^k)(y_j^k-\hat{y}_j^k)<br>\end{align}<br>因此，我们可以得到<br>\begin{align}<br>\triangle w_{jh}=\eta g_jb_h<br>\end{align}<br>进而更新<br>\begin{align}<br>w_{jh}^{(2)}\leftarrow w_{jh}^{(2)}+\eta g_jb_h<br>\end{align}</p>
+<p>$\underline{\text{Step 3} }:$ 计算“第二层”偏置$\theta_{j}^{(2)}$。<br>\begin{align}<br>\triangle \theta_j^{(2)}<br>&amp;=-\eta \frac{\partial E_k}{\partial \theta_j^{(2)} }\\<br>&amp;=-\eta\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial \theta_j^{(2)} }\\<br>&amp;=\eta g_j<br>\end{align}<br>进而更新<br>\begin{align}<br>\theta_j^{(2)}\leftarrow  \theta_j^{(2)}+\eta g_j<br>\end{align}</p>
+<p>$\underline{\text{Step 4} }:$按照前两步的方式，计算“第一层”权重$w_{hi}^{(1)},( h=1,\cdots,q;i=1,\cdots,d)$和偏置<br>\begin{align}<br>\triangle w_{hi}^{(1)}&amp;=\eta e_hx_i\\<br>\triangle \theta_h^{(1)}&amp;=-\eta e_h<br>\end{align}<br>其中<br>\begin{align}<br>e_h<br>&amp;=-\frac{\partial E_k}{\partial b_h}\frac{\partial b_h}{\partial a_h}\\<br>&amp;=-\sum_{j=1}^{\ell}\frac{\partial E_k}{\partial z_j} \frac{\partial z_j}{\partial b_h}f’(a_h-\theta_h^{(1)})\\<br>&amp;=\sum_{j=1}^{\ell}w_{jh}g_jf’(a_h-\theta_h^{(1)})\\<br>&amp;=b_h(1-b_h)\sum_{j=1}^{\ell}w_{jh}g_j<br>\end{align}<br>进而更新<br>\begin{align}<br>w_{hi}^{(1)}&amp;\leftarrow w_{hi}^{(1)}+\eta e_hx_i\\<br>\theta_h^{(1)}&amp;\leftarrow  \theta_h^{(1)}-\eta e_h<br>\end{align}<br>$\underline{\text{Step 5} }:$ $\longrightarrow $ ${\text{Step 1} }$，直到终止条件。</p>
+<p><strong>Remarks</strong></p>
+<ol>
+<li>误差$E_k$更新，是前向进行的</li>
+<li>权重的更新，是逆向传播。</li>
+</ol>
 
       
     </div>
@@ -429,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/26/前馈神经网络/" rel="next" title="前馈神经网络">
-                <i class="fa fa-chevron-left"></i> 前馈神经网络
+              <a href="/2018/12/02/信道估计模型/" rel="next" title="信道估计模型">
+                <i class="fa fa-chevron-left"></i> 信道估计模型
               </a>
             
           </div>
@@ -438,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/02/信道估计模型/" rel="prev" title="信道估计模型">
-                信道估计模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,8 +499,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -559,6 +571,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example-Single-Hidden-layer"><span class="nav-number">2.</span> <span class="nav-text">Example (Single Hidden layer)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
