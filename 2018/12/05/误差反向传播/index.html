@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
 <meta property="og:description" content="引言前馈神经网络参数的更新，其难点在于计算误差函数的梯度。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播。这种方法被称为误差反向传播（back propagation，BP）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T14:49:13.540Z">
+<meta property="og:image" content="http://qiuyun-blog.cn/2018/12/05/误差反向传播/text.jpg">
+<meta property="og:updated_time" content="2018-12-05T14:57:29.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差反向传播">
 <meta name="twitter:description" content="引言前馈神经网络参数的更新，其难点在于计算误差函数的梯度。为此，我们的目标是寻找一种计算前馈神经网络的误差函数$E(\boldsymbol{w})$的梯度的一种高效方法。我们会看到，可以使用局部信息传递的思想完成这一点。在局部信息传递的思想中，信息在神经网络中交替地向前、向后传播。这种方法被称为误差反向传播（back propagation，BP）。">
+<meta name="twitter:image" content="http://qiuyun-blog.cn/2018/12/05/误差反向传播/text.jpg">
 
 
 
@@ -402,7 +404,7 @@
 </ul>
 </blockquote>
 <p>这里，我们通过单隐层的例子，介绍误差反向传播算法的过程。理解好了单隐层，可以很好得扩展到前馈神经网络（多层感知机）。</p>
-<h1 id="Example-Single-Hidden-layer"><a href="#Example-Single-Hidden-layer" class="headerlink" title="Example (Single Hidden layer)"></a>Example (Single Hidden layer)</h1><p>给定训练集$\mathcal{D}=\left\{(\boldsymbol{x}_i,\boldsymbol{y}_i)\right\}_{i=1}^m,\boldsymbol{x}_i\in \mathbb{R}^d,\boldsymbol{y}_i\in \mathbb{R}^{\ell}$，我们通过单隐层的例子进行介，假设隐含层和输出层使用的激活函数均为Sigmoid函数<br>![前馈神经网络.jpg-763.5kB][1]</p>
+<h1 id="Example-Single-Hidden-layer"><a href="#Example-Single-Hidden-layer" class="headerlink" title="Example (Single Hidden layer)"></a>Example (Single Hidden layer)</h1><p>给定训练集$\mathcal{D}=\left\{(\boldsymbol{x}_i,\boldsymbol{y}_i)\right\}_{i=1}^m,\boldsymbol{x}_i\in \mathbb{R}^d,\boldsymbol{y}_i\in \mathbb{R}^{\ell}$，我们通过单隐层的例子进行介，假设隐含层和输出层使用的激活函数均为Sigmoid函数<br><img src="/2018/12/05/误差反向传播/text.jpg" alt="感知机模型"></p>
 <p>$\underline{\text{Step 1} }$: 对于数据$(\boldsymbol{x}_k,\boldsymbol{y}_k)$，假定神经网络的输出为$\hat{\boldsymbol{y} }_k=(\hat{y}_1^k,\cdots,\hat{y}_l^k)$，<strong>计算误差</strong>$E_k$，即<br>\begin{align}<br>\hat{y}_j^k=f(z_j-\theta^{(2)}_j)<br>\end{align}<br>则，网络的均方误差为<br>\begin{align}<br>E_k=\frac{1}{2}\sum_{j=1}^l (\hat{y}_l^k-y_j^k)^2<br>\end{align}</p>
 <p>$\underline{\text{Step 2} }:$ 计算“第二层”权重$w_{jh}^{(2)},(j=1,\cdots,\ell; h=1,\cdots,q)$。反向传播算法中参数的更新均采用如下形式<br>\begin{align}<br>v\leftarrow v+\triangle v<br>\end{align}<br>因此“第二层”权重的更新步长为<br>\begin{align}<br>\triangle w_{jh}^{(2)}<br>&amp;=-\eta \frac{\partial E_k}{\partial w_{jh}^{(2)} }\\<br>&amp;=-\eta\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial z_j}\frac{\partial z_j}{\partial w_{jh}^{(2)} }<br>\end{align}<br>其中$\frac{\partial z_j}{\partial w_{jh} }=b_h$，另外，根据Sigmoid函数的特性<br>\begin{align}<br>f’(x)=f(x)(1-f(x))<br>\end{align}<br>有<br>\begin{align}<br>g_j<br>&amp;\overset{\triangle}{=}-\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial z_j}\\<br>&amp;=-(\hat{y}_j^k-y_j^k)f’(z_j-w_0^{(2)})\\<br>&amp;=\hat{y}_j^k(1-\hat{y}_j^k)(y_j^k-\hat{y}_j^k)<br>\end{align}<br>因此，我们可以得到<br>\begin{align}<br>\triangle w_{jh}=\eta g_jb_h<br>\end{align}<br>进而更新<br>\begin{align}<br>w_{jh}^{(2)}\leftarrow w_{jh}^{(2)}+\eta g_jb_h<br>\end{align}</p>
 <p>$\underline{\text{Step 3} }:$ 计算“第二层”偏置$\theta_{j}^{(2)}$。<br>\begin{align}<br>\triangle \theta_j^{(2)}<br>&amp;=-\eta \frac{\partial E_k}{\partial \theta_j^{(2)} }\\<br>&amp;=-\eta\frac{\partial E_k}{\partial \hat{y}_j^k}\frac{\partial \hat{y}_j^k}{\partial \theta_j^{(2)} }\\<br>&amp;=\eta g_j<br>\end{align}<br>进而更新<br>\begin{align}<br>\theta_j^{(2)}\leftarrow  \theta_j^{(2)}+\eta g_j<br>\end{align}</p>
