@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Sparse Bayesian Learning,">
 
 
 
@@ -79,19 +79,18 @@
 
 
 
-<meta name="description" content="Notations:   $\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({\begin{array}{cccc}a&amp;amp;0\\0&amp;amp;b\end{array}}\right)$； 粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。">
+<meta name="description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
+<meta name="keywords" content="Sparse Bayesian Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="矩阵奇异值分解">
-<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/index.html">
+<meta property="og:title" content="Derivation of Sparse Bayesian Learning">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="Notations:   $\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({\begin{array}{cccc}a&amp;amp;0\\0&amp;amp;b\end{array}}\right)$； 粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。">
+<meta property="og:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/text1.jpg">
-<meta property="og:updated_time" content="2018-11-22T01:12:49.741Z">
+<meta property="og:updated_time" content="2018-12-11T08:55:16.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="矩阵奇异值分解">
-<meta name="twitter:description" content="Notations:   $\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({\begin{array}{cccc}a&amp;amp;0\\0&amp;amp;b\end{array}}\right)$； 粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。">
-<meta name="twitter:image" content="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/text1.jpg">
+<meta name="twitter:title" content="Derivation of Sparse Bayesian Learning">
+<meta name="twitter:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/">
 
 
 
 
 
-  <title>矩阵奇异值分解 | Qiuyun's blog</title>
+  <title>Derivation of Sparse Bayesian Learning | Qiuyun's blog</title>
   
 
 
@@ -296,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/29/矩阵奇异值分解/">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qiuyun">
@@ -313,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">矩阵奇异值分解</h1>
+          <h1 class="post-title" itemprop="name headline">Derivation of Sparse Bayesian Learning</h1>
         
 
         <div class="post-meta">
@@ -325,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T22:26:25+08:00">
-                2018-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-11T16:51:01+08:00">
+                2018-12-11
               </time>
             
 
@@ -336,28 +335,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础数学/" itemprop="url" rel="index">
-                    <span itemprop="name">基础数学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -366,8 +343,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/29/矩阵奇异值分解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/矩阵奇异值分解/" itemprop="commentCount"></span>
+                <a href="/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,27 +372,16 @@
       
 
       
-        <p>Notations:</p>
-<blockquote>
-<ul>
-<li>$\text{Diag}(\boldsymbol{x})$表示以矢量为矩阵对角线元素构成对角阵，如$\text{Diag}(a,b)=\left({<br>\begin{array}{cccc}<br>a&amp;0<br>\\0&amp;b<br>\end{array}<br>}\right)$；</li>
-<li>粗体符号表示矩阵或者矢量，如$\boldsymbol{x}$表示矢量，$\boldsymbol{A}$表示矩阵。<a id="more"></a></li>
-</ul>
-</blockquote>
-<p>#特征值与特征向量<br>矩阵的乘法对应着一种线性变换使得<font color="red">原向量在方向和长度上发生变化</font>，比如$f(\boldsymbol{x})=\boldsymbol{A}\boldsymbol{x}\quad (\boldsymbol{x}\in \mathbb{R}^n, \boldsymbol{A}\in \mathbb{R}^{m\times n})$，$f$表示从$\mathbb{R}^n$空间到$\mathbb{R}^m$空间的一种线性映射关系。我们考虑$\boldsymbol{A}$是方阵的情况。<br>\begin{align}<br>\boldsymbol{y}=\boldsymbol{Ax}<br>\end{align}<br>其中$\boldsymbol{y}\in \mathbb{R}^m$。矩阵$\boldsymbol{A}$与向量$\boldsymbol{x}$相乘，表示对$\boldsymbol{x}$进行一次方向和长度上的变换，即向量$\boldsymbol{y}$。<br>例如：$\boldsymbol{A}=\left({\begin{array}{cccc}a_{11},a_{12}\\a_{21},a_{22}\end{array} }\right)$, $\boldsymbol{x}=(b_1,b_2)^\text{T}$，则<br>\begin{align}<br>\boldsymbol{y}=\left({<br>\begin{array}{cccc}<br>a_{11}b_1+a_{12}b_2\\<br>a_{21}b_1+a_{22}b_2<br>\end{array}<br>}\right)<br>\end{align}<br>$|\boldsymbol{x}|=\sqrt{b_1^2+b_2^2},\ |\boldsymbol{y}|=\sqrt{(a_{11}b_1+a_{12}b_2)^2+(a_{21}b_1+a_{22}b_2)^2}$<br>$\angle(\boldsymbol{x},\boldsymbol{y})=\cos^{-1}\frac{b_1(a_{11}b_1+a_{12}b_2)+b_2(a_{21}b_1+a_{22}b_2)}{|\boldsymbol{x}||\boldsymbol{y}|}$<br><img src="/2018/10/29/矩阵奇异值分解/text1.jpg" alt="Text"><br>问题：对于线性变换矩阵$\boldsymbol{A}$,是否存在这样一个向量$\boldsymbol{\xi}$, 经过这种特定的变换之后保持方向不变，只是进行长度上的拉伸，即使得$\angle (\boldsymbol{\xi},\boldsymbol{y})=0,\ |\boldsymbol{y}|=|\lambda| |\boldsymbol{\xi}|$。</p>
-<p>定义：设$\boldsymbol{A}$是$n$阶方阵，如果数$\lambda$和$n$维非零列向量$\boldsymbol{x}$满足<br>\begin{align}<br>\boldsymbol{Ax}=\lambda\boldsymbol{x}<br>\end{align}<br>称$\lambda$是矩阵$\boldsymbol{A}$的特征值，$\boldsymbol{x}$是矩阵$\boldsymbol{A}$对应$\lambda$的特征向量[1]。</p>
-<p>根据上面的描述，我们知道，<font color="red">特征向量就是这样一个满足经过线性变换阵$\boldsymbol{A}$之后，只发生长度上变换，方向不变的向量。那我们为什么求这样的特征值与特征向量呢？可以这样理解，对于一个实际的线性系统，其特性可以用矩阵$\boldsymbol{A}$来描述，对于输入向量$\boldsymbol{x}$，系统输出为$\boldsymbol{y}$会出现相位滞后、放大或者缩小等现象，而对于输入为特征向量$\xi$，该系统的输出只发生缩放，没有相位的变化。</font></p>
-<p>设$\boldsymbol{\xi}_i$是矩阵对应于$\lambda_i$的特征值，则有<br>\begin{align}<br>&amp;\boldsymbol{A\xi}_i=\lambda_i\boldsymbol{\xi}_i\\<br>&amp;\Rightarrow (\boldsymbol{A\xi}_1,\cdots,\boldsymbol{A\xi}_n)=(\lambda_1\boldsymbol{\xi}_1,\cdots,\lambda_n\boldsymbol{\xi}_n)\\<br>&amp;\Rightarrow \boldsymbol{A}(\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_n)=(\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_n)\left({<br>\begin{array}{cccc}<br>\lambda_1&amp;                      &amp;                         &amp;                 \\<br>                   &amp;\lambda_2   &amp;                         &amp;\\<br>                   &amp;                      &amp;\ddots             &amp;\\<br>                   &amp;                      &amp;                         &amp;\lambda_n<br>\end{array}<br>}\right)<br>\end{align}<br>令$\boldsymbol{P}=(\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_n)$，$\boldsymbol{\Lambda}=\text{Diag}(\lambda_1,\cdots,\lambda_n)$则有<br>\begin{align}<br>\boldsymbol{AP}=\boldsymbol{P}\boldsymbol{\Lambda}<br>\end{align}<br>因此，矩阵$\boldsymbol{A}$对角化的问题就等价于方阵$\boldsymbol{P}$是否可逆，即$\boldsymbol{A}$是否有$n$个线性无关的特征向量。矩阵$\boldsymbol{A}$有$n$个线性无关的特征向量有两种情况</p>
-<blockquote>
-<ul>
-<li>$n$阶方阵$\boldsymbol{A}$有$n$个不同的特征值，对应有$n$线性无关的特征向量。</li>
-<li>$n$阶方阵$\boldsymbol{A}$有重根情况，且对应$k$重根特征值$\lambda$，有$n-\text{rank}(\boldsymbol{A}-\lambda\mathbf{I})=k$。</li>
-</ul>
-</blockquote>
-<p><font color="red">注意，并不是任意的矩阵都可以相似对角化</font>。以下针对$\boldsymbol{P}$可逆的情况，那么有<br>\begin{align}<br>\boldsymbol{A}=\boldsymbol{P\Lambda P}^{-1}<br>\end{align}<br>进一步的，若$\boldsymbol{P}$是一个正交矩阵，即<br>\begin{align}<br>\boldsymbol{A}=\boldsymbol{P\Lambda P}^{T}=\sum\limits_{i=1}^n\lambda_i\boldsymbol{\xi}_i\boldsymbol{\xi}^\text{T}<br>\end{align}也就是说，<font color="red">$\boldsymbol{A}$矩阵可以由特征向量线性组合进行表示</font>。</p>
-<h1 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h1><p>矩阵的特征值分解仅仅是针对方阵的，对于长方形矩阵$\boldsymbol{A}\in \mathbb{R}^{m\times n}$，也存在着类似的分解，称奇异值分解[2]。<br><strong>定义</strong>：设矩阵$\boldsymbol{A}\in \mathbb{R}^{m\times n}$，且$rank(\boldsymbol{A})=r$，则存在$m$阶正交矩阵$\boldsymbol{V}$和$n$阶正交矩阵$\boldsymbol{U}$，使得<br>\begin{align}<br>\boldsymbol{A}=\boldsymbol{V\Sigma U}^\text{T}<br>\end{align}<br>其中$\boldsymbol{\Sigma}=\left({<br>\begin{array}{cccc}<br>\boldsymbol{\Lambda} &amp;\boldsymbol{0}_{(r)\times(n-r)}\\<br>\boldsymbol{0}_{(m-r)\times r} &amp;\boldsymbol{0}_{(m-r)\times(n-r)}<br>\end{array} }\right)$，其中$\boldsymbol{\Lambda}=\text{Diag}(\sigma_1,\sigma_2,\cdots,\sigma_r)$，并且$\sigma_1\geq\sigma_2\cdots\geq\sigma_r\geq 0$。<br>证：因为$\text{rank}(\boldsymbol{A})=r$，因此设$\boldsymbol{A}^\text{T}\boldsymbol{A}$的特征值为<br>\begin{align}<br>\sigma_1^2\geq\cdots,\geq \sigma_r^2\geq0,\quad \sigma_{r+1}^2=\sigma_{n}^2=0<br>\end{align}<br>由于$\boldsymbol{A}^\text{T}\boldsymbol{A}$是对称矩阵，因此必可以相似对角化[1]，即存在正交矩阵$U$，使得<br>\begin{align}<br>\boldsymbol{U}^\text{T}\boldsymbol{A}^\text{T}\boldsymbol{A}\boldsymbol{U}=\text{Diag}(\sigma_1^2,\cdots,\sigma_r^2,\underbrace{0,\cdots,0}_{n-r})<br>\end{align}<br>记$\boldsymbol{U}=[\boldsymbol{U}_1,\boldsymbol{U}_2]$,其中$\boldsymbol{U}_1$是一个$n\times r$的矩阵，$\boldsymbol{U}_2$是一个$n\times(n-r)$的矩阵。因此，上式可以写为<br>\begin{align}<br>\boldsymbol{A}^\text{T}\boldsymbol{A}[\boldsymbol{U}_1,\boldsymbol{U}_2]=[\boldsymbol{U}_1,\boldsymbol{U}_2]\left({<br>\begin{array}{cccc}<br>\boldsymbol{\Lambda}^2   &amp;\boldsymbol{0}\\<br>\boldsymbol{0}                  &amp;\boldsymbol{0}<br>\end{array}<br>}\right)<br>\end{align}<br>则有<br>\begin{align}<br>\boldsymbol{A}^\text{T}\boldsymbol{AU}_1=\boldsymbol{U}_1\boldsymbol{\Lambda}^2,\quad \boldsymbol{A}^\text{T}\boldsymbol{AU}_2=\boldsymbol{0}<br>\end{align}<br>记$\boldsymbol{V}=[\boldsymbol{V}_1,\boldsymbol{V}_2]$，其中$\boldsymbol{V}_1$是$m\times r$矩阵，$\boldsymbol{V}_2$是$m\times(m-r)$矩阵<br>\begin{align}<br>\boldsymbol{A}^\text{T}\boldsymbol{AU}_1=\boldsymbol{U}_1\boldsymbol{\Lambda}^2\ \Rightarrow \boldsymbol{A}^\text{T}\boldsymbol{AU}_1\boldsymbol{\Lambda}=\boldsymbol{U}_1\boldsymbol{\Lambda}<br>\end{align}<br>令$\boldsymbol{V}_1=\boldsymbol{AU}_1\boldsymbol{\Lambda}^{-1}$，有<br>\begin{align}<br>\boldsymbol{V}_1^\text{T}\boldsymbol{V}_1&amp;=(\boldsymbol{AU}_1\boldsymbol{\Lambda}^{-1})^\text{T}\boldsymbol{AU}_1\boldsymbol{\Lambda}^{-1}\\<br>&amp;=\boldsymbol{\Sigma}^{-1}\boldsymbol{U}_1^\text{T}\boldsymbol{A}^\text{T}\boldsymbol{A}\boldsymbol{U}_1\boldsymbol{\Sigma}^{-1}\\<br>&amp;=\boldsymbol{\Lambda}^{-1}\boldsymbol{\Sigma}^2\boldsymbol{\Lambda}^{-1}\\<br>&amp;=\mathbf{I}_{r}<br>\end{align}<br>即$\boldsymbol{V}_1$是列正交规范化矩阵。取$\boldsymbol{V}_2$，使得$\boldsymbol{V}=[\boldsymbol{V}_1,\boldsymbol{V}_2]$是正交矩阵，因此<br>\begin{align}<br>\boldsymbol{V}_2\boldsymbol{\boldsymbol{AU}_1}=\boldsymbol{V}_2^\text{T}\boldsymbol{V}_1\boldsymbol{\Lambda}=\boldsymbol{0}<br>\end{align}<br>那么<br>\begin{align}<br>\boldsymbol{V}^\text{T}\boldsymbol{A}\boldsymbol{U}=<br>\left({<br>\begin{array}{cccc}<br>\boldsymbol{V}_1^\text{T}\\<br>\boldsymbol{V}_2^\text{T}<br>\end{array}<br>}\right)\boldsymbol{A}[\boldsymbol{U}_1,\boldsymbol{U}_2]=<br>\left({<br>\begin{array}{cccc}<br>\boldsymbol{V}_1^\text{T}\boldsymbol{A}\boldsymbol{U}_1 &amp;\boldsymbol{V}_1^\text{T}\boldsymbol{A}\boldsymbol{U}_2\\<br>\boldsymbol{V}_2\boldsymbol{AU}_1,&amp;\boldsymbol{V}_2^\text{T}\boldsymbol{AU}_2<br>\end{array}<br>}\right)=\left({<br>\begin{array}{cccc}<br>\boldsymbol{\Lambda} &amp;\boldsymbol{0}\\<br>\boldsymbol{0}            &amp;\boldsymbol{0}<br>\end{array}<br>}\right)<br>\end{align}<br>即<br>\begin{align}<br>\boldsymbol{A}=\boldsymbol{V}\boldsymbol{\Sigma}\boldsymbol{U}^\text{T}<br>\end{align}</p>
-<h1 id="Pseudo逆矩阵"><a href="#Pseudo逆矩阵" class="headerlink" title="Pseudo逆矩阵"></a>Pseudo逆矩阵</h1><p>令$\boldsymbol{A}=\boldsymbol{V\Sigma U}^\text{T}$是矩阵$\boldsymbol{A}\in \mathbb{R}^{m\times n}$的奇异值分解，且$\text{rank}(\boldsymbol{A})=r$，定义矩阵$\boldsymbol{A}$的pseudo逆为<br>\begin{align}<br>\boldsymbol{A}^{+}=\boldsymbol{U}\boldsymbol{\Sigma}^{-1}\boldsymbol{V}^\text{T}\in \mathbb{R}^{n\times m}<br>\end{align}<br>也称为Moore-Penrose广义逆矩阵。另外一种表达式是<br>\begin{align}<br>\boldsymbol{A}^{+}=(\boldsymbol{A}^\text{T}\boldsymbol{A})^{-1}\boldsymbol{A}^\text{T}=\boldsymbol{A}^\text{T}(\boldsymbol{AA}^\text{T})^{-1}<br>\end{align}<br>可以很容易证明两种表达式是等价的，我们可以从长方形矩阵的奇异分解来解释第二个式子表达式的合理性。当$m&gt;n$时，采用$\boldsymbol{A}^{+}=(\boldsymbol{A}^\text{T}\boldsymbol{A})^{-1}\boldsymbol{A}^\text{T}$；当$m&lt;n$时，通常采用$\boldsymbol{A}^{+}=\boldsymbol{A}^\text{T}(\boldsymbol{AA}^\text{T})^{-1}$。</p>
-<p>References<br>[1] 同济大学数学系, 线性代数[M].北京: 高等教育出版社, 2012.<br>[2] 戴华, 矩阵论[M].北京: 科学出版社, 2015.</p>
+        <h1 id="System-Model"><a href="#System-Model" class="headerlink" title="System Model"></a>System Model</h1><p>We consider following system<br>\begin{align}<br>\mathbf{y}=\mathbf{Hx}+\mathbf{w}<br>\end{align}<br>where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\times M}$ linear transform matix, and $\mathbf{x}\in \mathbb{R}^{M}$ is estimated signal. In addition, $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\sigma^2\mathbf{I})$ is additional Gaussian noise.<a id="more"></a></p>
+<h1 id="Derivation"><a href="#Derivation" class="headerlink" title="Derivation"></a>Derivation</h1><p>$\underline{\textbf{Step 1} }$: Assume $p(\mathbf{x};\mathbf{\lambda})\sim \mathcal{N}\left({\mathbf{x}|\mathbf{0},\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})}\right)$ with parameters $\boldsymbol{\lambda}=\left\{\lambda_1,\cdots,\lambda_M\right\}$, and $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\xi^{-1}\mathbf{I})$. Initialize $\boldsymbol{\lambda}=1$ and $\xi^{-1}=\sigma^{2}$.</p>
+<p>$\underline{\textbf{Step 2} }$: Calculate the PME of $\mathbf{x}$ using Gaussian product lemma\footnote{Assume $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ and $\mathcal{N}(\mathbf{x}|\mathbf{b},\mathbf{B})$, then there is $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})\mathcal{N}(\mathbf{x}|\mathbf{b},\mathbf{B})=\mathcal{N}(\mathbf{0}|\mathbf{a}-\mathbf{b},\mathbf{A}+\mathbf{B})\mathcal{N}(\mathbf{x}|\mathbf{c},\mathbf{C})$, where $\mathbf{C}=(\mathbf{A}^{-1}+\mathbf{B}^{-1})^{-1}$ and $\mathbf{c}=\mathbf{C}\cdot (\mathbf{A}^{-1}\mathbf{a}+\mathbf{B}^{-1}\mathbf{b})$.}. Since prior and likelihood function are Gaussian, the posterior distribution is also Gaussian.<br>\begin{align}<br>p(\mathbf{x}|\mathbf{y};\mathbf{\lambda},\xi)<br>&amp;=\frac{p(\mathbf{y}|\mathbf{x};\xi)p(\mathbf{x};\mathbf{\lambda})}{p(\mathbf{y}|\mathbf{\lambda};\xi)}\\<br>&amp;\propto p(\mathbf{y}|\mathbf{x};\xi)p(\mathbf{x};\mathbf{\lambda})\\<br>&amp;\propto \mathcal{N}\left(\mathbf{x}\left|(\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^T\mathbf{y},(\xi\mathbf{H}^T\mathbf{H})^{-1}\right.\right)\mathcal{N}(\mathbf{x}|\mathbf{0},\text{Diag}(\mathbf{1}\oslash \mathbf{\lambda}))\\<br>&amp;\propto \mathcal{N}\left(\mathbf{x}|\boldsymbol{\mu},\mathbf{\Sigma}\right)<br>\end{align}<br>where $\boldsymbol{\mu}$ is the PME of $\mathbf{x}$<br>\begin{align}<br>\mathbf{\Sigma}&amp;=\left(\xi\mathbf{H}^T\mathbf{H}+\text{Diag}(\boldsymbol{\lambda})\right)^{-1}\\<br>\boldsymbol{\mu}&amp;=\xi \mathbf{\Sigma}\mathbf{H}^T\mathbf{y}<br>\end{align}</p>
+<p>$\underline{\textbf{Step 3} }$: Update $\boldsymbol{\lambda}$ and $\xi$. There are two schemes for updating parameters $\boldsymbol{\lambda}$ and $\xi$. One is type II maximum likelihood function and another is expectation-maximum (EM). We first introduce type II maximum likelihood function.</p>
+<p>$\textbf{Scheme I:}$ Type II Maximum Likelihood function. We first calculate type II likelihood function $p(\mathbf{y};\boldsymbol{\lambda},\xi)$, also named evidence function or partition function.<br>\begin{align}<br>p(\mathbf{y};\boldsymbol{\lambda},\xi)<br>&amp;=\int p(\mathbf{y}|\mathbf{x};\xi)p(\mathbf{x};\boldsymbol{\lambda})\text{d}\mathbf{x}\\<br>&amp;=\mathcal{N}\left((\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^T\mathbf{y}|\mathbf{0},(\xi\mathbf{H}^T\mathbf{H})^{-1}+\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\right)\\<br>&amp;=\mathcal{N}(\mathbf{y}|\mathbf{0},\xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T)<br>\end{align}<br>Denote<br>\begin{align}<br>\mathcal{L}(\boldsymbol{\lambda},\xi)<br>&amp;=\log p(\mathbf{y};\boldsymbol{\lambda},\xi)\\<br>&amp;=-\frac{M}{2}\log 2\pi-\frac{1}{2}\underbrace{\log |\xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T|}_{(a)}-\frac{1}{2}\underbrace{\mathbf{y}(\xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T)^{-1}\mathbf{y} }_{(b)}<br>\end{align}<br>where part $(a)$ is calculated by exploiting the determinant identity $|\mathbf{A}| |a^{-1}\mathbf{I}+\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^T|=|a^{-1}\mathbf{I}||\mathbf{A}+a\mathbf{H}^T\mathbf{H}|$.<br>\begin{align}<br>|\text{Diag}(\boldsymbol{\lambda})| | \xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T|<br>&amp;=|\xi^{-1}\mathbf{I}| |\text{Diag}(\boldsymbol{\lambda})+\xi\mathbf{H}^T\mathbf{H}|\\<br>&amp;=|\xi^{-1}\mathbf{I}| |\mathbf{\Sigma}^{-1}|<br>\end{align}<br>therefore<br>\begin{align}<br>\log |\xi^{-1}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T|=-M\log \xi-\log \mathbf{\Sigma}-\log |\text{Diag}(\boldsymbol{\lambda})|<br>\end{align}<br>and the part $(b)$ is computed by using Matrix inverse lemma.<br>\begin{align}<br>(\xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T)^{-1}<br>&amp;=\xi \mathbf{I}-\xi^2 \mathbf{H}(\xi\mathbf{H}^T\mathbf{H}+\text{Diag}(\boldsymbol{\lambda}))^{-1}\mathbf{H}^T\\<br>&amp;=\xi \mathbf{I}-\xi^2 \mathbf{H}\mathbf{\Sigma}\mathbf{H}^T<br>\end{align}<br>therefore<br>\begin{align}<br>\mathbf{y}(\xi^{-1}\mathbf{I}+\mathbf{H}\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})\mathbf{H}^T)^{-1}\mathbf{y}<br>&amp;=\xi\mathbf{y}^T\mathbf{y}-\xi^{2}\mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}<br>\end{align}<br>Thus $\mathcal{L}(\boldsymbol{\lambda},\xi)$ reads<br>\begin{align}<br>\mathcal{L}(\boldsymbol{\lambda},\xi)=\frac{M}{2}\log \xi +\frac{1}{2}\log |\mathbf{\Sigma}|+\frac{1}{2}\log |\text{Diag}(\boldsymbol{\lambda})|-\frac{1}{2}\xi \mathbf{y}^T\mathbf{y}+\frac{1}{2}\xi^2 \mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}<br>\end{align}</p>
+<p>Taking partial derivation of $\mathcal{L}(\boldsymbol{\lambda},\xi)$ w.r.t. $\lambda_i$ gets<br>\begin{align}<br>\frac{\partial \mathcal{L} }{\partial \lambda_i}<br>&amp;=\frac{1}{2}\frac{\partial \log |\mathbf{\Sigma}|}{\partial \lambda_i}+\frac{1}{2}\frac{\partial \log |\text{Diag}(\boldsymbol{\lambda})|}{\partial \lambda_i}+\frac{1}{2}\xi^{2}\frac{\partial (\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}(\mathbf{H}^T\mathbf{y})}{\partial \lambda_i}\\<br>&amp;=-\frac{\Sigma_{ii} }{2}+\frac{1}{2\lambda_i}-\frac{\mu_i^2}{2}=0\\<br>\end{align}<br>As a result, we get<br>\begin{align}<br>\lambda_i^{-1} &amp;=\Sigma_{ii}+\mu_i^2<br>\end{align}<br>the details are given by<br>\begin{align}<br>\frac{\partial \log |\mathbf{\Sigma}|}{\partial \lambda_i}<br>&amp;=\text{tr}\left\{\mathbf{\Sigma}^{-1}\frac{\partial \mathbf{\Sigma} }{\partial \lambda_i}\right\}\\<br>&amp;=\text{tr}\left\{-\frac{\partial \mathbf{\Sigma}^{-1} }{\partial \lambda_i}\mathbf{\Sigma}\right\}\\<br>&amp;=-\text{tr}\left\{\boldsymbol{e}_i\boldsymbol{e}_i^T\mathbf{\Sigma}\right\}\\<br>&amp;=-\Sigma_{ii}<br>\end{align}<br>and<br>\begin{align}<br>\frac{\partial (\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}(\mathbf{H}^T\mathbf{y})}{\partial \lambda_i}<br>&amp;=\text{tr}\left\{(\mathbf{H}^T\mathbf{y})(\mathbf{H}^T\mathbf{y})^T\frac{\partial \mathbf{\Sigma} }{\partial \lambda_i}\right\}\\<br>&amp;=-\text{tr}\left\{(\mathbf{H}^T\mathbf{y})(\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}\boldsymbol{e}_i\boldsymbol{e}_i^T\mathbf{\Sigma}\right\}\\<br>&amp;=-\mu_i^2<br>\end{align}</p>
+<p>In order to make sure that $\lambda_i=\left(\Sigma_{ii}+\mu_i^2\right)^{-1}$ is maximum point of $\mathcal{L}(\boldsymbol{\lambda},\xi)$ w.r.t. $\lambda_i$, taking the twice partial derivative of $\mathcal{L}(\boldsymbol{\lambda},\xi)$ w.r.t. $\lambda_i$ as following<br>\begin{align}<br>\left.\frac{\partial^2 \mathcal{L}(\boldsymbol{\lambda},\xi)}{\partial \lambda_i^2}\right|_{\lambda_i^{-1} =\Sigma_{ii}+\mu_i^2}\leq 0<br>\end{align}</p>
+<p>Taking the partial derivative of $\mathcal{L}(\boldsymbol{\lambda},\xi)$ w.r.t. $\xi$ yields<br>\begin{align}<br>\frac{\partial \mathcal{L}(\boldsymbol{\lambda},\xi)}{\partial \xi}<br>&amp;=\frac{M}{2\xi}+\frac{1}{2}\frac{\log |\mathbf{\Sigma}|}{\partial \xi}-\frac{1}{2}\mathbf{yy}^T+\frac{1}{2}\frac{\partial \xi^2(\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}(\mathbf{H}^T\mathbf{y})}{\partial \xi}\\<br>&amp;=\frac{M}{2\xi}- \frac{1}{2}\text{tr}\left\{\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\right\}-\frac{1}{2}\mathbf{yy}^T+\xi\mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}-\frac{1}{2}\xi^2\mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}\\<br>&amp;=\frac{M}{2\xi}-\frac{1}{2}\text{tr}\left\{\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\right\}-\frac{1}{2}\mathbf{yy}^T+\mathbf{y}\mathbf{H}\boldsymbol{\mu}-\boldsymbol{\mu}^T\mathbf{H}^T\mathbf{H}\boldsymbol{\mu}\\<br>&amp;=\frac{M}{2\xi}-\frac{1}{2}\text{tr}\left\{\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\right\}-\frac{1}{2}||\mathbf{y}-\mathbf{H}\boldsymbol{\mu}||^2<br>\end{align}<br>therefore<br>\begin{align}<br>\xi^{-1}=\frac{||\mathbf{y}-\mathbf{H}\boldsymbol{\mu}||^2+\text{tr}(\mathbf{\Sigma}\mathbf{H}^T\mathbf{H})}{M}<br>\end{align}<br>the details are given by<br>\begin{align}<br>\frac{\partial \log |\mathbf{\Sigma}|}{\partial \xi}<br>&amp;=\text{tr}\left\{\mathbf{\Sigma}^{-1}\frac{\partial \mathbf{\Sigma} }{\partial \xi}\right\}\\<br>&amp;=\text{tr}\left\{-\frac{\partial \mathbf{\Sigma}^{-1} }{\partial \xi}\mathbf{\Sigma}\right\}\\<br>&amp;=\text{tr}\left\{- \mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\right\}<br>\end{align}<br>and<br>\begin{align}<br>\frac{\partial \xi^2(\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}(\mathbf{H}^T\mathbf{y})}{\partial \xi}<br>&amp;=2\xi(\mathbf{H}^T\mathbf{y})^T\mathbf{\Sigma}(\mathbf{H}^T\mathbf{y})+\xi^2\text{tr}\left\{(\mathbf{H}^T\mathbf{y})(\mathbf{H}^T\mathbf{y})^T\frac{\partial \mathbf{\Sigma} }{\partial \xi}\right\}\\<br>&amp;=2\xi\mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}-\xi^2\mathbf{y}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{H}\mathbf{\Sigma}\mathbf{H}^T\mathbf{y}<br>\end{align}<br>The twice partial derivative of $\mathcal{L}(\boldsymbol{\lambda},\xi)$ w.r.t. $\xi$ is given<br>\begin{align}<br>\left.\frac{\partial^2 \mathcal{L}(\boldsymbol{\lambda},\xi)}{\partial \xi^2}\right|_{\xi^{-1}=\frac{||\mathbf{y}-\mathbf{H}\boldsymbol{\mu}||^2+\text{tr}(\mathbf{\Sigma}\mathbf{H}^T\mathbf{H})}{M} } \leq 0<br>\end{align}</p>
+<p>$\textbf{Scheme I:}$ Expectation maximum (EM). The EM algorithm includes two part, expectation step and maximum step. In E-Step, the posterior distribution $p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)$ is calculated , while in M-Step the parameters $\boldsymbol{\lambda}$ and $\xi$ are updated. For this case, we only need to carry out M-step, since the posterior distribution $p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)$ is calculated as $\mathcal{N}(\mathbf{x}|\boldsymbol{\mu},\mathbf{\Sigma})$ by step 1 and step 2. We update $\boldsymbol{\lambda}$ and $\xi$ respectively. One is<br>\begin{align}<br>\lambda_i<br>&amp;= \underset{\lambda_i&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{\log p(\mathbf{y},\mathbf{x};\boldsymbol{\lambda},\xi)\right\}\\<br>&amp;= \underset{\lambda_i&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{\log p(\mathbf{x};\boldsymbol{\lambda})\right\}\\<br>&amp;= \underset{\lambda_i&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{\log p(x_i;\lambda_i)\right\}\\<br>&amp;= \underset{\lambda_i&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{-\frac{1}{2}\log 2\pi+\frac{1}{2}\log \lambda_i-\frac{\lambda_i}{2}x_i^2\right\}\\<br>&amp;= \underset{\lambda_i&gt;0}{\arg \max} \ \left\{\frac{1}{2}\lambda_i^{-1}-\frac{1}{2}\left(\Sigma_{ii}+\mu_i^2\right)\right\}\\<br>&amp;=(\mu_i^2+\Sigma_{ii})^{-1}<br>\end{align}<br>and another is<br>\begin{align}<br>\xi<br>&amp;=\underset{\xi&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{\log p(\mathbf{y}|\mathbf{x};\boldsymbol{\lambda},\xi)\right\}\\<br>&amp;=\underset{\xi&gt;0}{\arg \max} \ \mathbb{E}_{p(\mathbf{x}|\mathbf{y};\boldsymbol{\lambda},\xi)} \left\{\frac{M}{2}\log \xi-\frac{\xi}{2}\left(\mathbf{yy}^T+2\mathbf{y}^T\mathbf{Hx}-\mathbf{x}^T\mathbf{H}^T\mathbf{Hx}\right)\right\}\\<br>&amp;\overset{(a)}{=}\underset{\xi&gt;0}{\arg \max} \ \left\{\frac{M}{2}\log \xi-\frac{\xi}{2}\left(\mathbf{yy}^T+2\mathbf{y}^T\mathbf{H}\boldsymbol{\mu}-\boldsymbol{\mu}\mathbf{H}^T\mathbf{H}\boldsymbol{\mu}-\text{tr}\left\{\mathbf{\Sigma}\mathbf{H}^T\mathbf{H}\right\}\right)\right\}\\<br>&amp;=\underset{\xi&gt;0}{\arg \max} \ \left\{\frac{M}{2}\log \xi-\frac{\xi}{2}||\mathbf{y}-\mathbf{H}\boldsymbol{\mu}||-\frac{\xi}{2}\text{tr}\left\{\mathbf{\Sigma}\mathbf{H}^T\mathbf{H}\right\}\right\}\\<br>&amp;=\left(\frac{||\mathbf{y}-\mathbf{H}\boldsymbol{\mu}||^2+\text{tr}(\mathbf{\Sigma}\mathbf{H}^T\mathbf{H})}{M}\right)^{-1}<br>\end{align}<br>where $(a)$ holds by the fact<br>\begin{align}<br>\mathbb{E}_{\mathcal{N}(\mathbf{x}|\boldsymbol{\mu},\mathbf{\Sigma})}\left\{\mathbf{x}^T\mathbf{B}\mathbf{x}\right\}=\boldsymbol{\mu}^T\mathbf{B}\boldsymbol{\mu}+\text{tr}\left\{\mathbf{\Sigma}\mathbf{B}\right\}<br>\end{align}</p>
+<p>$\underline{\textbf{Step 4} }$: $\longrightarrow \textbf{Step 2}$.</p>
 
       
     </div>
@@ -431,6 +397,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Sparse-Bayesian-Learning/" rel="tag"><i class="fa fa-tag"></i> Sparse Bayesian Learning</a>
+          
+        </div>
+      
 
       
       
@@ -440,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/矩阵求逆引理及其证明/" rel="next" title="矩阵求逆引理及其证明">
-                <i class="fa fa-chevron-left"></i> 矩阵求逆引理及其证明
+              <a href="/2018/12/05/误差反向传播/" rel="next" title="误差反向传播">
+                <i class="fa fa-chevron-left"></i> 误差反向传播
               </a>
             
           </div>
@@ -449,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" rel="prev" title="多元实高斯分布对协方差的偏导">
-                多元实高斯分布对协方差的偏导 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -589,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#奇异值分解"><span class="nav-number">1.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pseudo逆矩阵"><span class="nav-number">2.</span> <span class="nav-text">Pseudo逆矩阵</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#System-Model"><span class="nav-number">1.</span> <span class="nav-text">System Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Derivation"><span class="nav-number">2.</span> <span class="nav-text">Derivation</span></a></li></ol></div>
             
 
           </div>
