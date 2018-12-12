@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
+<meta name="description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^M$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{M\">
 <meta name="keywords" content="Sparse Bayesian Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Derivation of Sparse Bayesian Learning">
 <meta property="og:url" content="http://qiuyun-blog.cn/2018/12/11/Derivation-of-Sparse-Bayesian-Learning/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
+<meta property="og:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^M$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{M\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T00:39:46.855Z">
+<meta property="og:updated_time" content="2018-12-12T00:55:40.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Derivation of Sparse Bayesian Learning">
-<meta name="twitter:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\">
+<meta name="twitter:description" content="System ModelWe consider following system\begin{align}\mathbf{y}=\mathbf{Hx}+\mathbf{w}\end{align}where $\mathbf{y}\in \mathbb{R}^M$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{M\">
 
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <h1 id="System-Model"><a href="#System-Model" class="headerlink" title="System Model"></a>System Model</h1><p>We consider following system<br>\begin{align}<br>\mathbf{y}=\mathbf{Hx}+\mathbf{w}<br>\end{align}<br>where $\mathbf{y}\in \mathbb{R}^N$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{N\times M}$ linear transform matix, and $\mathbf{x}\in \mathbb{R}^{M}$ is estimated signal. In addition, $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\sigma^2\mathbf{I})$ is additional Gaussian noise.<a id="more"></a></p>
+        <h1 id="System-Model"><a href="#System-Model" class="headerlink" title="System Model"></a>System Model</h1><p>We consider following system<br>\begin{align}<br>\mathbf{y}=\mathbf{Hx}+\mathbf{w}<br>\end{align}<br>where $\mathbf{y}\in \mathbb{R}^M$ is observed signal or received signal, $\mathbf{H}\in \mathbb{R}^{M\times N}$ linear transform matix, and $\mathbf{x}\in \mathbb{R}^{N}$ is estimated signal. In addition, $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\sigma^2\mathbf{I})$ is additional Gaussian noise.<a id="more"></a></p>
 <h1 id="Derivation"><a href="#Derivation" class="headerlink" title="Derivation"></a>Derivation</h1><p><font color="red">$\underline{\textbf{Step 1} }$</font>: Assume $p(\mathbf{x};\mathbf{\lambda})\sim \mathcal{N}\left({\mathbf{x}|\mathbf{0},\text{Diag}(\mathbf{1}\oslash \boldsymbol{\lambda})}\right)$ with parameters $\boldsymbol{\lambda}=\left\{\lambda_1,\cdots,\lambda_M\right\}$, and $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\xi^{-1}\mathbf{I})$. Initialize $\boldsymbol{\lambda}=1$ and $\xi^{-1}=\sigma^{2}$.</p>
 <p><font color="red">$\underline{\textbf{Step 2} }$</font>: Calculate the posterior mean estimator (PME) of $\mathbf{x}$ using Gaussian product lemma. Assume $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ and $\mathcal{N}(\mathbf{x}|\mathbf{b},\mathbf{B})$, then there is $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})\mathcal{N}(\mathbf{x}|\mathbf{b},\mathbf{B})=\mathcal{N}(\mathbf{0}|\mathbf{a}-\mathbf{b},\mathbf{A}+\mathbf{B})\mathcal{N}(\mathbf{x}|\mathbf{c},\mathbf{C})$, where $\mathbf{C}=(\mathbf{A}^{-1}+\mathbf{B}^{-1})^{-1}$ and $\mathbf{c}=\mathbf{C}\cdot (\mathbf{A}^{-1}\mathbf{a}+\mathbf{B}^{-1}\mathbf{b})$. Since prior and likelihood function are Gaussian, the posterior distribution is also Gaussian.<br>\begin{align}<br>p(\mathbf{x}|\mathbf{y};\mathbf{\lambda},\xi)<br>&amp;=\frac{p(\mathbf{y}|\mathbf{x};\xi)p(\mathbf{x};\mathbf{\lambda})}{p(\mathbf{y}|\mathbf{\lambda};\xi)}\\<br>&amp;\propto p(\mathbf{y}|\mathbf{x};\xi)p(\mathbf{x};\mathbf{\lambda})\\<br>&amp;\propto \mathcal{N}\left(\mathbf{x}\left|(\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^T\mathbf{y},(\xi\mathbf{H}^T\mathbf{H})^{-1}\right.\right)\mathcal{N}(\mathbf{x}|\mathbf{0},\text{Diag}(\mathbf{1}\oslash \mathbf{\lambda}))\\<br>&amp;\propto \mathcal{N}\left(\mathbf{x}|\boldsymbol{\mu},\mathbf{\Sigma}\right)<br>\end{align}<br>where $\boldsymbol{\mu}$ is the PME of $\mathbf{x}$<br>\begin{align}<br>\mathbf{\Sigma}&amp;=\left(\xi\mathbf{H}^T\mathbf{H}+\text{Diag}(\boldsymbol{\lambda})\right)^{-1}\\<br>\boldsymbol{\mu}&amp;=\xi \mathbf{\Sigma}\mathbf{H}^T\mathbf{y}<br>\end{align}</p>
 <p><font color="red">$\underline{\textbf{Step 3} }$</font>: Update $\boldsymbol{\lambda}$ and $\xi$. There are two schemes for updating parameters $\boldsymbol{\lambda}$ and $\xi$. One is type II maximum likelihood function and another is expectation-maximum (EM). We first introduce type II maximum likelihood function.</p>
