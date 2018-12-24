@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Gaussian,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="假设$N$维实随机矢量$\mathbf{x}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{x}\sim \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{x}|\mathbf{a},\mathbf{A} }\right)=">
-<meta name="keywords" content="Gaussian">
+<meta name="description" content="Notations:   Mutual information (MI)\begin{align}I(X;Y)&amp;amp;=\int p(x,y)\log \frac{p(x|y)}{p(x)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\log \frac{p(x,y)}{p(x)p(y)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多元实高斯分布对协方差的偏导">
-<meta property="og:url" content="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/index.html">
+<meta property="og:title" content="Mutual Information and MMSE">
+<meta property="og:url" content="http://qiuyun-blog.cn/2018/12/24/Mutual-Information-and-MMSE/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="假设$N$维实随机矢量$\mathbf{x}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{x}\sim \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{x}|\mathbf{a},\mathbf{A} }\right)=">
+<meta property="og:description" content="Notations:   Mutual information (MI)\begin{align}I(X;Y)&amp;amp;=\int p(x,y)\log \frac{p(x|y)}{p(x)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\log \frac{p(x,y)}{p(x)p(y)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\l">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-29T01:27:26.061Z">
+<meta property="og:updated_time" content="2018-12-24T01:37:22.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多元实高斯分布对协方差的偏导">
-<meta name="twitter:description" content="假设$N$维实随机矢量$\mathbf{x}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{x}\sim \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$\begin{align}\mathcal{N}\left({\mathbf{x}|\mathbf{a},\mathbf{A} }\right)=">
+<meta name="twitter:title" content="Mutual Information and MMSE">
+<meta name="twitter:description" content="Notations:   Mutual information (MI)\begin{align}I(X;Y)&amp;amp;=\int p(x,y)\log \frac{p(x|y)}{p(x)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\log \frac{p(x,y)}{p(x)p(y)}\text{d}x\text{d}y\\&amp;amp;=\int p(x,y)\l">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2018/12/24/Mutual-Information-and-MMSE/">
 
 
 
 
 
-  <title>多元实高斯分布对协方差的偏导 | Qiuyun's blog</title>
+  <title>Mutual Information and MMSE | Qiuyun's blog</title>
   
 
 
@@ -295,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/10/30/多元实高斯分布对协方差矩阵的偏导/">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2018/12/24/Mutual-Information-and-MMSE/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qiuyun">
@@ -312,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多元实高斯分布对协方差的偏导</h1>
+          <h1 class="post-title" itemprop="name headline">Mutual Information and MMSE</h1>
         
 
         <div class="post-meta">
@@ -324,8 +323,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T19:26:57+08:00">
-                2018-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-24T09:35:10+08:00">
+                2018-12-24
               </time>
             
 
@@ -347,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础数学/" itemprop="url" rel="index">
-                    <span itemprop="name">基础数学</span>
+                  <a href="/categories/Communication/" itemprop="url" rel="index">
+                    <span itemprop="name">Communication</span>
                   </a>
                 </span>
 
@@ -365,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/30/多元实高斯分布对协方差矩阵的偏导/" itemprop="commentCount"></span>
+                <a href="/2018/12/24/Mutual-Information-and-MMSE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/24/Mutual-Information-and-MMSE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -394,8 +393,24 @@
       
 
       
-        <p>假设$N$维实随机矢量$\mathbf{x}$服从均值为$\mathbf{a}$，协方差为$\mathbf{A}$的高斯分布，记作$\mathbf{x}\sim \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$<br>\begin{align}<br>\mathcal{N}\left({\mathbf{x}|\mathbf{a},\mathbf{A} }\right)<br>=(2\pi)^{-\frac{N}{2} }|\mathbf{A}|^{-\frac{1}{2} }\exp \left({-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}\right)<br>\end{align} <a id="more"></a><br>其对协方差矩阵的偏导为<br>\begin{align}<br>\frac{\partial \mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})}{\partial \mathbf{A} }&amp;=(2\pi)^{-\frac{N}{2} }\frac{\partial |\mathbf{A}|^{-\frac{1}{2} } }{\partial \mathbf{A} }\exp \left(-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)\\<br>&amp;\quad +(2\pi)^{-\frac{N}{2} }|\mathbf{A}|^{-\frac{1}{2} }\frac{\partial }{\partial \mathbf{A} }\exp \left[-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right]\\<br>&amp;\overset{(a)}{=}-\frac{1}{2}\mathbf{A}^{-1}\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})+\frac{1}{2}\boldsymbol{A}^{-1}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})<br>\end{align}<br>这里最为主要的是偏导$\frac{\partial |\mathbf{A}|^{-\frac{1}{2} }}{\partial \mathbf{A} }$和$\frac{\partial }{\partial \mathbf{A} }\exp \left({-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}\right)$的计算。我们给出其详细计算过程如下<br>\begin{align}<br>\frac{\partial |\mathbf{A}|^{-\frac{1}{2} } }{\partial \mathbf{A} }=-\frac{1}{2}|\mathbf{A}|^{-\frac{3}{2} } (|\mathbf{A}|\mathbf{A}^{-1})=-\frac{1}{2}|\mathbf{A}|^{-\frac{1}{2} }\mathbf{A}^{-1}<br>\end{align}<br>这里利用到偏导数公式$\frac{\partial |\mathbf{A}|}{\partial \mathbf{A} }=|\mathbf{A}|\mathbf{A}^{-1}$。</p>
-<p>另外<br>\begin{align}<br>&amp;\quad \frac{\partial }{\partial \mathbf{A} }\exp \left[-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right]\\<br>&amp;=\exp\left(-\frac{1}{2}(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)\left(-\frac{1}{2}\frac{\partial }{\partial \mathbf{A} }(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})\right)<br>\end{align}<br>其中<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=\left({<br>\begin{matrix}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{11} }&amp; \cdots&amp; \frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{A_{1N} }\\<br>\vdots&amp; \ddots&amp; \vdots\\<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{N1} }&amp; \cdots&amp; \frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{NN} }<br>\end{matrix}<br>}\right)<br>\end{align}<br>计算该矩阵元素如下<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial A_{ij} }<br>&amp;=\text{tr}\left\{ {\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A}^{-1} }\frac{\partial \mathbf{A}^{-1} }{\partial A_{ij} } }\right\}\\<br>&amp;\overset{(b)}{=}\text{tr}\left\{ {-(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}\frac{\partial \mathbf{A} }{\partial A_{ij} }\mathbf{A}^{-1} }\right\}\\<br>&amp;=\text{tr}\left\{ {-(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}\boldsymbol{e}_i\boldsymbol{e}_j^T\mathbf{A}^{-1} }\right\}\\<br>&amp;=-\boldsymbol{e}_j^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}\boldsymbol{e}_i<br>\end{align}<br>这里步骤$(b)$利用到偏导公式$\frac{\partial g(\mathbf{U})}{\partial x}=\text{tr}\left\{ {\frac{\partial g(\mathbf{U})}{\partial \mathbf{U} }\frac{\partial \mathbf{U} }{\partial x} }\right\}$以及$\frac{\partial \mathbf{U}^{-1} }{\partial x}=-\mathbf{U}^{-1}\frac{\partial \mathbf{U} }{\partial x}\mathbf{U}^{-1}$。因此，可以得到<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=-(\boldsymbol{A}^{-1})^T(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T(\boldsymbol{A}^{-1})^T<br>\end{align}<br>若假设$\mathbf{A}$是对称矩阵, 则有<br>\begin{align}<br>\frac{\partial (\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}(\mathbf{x}-\mathbf{a})}{\partial \mathbf{A} }=-\boldsymbol{A}^{-1}(\mathbf{x}-\mathbf{a})(\mathbf{x}-\mathbf{a})^T\mathbf{A}^{-1}<br>\end{align}</p>
+        <p>Notations:</p>
+<blockquote>
+<ul>
+<li>Mutual information (MI)<br>\begin{align}<br>I(X;Y)<br>&amp;=\int p(x,y)\log \frac{p(x|y)}{p(x)}\text{d}x\text{d}y\\<br>&amp;=\int p(x,y)\log \frac{p(x,y)}{p(x)p(y)}\text{d}x\text{d}y\\<br>&amp;=\int p(x,y)\log \frac{p(y|x)}{p(y)}\text{d}x\text{d}y\\<br>&amp;=I(Y;X)<br>\end{align} <a id="more"></a></li>
+<li>integration by parts<br>\begin{align}<br>\int u(x)v’(x)\text{d}x= u(x)v(x)|_{x=-\infty}^{x=+\infty}-\int u’(x)v(x)\text{d}x<br>\end{align}<br>where $v’(x)$ denotes $\frac{\text{d}v(x)}{\text{d}x}$。</li>
+</ul>
+</blockquote>
+<p><strong>Theorem</strong>：Given following linear Gaussian model<br>\begin{align}<br>Y=\sqrt{\gamma}X+U\quad U\sim \mathcal{N}(0,1)<br>\end{align}<br>where $\gamma&gt;0$ refers to signal-noise-rate (SNR). We have<br>\begin{align}<br>\frac{\text{d}I(X;Y)}{\text{d}\gamma}=\frac{1}{2}\text{MMSE}<br>\end{align}<br>where<br>\begin{align}<br>\text{MMSE}=\int (x-\hat{x})^2p(x,y;\gamma)\text{d}x\text{d}y<br>\end{align}<br>and $\hat{x}=\int xp(x|y;\gamma)\text{d}x$。</p>
+<p><strong>$Proof$</strong>：Define<br>\begin{align}<br>p_k(y;\gamma)=\int x^k p(y,x;\gamma)\text{d}x=\mathbb{E}_X\left\{X^kp(y|X;\gamma)\right\}<br>\end{align}<br>we have follows conclusions </p>
+<blockquote>
+<ol>
+<li>\begin{align}<br>\frac{\text{d} p_k(y;\gamma)}{\text{d}\gamma}<br>&amp;=\frac{1}{2\sqrt{\gamma} }yp_{k+1}(y;\gamma)-\frac{1}{2}p_{k+2}(y;\gamma)\\<br>&amp;=-\frac{1}{2\sqrt{\gamma} }\frac{\text{d} }{\text{d}y}p_{k+1}(y;\gamma)<br>\end{align}</li>
+<li>\begin{align}<br>\hat{x}_{\text{MMSE} }=\int xp(x|y;\gamma)\text{d}x=\frac{p_1(y;\gamma)}{p_0(y;\gamma)}<br>\end{align}</li>
+</ol>
+</blockquote>
+<p>Mutual information<br>\begin{align}<br>I(X;Y)<br>&amp;=\int p(y,x;\gamma)\log \frac{p(y|x;\gamma)}{p(y;\gamma)}\text{d}x\text{d}y\\<br>&amp;=\underbrace{\int p(y,x;\gamma)\log p(y|x;\gamma)\text{d}x\text{d}y}_{\xi}-\underbrace{\int p(y,x;\gamma)\log p(y;\gamma)\text{d}x\text{d}y}_{\zeta}<br>\end{align}<br>For that，we calculate $\xi$ and $\zeta$ respectively as follows<br>\begin{align}<br>\xi<br>&amp;=\int p(y|x;\gamma)p(x)\log p(y|x;\gamma)\text{d}x\text{d}y\\<br>&amp;\overset{(a)}=-\frac{1}{2}\int p(y|x;\gamma)p(x)\log 2\pi \text{d}x\text{d}y-\frac{1}{2}(y-\sqrt{\gamma}x)^2p(y|x;\gamma)p(x)\text{d}x\text{d}y\\<br>&amp;=-\frac{1}{2}\log (2\pi e)<br>\end{align}<br>where the fact $p(y|x;\gamma)=\frac{1}{\sqrt{2\pi} }\exp \left[-\frac{(y-\sqrt{\gamma}x)^2}{2}\right]$ is used in $(a)$.<br>\begin{align}<br>\zeta<br>&amp;=\int p(y,x;\gamma)\log p(y;\gamma)\text{d}y\\<br>&amp;=\int_y\int_x p(y,x;\gamma)\text{d}x\log p(y;\gamma)\text{d}y\\<br>&amp;=\int_y p(y;\gamma)\log p(y;\gamma)\text{d}y<br>\end{align}<br>Computing the partial derivation of $I(X;Y)$ w.r.t. $\gamma$ yields<br>\begin{align}<br>\frac{\text{d}I(X;Y)}{\text{d}\gamma}<br>&amp;=-\frac{\text{d} }{\text{d}\gamma}p_0(y;\gamma)\log p_0(y;\gamma)\text{d}y\\<br>&amp;=-\int \left[\log p_0(y;\gamma)+1\right]\frac{\text{d}p_1(y;\gamma)}{\text{d}\gamma}\text{d}y\\<br>&amp;=\frac{1}{2\sqrt{\gamma} }\int \log p_0(y;\gamma)\frac{\text{d}p_1(y;\gamma)}{\text{d}y}\text{d}y+\frac{1}{2\sqrt{\gamma} }\underbrace{\int \frac{\text{d}p_1(y;\gamma)}{\text{d}y}\text{d}y}_{\kappa}\\<br>&amp;\overset{(a)}{=}\frac{1}{2\sqrt{\gamma} }\int \log p_0(y;\gamma)\frac{\text{d}p_1(y;\gamma)}{\text{d}y}\text{d}y\\<br>&amp;\overset{(b)}{=}-\frac{1}{2\sqrt{\gamma} }\int \frac{p_1(y;\gamma)}{p_0(y;\gamma)}\frac{\text{d}p_0(y;\gamma)}{\text{d}y}\text{d}y\\<br>&amp;\overset{(c)}{=}\frac{1}{2\sqrt{\gamma} }\int \frac{p_1(y;\gamma)}{p_0(y;\gamma)}\left[y-\sqrt{\gamma}\frac{p_1(y;\gamma)}{p_0(y;\gamma)}\right]p_0(y;\gamma)\text{d}y<br>\end{align}<br>where $(a)$ holds thanks to integration by parts,<br>\begin{align}<br>\kappa=\left.p_1(y;\gamma)\right|_{y=-\infty}^{y=+\infty}=0<br>\end{align}<br>$(b)$ holds also based on integration by parts,<br>\begin{align}<br>&amp;\int \log p_0(y;\gamma)\frac{\text{d}p_1(y;\gamma)}{\text{d}y}\text{d}y\\<br>=&amp;\left.{p_1(y;\gamma)\log p_0(y;\gamma)}\right|_{y=-\infty}^{y=+\infty}-\int \frac{p_1(y;\gamma)}{p_0(y;\gamma)}\frac{\text{d}p_0(y;\gamma)}{\text{d}y}\text{d}y\\<br>=&amp;-\frac{1}{2\sqrt{\gamma} }\int \frac{p_1(y;\gamma)}{p_0(y;\gamma)}\frac{\text{d}p_0(y;\gamma)}{\text{d}y}\text{d}y<br>\end{align}<br>and $(c)$ holds by conclusion 1.</p>
+<p>Based on above, we have<br>\begin{align}<br>\frac{\text{d}I(X;Y)}{\text{d}\gamma}<br>&amp;=\frac{1}{2\sqrt{\gamma} }\int \left(\int xp(x|y;\gamma)\text{d}x\right)\left[y-\sqrt{\gamma}\left(\int xp(x|y;\gamma)\text{d}x\right)\right]p(y;\gamma)\text{d}y\\<br>&amp;=\frac{1}{2\sqrt{\gamma} }\int_{x,y} xyp(x,y;\gamma)\text{d}x\text{d}y-\frac{1}{2}\int_y\left(\int xp(x|y;\gamma)\text{d}x\right)^2p(y;\gamma)\text{d}y\\<br>&amp;=\frac{1}{2}\int x^2p(x,y;\gamma)\text{d}x\text{d}y-\frac{1}{2}\int \hat{x}p(x,y;\gamma)\text{d}x\text{d}y\\<br>&amp;=\frac{1}{2}\mathbb{E}\left\{X^2-\hat{X}^2\right\}\\<br>&amp;\overset{(d)}{=}\frac{1}{2}\text{MMSE}<br>\end{align}<br>where the expectation is taken over $p(x,y;\gamma)$. In addition, $(d)$ holds by<br>\begin{align}<br>&amp;\int (x-\hat{x})^2p(x,y;\gamma)\text{d}x\text{d}y\\<br>=&amp;\int x^2p(x,y;\gamma)\text{d}x\text{d}y+\int \hat{x}^2 p(x,y;\gamma)\text{d}x\text{d}y-2\int x\hat{x}p(x,y;\gamma)\text{d}x\text{d}y\\<br>=&amp;\int x^2p(x)\text{d}x+ \int \hat{x}^2p(y;\gamma)\text{d}y-2\int \hat{x} \int x p(x|y;\gamma)\text{d}x p(y;\gamma)\text{d}y\\<br>=&amp;\int x^2p(x)\text{d}x+\int \hat{x}^2p(y;\gamma)\text{d}y-2\int \hat{x}^2p(y;\gamma)\text{d}y\\<br>=&amp;\int x^2p(x)\text{d}x-\int \hat{x}^2p(y;\gamma)\text{d}y\\<br>=&amp;\int (x^2-\hat{x})p(x,y;\gamma)\text{d}x\text{d}y<br>\end{align}<br>Note that $\hat{x}=\int xp(x|y;\gamma)\text{d}x$ is the function of $y$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] Guo D. Gaussian channels: Information, estimation and multiuser detection[D]. Princeton University, 2004.<br>[2] Guo D, Shamai S, Verdú S. Mutual information and minimum mean-square error in Gaussian channels[J]. IEEE Transactions on Information Theory, 2005, 51(4): 1261-1282.</p>
 
       
     </div>
@@ -435,12 +450,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Gaussian/" rel="tag"><i class="fa fa-tag"></i> Gaussian</a>
-          
-        </div>
-      
 
       
       
@@ -450,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/矩阵奇异值分解/" rel="next" title="矩阵奇异值分解">
-                <i class="fa fa-chevron-left"></i> 矩阵奇异值分解
+              <a href="/2018/12/14/Expectation-Maximization/" rel="next" title="Expectation Maximization">
+                <i class="fa fa-chevron-left"></i> Expectation Maximization
               </a>
             
           </div>
@@ -459,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/03/深度学习笔记之人工智能、机器学习、深度学习之间的关系/" rel="prev" title="深度学习笔记之人工智能、机器学习、深度学习之间的关系">
-                深度学习笔记之人工智能、机器学习、深度学习之间的关系 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -580,6 +594,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
