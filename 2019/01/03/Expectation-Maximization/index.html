@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="EM,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="少一点功利主义的追求，多一些不为什么的坚持">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qiuyun&#39;s blog">
-<meta property="og:url" content="http://qiuyun-blog.cn/tags/PRML/index.html">
+<meta name="description" content="Notations: We use $\mathbf{x}$ to denote vector. $\mathbf{X}$ is matrix. $(\cdot)^T$ represents transposition. $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ denotes a Gaussian distribution with mean">
+<meta name="keywords" content="EM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Expectation Maximization">
+<meta property="og:url" content="http://qiuyun-blog.cn/2019/01/03/Expectation-Maximization/index.html">
 <meta property="og:site_name" content="Qiuyun&#39;s blog">
-<meta property="og:description" content="少一点功利主义的追求，多一些不为什么的坚持">
+<meta property="og:description" content="Notations: We use $\mathbf{x}$ to denote vector. $\mathbf{X}$ is matrix. $(\cdot)^T$ represents transposition. $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ denotes a Gaussian distribution with mean">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-03T06:57:54.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qiuyun&#39;s blog">
-<meta name="twitter:description" content="少一点功利主义的追求，多一些不为什么的坚持">
+<meta name="twitter:title" content="Expectation Maximization">
+<meta name="twitter:description" content="Notations: We use $\mathbf{x}$ to denote vector. $\mathbf{X}$ is matrix. $(\cdot)^T$ represents transposition. $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ denotes a Gaussian distribution with mean">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://qiuyun-blog.cn/tags/PRML/">
+  <link rel="canonical" href="http://qiuyun-blog.cn/2019/01/03/Expectation-Maximization/">
 
 
 
 
 
-  <title>标签: PRML | Qiuyun's blog</title>
+  <title>Expectation Maximization | Qiuyun's blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -279,52 +281,186 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>PRML<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2019/01/03/Expectation-Maximization/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuyun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/09/回归问题初步之线性回归/" itemprop="url">
-              
-                <span itemprop="name">回归问题初步之线性回归</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Expectation Maximization</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-09T15:19:21+08:00" content="2018-11-09">
-          11-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T12:41:41+08:00">
+                2019-01-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
+                    <span itemprop="name">Signal Processing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+    
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Notations: We use $\mathbf{x}$ to denote vector. $\mathbf{X}$ is matrix. $(\cdot)^T$ represents transposition. $\mathcal{N}(\mathbf{x}|\mathbf{a},\mathbf{A})$ denotes a Gaussian distribution with mean $\mathbf{a}$, variance $\mathbf{A}$ and argument $\mathbf{x}$. $\mathbb{E}\left\{\cdot\right\}$ refers to expectation operation. <a id="more"></a></p>
+<h1 id="Expectation-Maximization-and-Maximum-Likelihood"><a href="#Expectation-Maximization-and-Maximum-Likelihood" class="headerlink" title="Expectation Maximization and Maximum Likelihood"></a>Expectation Maximization and Maximum Likelihood</h1><p><strong>Case I</strong>: <strong>The likelihood function has close-form</strong>. Maximum likelihood estimator (MLE) is an optimal estimator without prior distribution, which can approach Cramer-Rao lower bound (CRLB). We introduce CRLB in [1]. However, maximum likelihood function may be difficult to calculate as hidden variables, this argument will be introduced in next part of this blog. We use $\mathbf{x}$ to denote estimated signal, and $\mathbf{y}$ to refer to observed signal. When the likelihood function $p(\mathbf{y}|\mathbf{x})$ can be explicitly expressed, we then write the MLE of $\mathbf{x}$ as<br>\begin{align}<br>\hat{\mathbf{x} }_{\text{ML} }<br>&amp;=\underset{\mathbf{x} }{\arg \max}\ p(\mathbf{y}|\mathbf{x})\\<br>&amp;=\underset{\mathbf{x} }{\arg \max}\ \log p(\mathbf{y}|\mathbf{x})<br>\end{align}<br>For some simple situations such as following example, using derivative tools we can obtain the $\hat{\mathbf{x} }_{\text{ML} }$.</p>
+<p><strong>Example</strong>: We consider system as follow<br>\begin{align}<br>\mathbf{y}=\mathbf{Hx}+\mathbf{w}<br>\end{align}<br>where $\mathbf{x}\in \mathbb{R}^N$ is estimated signal, while $\mathbf{y}\in \mathbb{R}^M$ represents observed signal or received signal. The linear transformation matrix $\mathbf{H}\in \mathbb{R}^{M\times N}$ is given. In addition, the noise $\mathbf{w}\sim \mathcal{N}(\mathbf{w}|\mathbf{0},\sigma^2\mathbf{I})$. The likelihood function of this model is given by<br>\begin{align}<br>p(\mathbf{y}|\mathbf{x})=\mathcal{N}(\mathbf{y}|\mathbf{H}\mathbf{x},\sigma^2\mathbf{I})<br>\end{align}<br>Then the MLE of $\mathbf{x}$ represents as<br>\begin{align}<br>\hat{\mathbf{x} }_{\text{ML} }<br>&amp;=\underset{\mathbf{x} }{\arg \max}\ \log p(\mathbf{y}|\mathbf{x})\\<br>&amp;\overset{(a)}{=}\underset{\mathbf{x} }{\arg \min}\ ||\mathbf{y}-\mathbf{Hx}||^2\\<br>&amp;=(\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^T\mathbf{y}<br>\end{align}<br>the step $(a)$ shows that the ML is equal to least square (LS) [2] in this case . </p>
+<p><strong>Case II</strong>: The likelihood function doesn’t have close-form thanks to hidden variables. We use $\boldsymbol{\xi}$ to denote the hidden variables. Then the logarithm-likelihood function is written as<br>\begin{align}<br>\log p(\mathbf{y}|\mathbf{x})=\log \int p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})\text{d}\boldsymbol{\xi}<br>\end{align}<br><strong>Actually, it is very difficlut to compute because of logarithm-int operation. Thus the MLE of $\mathbf{x}$ cann’t be obtained absolutely. An alternative method is to use expectation maximization (EM) to approximate the ML soultion, a kind of majorization-minimization (MM) [3].</strong> Now, we describe the derivation of EM algorithm step-by-step. The detailed derivation of EM is also found in [4] and [Chapter 9, 5].</p>
+<p><font color="red"><strong>$\underline{\text{Step }1}$</strong></font>: Given a postulated distribution $\hat{q}(\boldsymbol{\xi})$ to approximate $p(\boldsymbol{\xi})$. We then have<br>\begin{align}<br>\log \int_{\boldsymbol{\xi} } p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})<br>&amp;=\log \int_{\boldsymbol{\xi} }\hat{q}(\boldsymbol{\xi})\frac{p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\text{d}\boldsymbol{\xi}\\<br>&amp;=\log \left(\mathbb{E}_{\hat{q}(\boldsymbol{\xi})}\left\{\frac{p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}\right)<br>\end{align}</p>
+<p><font color="red"><strong>$\underline{\text{Step } 2}$</strong></font>: Find lower bound of $\log p(\mathbf{y}|\boldsymbol{\xi}|\mathbf{x})$ using Jensen’s Inequality[11]. With Jensen’s inequality, the last equation can written as<br>\begin{align}<br>\log \int_{\boldsymbol{\xi} } p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})<br>&amp;\geq \mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log \frac{p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}\\<br>&amp;=\mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})\right\}-\mathbb{E}_{\hat{q}(\boldsymbol{\xi})}\left\{ {\log \hat{q}(\boldsymbol{\xi})}\right\}<br>\end{align}<br>Generally, the distribution $\hat{q}(\boldsymbol{\xi})$ doesn’t depend on $\mathbf{x}$, thus, we only need to maximize the first term<br>\begin{align}<br>\text{M-Step:}\quad \hat{\mathbf{x} }=\underset{\mathbf{x} }{\arg \max} \ \mathbb{E}_{\hat{q}(\boldsymbol{\xi})}\left\{\log p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})\right\}<br>\end{align}<br>This is named M-step in EM algorithm. </p>
+<p><font color="red"><strong>$\underline{\text{Step } 3}$</strong></font>: Find $\hat{q}(\boldsymbol{\xi})$ to minimize Kullback-Leibler divergence (KL) [6], also named relative entropy. As mentioned in step 2,<br>\begin{align}<br>\mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log \frac{p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}<br>&amp;=\mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log \frac{p(\mathbf{y}|\mathbf{x})p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}\\<br>&amp;=\mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log p(\mathbf{y}|\mathbf{x})\right\}<br>+\mathbb{E}_{\hat{q}(\boldsymbol{\xi})}\left\{\log \frac{p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}\\<br>&amp;=\log p(\mathbf{y}|\mathbf{x})-\mathbb{E}_{\hat{q}(\boldsymbol{\xi})}\left\{\log \frac{\hat{q}(\boldsymbol{\xi})}{p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x})}\right\}\\<br>&amp;\overset{(b)}{=}\log p(\mathbf{y}|\mathbf{x})-\text{KL}(\hat{q}(\boldsymbol{\xi})|p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x}))\\<br>\end{align}<br>in $(b)$, the maximization of $\mathbb{E}_{\hat{q}(\boldsymbol{\xi})} \left\{\log \frac{p(\mathbf{y},\boldsymbol{\xi}|\mathbf{x})}{\hat{q}(\boldsymbol{\xi})}\right\}$ can be obtained by minimizing $\text{KL}(\hat{q}(\boldsymbol{\xi})|p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x}))$. Thus<br>\begin{align}<br>\text{E-Step:}\quad \hat{q}(\boldsymbol{\xi})=p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x})<br>\end{align}<br>It means that we use the posterior distribution of $p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x})$ to replace the postulated distribution $\hat{q}(\boldsymbol{\xi})$. </p>
+<p>The EM algorithm is summarized as following </p>
+<hr>
+<p>For $t=1,\cdots,T$<br>\begin{align}<br>\text{E-Step:}&amp; \quad  \hat{q}^{(t)}(\boldsymbol{\xi})=p(\boldsymbol{\xi}|\mathbf{y},\mathbf{x}^{(t-1)})\\<br>\text{M-Step:}&amp; \quad  \mathbf{x}^{(t)}=\underset{\mathbf{x} }{\arg \max} \  \mathbb{E}_{\hat{q}^{(t)}(\boldsymbol{\xi})}\left\{\log p(\boldsymbol{y},\boldsymbol{\xi}|\mathbf{x})\right\}<br>\end{align}<br>end</p>
+<hr>
+<h1 id="EM-based-Channel-Estimator"><a href="#EM-based-Channel-Estimator" class="headerlink" title="EM based Channel Estimator"></a>EM based Channel Estimator</h1><h2 id="System-Model"><a href="#System-Model" class="headerlink" title="System Model"></a>System Model</h2><p>We consider following channel model<br>\begin{align}<br>\mathbf{Y}=\mathbf{HS}+\mathbf{W}<br>\end{align}<br>where $\mathbf{Y}\in \mathbb{R}^{M\times T}$ is a received signal while $\mathbf{S}\in \mathbb{R}^{N\times T}$ is pilot signal with $T$ being the length of pilot. The channel $\mathbf{H}\in \mathbb{R}^{M\times N}$ is estimated and the noise $\mathbf{W}$ is additive Gaussian. Using $\tilde{\mathbf{Y} }$, $\tilde{\mathbf{S} }$, $\tilde{\mathbf{H} }$ and $\tilde{\mathbf{W} }$ to represent $\mathbf{Y}^T$,$\mathbf{S}^T$,$\mathbf{H}^T$, and $\mathbf{W}^T$, respectively yields<br>\begin{align}<br>\tilde{\mathbf{Y} }=\tilde{\mathbf{S} }\tilde{\mathbf{H} }+\tilde{\mathbf{W} }<br>\end{align}<br>The channel $\tilde{\mathbf{H} }$ is estimated column-by-column. So the model is also written as<br>\begin{align}<br>\tilde{\mathbf{y} }_m=\tilde{\mathbf{S} }\tilde{\mathbf{h} }_m+\tilde{\mathbf{w} }_m, \ m=1,\cdots,M<br>\end{align}<br>Obviously, each column $\tilde{\mathbf{h} }_m$ have the same method for estimation. As a result, we generally omit subscript and tilde and get following model<br>\begin{align}<br>\mathbf{y}=\mathbf{S}\mathbf{h}+\mathbf{w}<br>\end{align}<br>where $\mathbf{y}\in \mathbb{R}^{T\times 1}$, $\mathbf{S}\in \mathbb{R}^{T\times N}$ and $\mathbf{h}\in \mathbb{R}^{N\times 1}$. In addition, we generally assume that the noise $\mathbf{w}$ is Gassuian with $\mathbf{w}\sim \mathcal{N}\left(\mathbf{w}|\mathbf{0},\triangle \mathbf{I}\right)$. In [7], the variance of noise $\triangle$ is unknown.</p>
+<h2 id="EM-based-Channel-Estimator-1"><a href="#EM-based-Channel-Estimator-1" class="headerlink" title="EM based Channel Estimator"></a>EM based Channel Estimator</h2><p>In [7], the authors take following Gaussian mixture prior thanks to pilot pollution<br>\begin{align}<br>p(\mathbf{h};\boldsymbol{\lambda},\boldsymbol{\sigma})=\sum_{n=1}^N \lambda_n\mathcal{N}\left(h_{n}|0,\sigma_n^2\right)<br>\end{align}<br>Note that the parameters $\boldsymbol{\lambda}=\left\{\lambda_n\right\}_{n=1}^N$ and $\boldsymbol{\sigma}=\left\{\sigma_n\right\}_{n=1}^N$ are unknown, as well as $\triangle$. So, we cann’t directly use Bayesian estimator to estimate $\mathbf{h}$. A simple estimator is least square estimator (LS) $\hat{\mathbf{h} }_{\text{LS} }=(\mathbf{S}^T\mathbf{S})^{-1}\mathbf{S}^T\mathbf{y}$. However the performance of LS is easily affected by noise. An alternaive method is maximum likelihood estimator (MLE). Even the variance $\triangle$ is unkonwn, we can use EM algorithm to approximate MLE. </p>
+<p>As we mentioned in section I, the EM algorithm includes two parts: E-step and M-step, written as<br>\begin{align}<br>\text{E-Step:}\quad  &amp;\hat{q}(\mathbf{h})=p(\mathbf{h}|\mathbf{y},\boldsymbol{\eta},\triangle)\\<br>\text{M-Step:}\quad &amp;\boldsymbol{\eta}^{(t+1)}=\underset{\boldsymbol{\eta} }{\arg\max} \ \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}\\<br>&amp;\triangle^{(t+1)}=\underset{\triangle}{\arg\max} \ \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}<br>\end{align}<br>Thanks to sperable structure, it also written as, for $n=1,\cdots, N$<br>\begin{align}<br>\text{E-Step:}\quad  &amp;\hat{q}(h_n)=p(h_n|\mathbf{y},\boldsymbol{\eta},\triangle)\\<br>\text{M-Step:}\quad &amp;\eta_n^{(t+1)}=\underset{\eta_n}{\arg\max} \ \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}\\<br>&amp;\triangle^{(t+1)}=\underset{\triangle}{\arg\max} \ \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}<br>\end{align}<br>Actually, the the posterior distribution in E-step is exremly difficult to calculate. Fortunatly, message passing [Chapter 2, 8] based on factor graph is a high-efficiency algortihm for marginal distribution. Inspired by message passing and ignoring high-order iterms, approximate message passing (AMP) [9] is proposed for marginalization of joint distribution. A concise derivation is shown in [10].</p>
+<p>In [7], the authors use AMP to carry out E-step. The advantages of using AMP to finish E-step in EM includes two points. One is that AMP is low complexity and another is that AMP can approach Bayesian optimum as system being large. </p>
+<p>So the EM-based channel estimator is shown as<br><strong>$\underline{\text{Step }1}$</strong>: (E-Step) Using AMP to calculate marginal distribution of $h_n$.<br><strong>$\underline{\text{Step }2}$</strong>:<br>\begin{align}<br>\text{M-Step:}\quad &amp;\eta_n^{(t+1)}=\underset{\eta_n}{\arg\max} \  \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}\\<br>&amp;\triangle^{(t+1)}=\underset{\triangle}{\arg\max} \ \mathbb{E}\left\{\log p(\mathbf{y},\mathbf{h};\boldsymbol{\eta}^{(t)},\triangle^{(t)})\right\}<br>\end{align}</p>
+<p>The details of those two steps can be found in [7]. </p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a href="https://www.qiuyun-blog.cn/2018/10/28/%E5%85%8B%E6%8B%89%E7%BE%8E-%E7%BD%97%E4%B8%8B%E7%95%8C/" target="_blank" rel="noopener">https://www.qiuyun-blog.cn/2018/10/28/%E5%85%8B%E6%8B%89%E7%BE%8E-%E7%BD%97%E4%B8%8B%E7%95%8C/</a><br>[2] Kay S , 罗鹏飞. 统计信号处理基础[M]. 电子工业出版社, 2014.<br>[3] Sun Y, Babu P, Palomar D P. Majorization-minimization algorithms in signal processing, communications, and machine learning[J]. IEEE Transactions on Signal Processing, 2017, 65(3): 794-816.<br>[4] <a href="https://people.csail.mit.edu/rameshvs/content/gmm-em.pdf" target="_blank" rel="noopener">https://people.csail.mit.edu/rameshvs/content/gmm-em.pdf</a><br>[5] Nasrabadi N M. Pattern recognition and machine learning[J]. Journal of electronic imaging, 2007, 16(4): 049901.<br>[6] <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence</a><br>[7] Wen C K, Jin S, Wong K K, et al. Channel estimation for massive MIMO using Gaussian-mixture Bayesian learning[J]. IEEE Transactions on Wireless Communications, 2015, 14(3): 1356-1368.<br>[8] Richardson T, Urbanke R. Modern coding theory[M]. Cambridge university press, 2008.<br>[9] Donoho D L, Maleki A, Montanari A. Message-passing algorithms for compressed sensing[J]. Proceedings of the National Academy of Sciences, 2009, 106(45): 18914-18919.<br>[10] Meng X, Wu S, Kuang L, et al. An expectation propagation perspective on approximate message passing[J]. IEEE Signal Processing Letters, 2015, 22(8): 1194-1197.<br>[11] <a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Jensen%27s_inequality</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/EM/" rel="tag"><i class="fa fa-tag"></i> EM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/2018年总结与2019年规划/" rel="next" title="2018年总结与2019年规划">
+                <i class="fa fa-chevron-left"></i> 2018年总结与2019年规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +468,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -352,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -415,6 +567,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Expectation-Maximization-and-Maximum-Likelihood"><span class="nav-number">1.</span> <span class="nav-text">Expectation Maximization and Maximum Likelihood</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM-based-Channel-Estimator"><span class="nav-number">2.</span> <span class="nav-text">EM based Channel Estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Model"><span class="nav-number">2.1.</span> <span class="nav-text">System Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM-based-Channel-Estimator-1"><span class="nav-number">2.2.</span> <span class="nav-text">EM based Channel Estimator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -546,6 +714,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
