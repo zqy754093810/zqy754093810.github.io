@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/net1.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/net2.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="贝叶斯理论,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qiuyun's blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="系统模型给定系统模型\begin{align}\boldsymbol{y}=g(\boldsymbol{x})\end{align}其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$">
+<meta name="keywords" content="贝叶斯理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贝叶斯估计理论">
+<meta property="og:url" content="http://qiuyun-blog.cn/2019/09/22/贝叶斯估计理论/index.html">
+<meta property="og:site_name" content="Qiuyun&#39;s blog">
+<meta property="og:description" content="系统模型给定系统模型\begin{align}\boldsymbol{y}=g(\boldsymbol{x})\end{align}其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/QiuyunZou/8qvnc935b8g64ajvs4505ykh/cost.jpg">
+<meta property="og:image" content="http://static.zybuluo.com/QiuyunZou/a0fde76998oz5z40u8gevq2p/Points.jpg">
+<meta property="og:updated_time" content="2019-09-22T04:21:59.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="贝叶斯估计理论">
+<meta name="twitter:description" content="系统模型给定系统模型\begin{align}\boldsymbol{y}=g(\boldsymbol{x})\end{align}其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$">
+<meta name="twitter:image" content="http://static.zybuluo.com/QiuyunZou/8qvnc935b8g64ajvs4505ykh/cost.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qiuyun-blog.cn/2019/09/22/贝叶斯估计理论/">
+
+
+
+
+
+  <title>贝叶斯估计理论 | Qiuyun's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qiuyun's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">qiuyunzou@qq.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qiuyun-blog.cn/2019/09/22/贝叶斯估计理论/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuyun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">贝叶斯估计理论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T12:15:18+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Signal-Processing/" itemprop="url" rel="index">
+                    <span itemprop="name">Signal Processing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+    
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p>给定系统模型<br>\begin{align}<br>\boldsymbol{y}=g(\boldsymbol{x})<br>\end{align}<br>其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$维空间的映射，即$g(\cdot):\mathbb{R}^N\rightarrow \mathbb{R}^M$。在信号重构理论的研究对象中，映射$g(\cdot)$以及先验概率$p(\boldsymbol{x})$均给定，我们需要从观测信号$\boldsymbol{y}$中恢复出目标信号$\boldsymbol{x}$来。映射函数$g(\cdot)$可以是线性的，如线性高斯模型$g(\boldsymbol{x})=\boldsymbol{Hx}+\boldsymbol{w}$，也可以是非线性函数，如ADC量化模型$g(\boldsymbol{x})=Q(\boldsymbol{Hx}+\boldsymbol{w})$，其中$Q(\cdot)$表示均匀量化函数。<a id="more"></a></p>
+<p>贝叶斯估计理论是众多信号重构算法中的一类算法。贝叶斯估计器被定义为使得如下贝叶斯风险函数最小<br>\begin{align}<br>\hat{\boldsymbol{x} }_{\text{Bayse} }<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}\  \mathbb{E}_{\boldsymbol{x},\boldsymbol{y} }\left[\mathcal{C}(\boldsymbol{\epsilon})\right]\\<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}  \int_{\boldsymbol{y} }\left[\int_{\boldsymbol{x} }\mathcal{C}(\boldsymbol{\epsilon})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}\right]p(\boldsymbol{y})\text{d}\boldsymbol{y}\\<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}  \int_{\boldsymbol{x} }\mathcal{C}(\boldsymbol{\epsilon})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>其中$\mathcal{C}(\boldsymbol{\epsilon})$表示代价函数，$\boldsymbol{\epsilon}=\hat{\boldsymbol{x} }-\boldsymbol{x}$。 为了简化符号，定义<br>\begin{align}<br>g(\epsilon)\overset{\triangle}{=}\int_{\boldsymbol{x} }\mathcal{C}(\epsilon) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>换言之，贝叶斯估计器是通过最小化$g(\boldsymbol{\epsilon})$得到。为了得到贝叶斯估计器的具体表达式，我们需要进一步确定代价函数的具体形式。特别需要注意的是，代价函数的选择应该数学上尽量简单出发。满足此要求的代价函数，如图所示，有二次误差型（quadratic error）、成功-失败型（hit-or-miss error）、绝对误差型（absolute error）。<br><img src="http://static.zybuluo.com/QiuyunZou/8qvnc935b8g64ajvs4505ykh/cost.jpg" alt="cost.jpg-240kB"></p>
+<h1 id="最小均误差估计器"><a href="#最小均误差估计器" class="headerlink" title="最小均误差估计器"></a>最小均误差估计器</h1><p>当选择代价函数为二次误差型函数时，有<br>\begin{align}<br>g(\boldsymbol{\epsilon})=\int_{\boldsymbol{x} } |\hat{\boldsymbol{x} }-\boldsymbol{x}|^2 p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>上式求$\hat{\boldsymbol{x} }$求偏导，并设偏导为0，有<br>\begin{align}<br>\int (\hat{\boldsymbol{x} }-\boldsymbol{x}) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}=0<br>\end{align}<br>整理为<br>\begin{align}<br>\hat{\boldsymbol{x} }=\mathbb{E}\left[\boldsymbol{x}|\boldsymbol{y}\right]=\int_{\boldsymbol{x} }\boldsymbol{x} p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>由于该估计器使得均方误差最小，因此被称之为最小均方误差估计。此外，该估计器的表达形式为后验概率的均值，因此也被称为后验均值估计。</p>
+<h1 id="最大后验概率估计器"><a href="#最大后验概率估计器" class="headerlink" title="最大后验概率估计器"></a>最大后验概率估计器</h1><p>当选择代价函数为“成功-失败”型代价函数（图b）时，有<br>\begin{align}<br>g(\boldsymbol{\epsilon})<br>&amp;=\lim_{\kappa\rightarrow 0} \left[<br>\int_{\hat{\boldsymbol{x} }+\kappa}^{+\infty}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}+\int_{-\infty}^{\hat{\boldsymbol{x} }-\kappa}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\right]\\<br>&amp;=1-\lim_{\kappa\rightarrow 0}\int_{\hat{\boldsymbol{x} }-\kappa}^{\hat{\boldsymbol{x} }+\kappa}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>为了使得$g(\boldsymbol{\epsilon})$最小，需使得$\lim_{\kappa\rightarrow 0}\int_{\hat{\boldsymbol{x} }-\kappa}^{\hat{\boldsymbol{x} }+\kappa}p(\boldsymbol{x}|\boldsymbol{y})$最大，因此选择后验概率的最大值点作为估计器。由于该估计器选择后验概率的最大值点作为估计器，因此被称为最大后验概率估计，即<br>\begin{align}<br>\hat{\boldsymbol{x} }=\underset{\boldsymbol{x} }{\arg \max} \ p(\boldsymbol{x}|\boldsymbol{y})<br>\end{align}<br>若选择绝对误差型误差函数时，此时<br>\begin{align}<br>g(\boldsymbol{\epsilon})<br>&amp;=\int |\boldsymbol{x}-\hat{\boldsymbol{x} }| p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}\\<br>&amp;=\int_{\hat{\boldsymbol{x} } }^{+\infty} (\boldsymbol{x}-\hat{\boldsymbol{x} }) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}+\int_{-\infty}^{\hat{\boldsymbol{x} } } (\hat{\boldsymbol{x} }-\boldsymbol{x})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>上式对$\hat{\boldsymbol{x} }$求偏导，并令其为0，得到<br>\begin{align}<br>\int_{-\infty}^{\hat{\boldsymbol{x} } }p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}=\int_{\hat{\boldsymbol{x} } }^{+\infty}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>此时估计器$\hat{\boldsymbol{x} }$为后验概率$p(\boldsymbol{x}|\boldsymbol{y})$的中值点，即$\text{Pr}(\boldsymbol{x}\leq \hat{\boldsymbol{x} })=\frac{1}{2}$。</p>
+<p>通常来说，如下图所示后验概率的均值点、最大值点、中值点各不一样。特别地，若后验概率为高斯分布时，三点重合。<br><img src="http://static.zybuluo.com/QiuyunZou/a0fde76998oz5z40u8gevq2p/Points.jpg" alt="Points.jpg-268.5kB"></p>
+<p>事实上，后验概率的中值点通常难以得到，除了某些特殊分布，如高斯分布，因此，常用的贝叶斯估计器主要指最小均方误差估计和最大后验概率估计。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/贝叶斯理论/" rel="tag"><i class="fa fa-tag"></i> 贝叶斯理论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/11/压缩感知综述/" rel="next" title="压缩感知综述">
+                <i class="fa fa-chevron-left"></i> 压缩感知综述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Qiuyun">
+            
+              <p class="site-author-name" itemprop="name">Qiuyun</p>
+              <p class="site-description motion-element" itemprop="description">江湖年少</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u012284960" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://math.stackexchange.com/users/429803/qiuyun?tab=profile" target="_blank" title="Mathematics">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Mathematics</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统模型"><span class="nav-number">1.</span> <span class="nav-text">系统模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小均误差估计器"><span class="nav-number">2.</span> <span class="nav-text">最小均误差估计器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最大后验概率估计器"><span class="nav-number">3.</span> <span class="nav-text">最大后验概率估计器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qiuyun.Zou</span>
+
+  
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_uv">本站总访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+</body>
+
+</html>

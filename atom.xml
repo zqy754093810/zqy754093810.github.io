@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qiuyun-blog.cn/"/>
-  <updated>2019-04-12T00:03:59.163Z</updated>
+  <updated>2019-09-22T04:21:59.748Z</updated>
   <id>http://qiuyun-blog.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>贝叶斯估计理论</title>
+    <link href="http://qiuyun-blog.cn/2019/09/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%E7%90%86%E8%AE%BA/"/>
+    <id>http://qiuyun-blog.cn/2019/09/22/贝叶斯估计理论/</id>
+    <published>2019-09-22T04:15:18.000Z</published>
+    <updated>2019-09-22T04:21:59.748Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p>给定系统模型<br>\begin{align}<br>\boldsymbol{y}=g(\boldsymbol{x})<br>\end{align}<br>其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$维空间的映射，即$g(\cdot):\mathbb{R}^N\rightarrow \mathbb{R}^M$。在信号重构理论的研究对象中，映射$g(\cdot)$以及先验概率$p(\boldsymbol{x})$均给定，我们需要从观测信号$\boldsymbol{y}$中恢复出目标信号$\boldsymbol{x}$来。映射函数$g(\cdot)$可以是线性的，如线性高斯模型$g(\boldsymbol{x})=\boldsymbol{Hx}+\boldsymbol{w}$，也可以是非线性函数，如ADC量化模型$g(\boldsymbol{x})=Q(\boldsymbol{Hx}+\boldsymbol{w})$，其中$Q(\cdot)$表示均匀量化函数。<a id="more"></a></p><p>贝叶斯估计理论是众多信号重构算法中的一类算法。贝叶斯估计器被定义为使得如下贝叶斯风险函数最小<br>\begin{align}<br>\hat{\boldsymbol{x} }_{\text{Bayse} }<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}\  \mathbb{E}_{\boldsymbol{x},\boldsymbol{y} }\left[\mathcal{C}(\boldsymbol{\epsilon})\right]\\<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}  \int_{\boldsymbol{y} }\left[\int_{\boldsymbol{x} }\mathcal{C}(\boldsymbol{\epsilon})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}\right]p(\boldsymbol{y})\text{d}\boldsymbol{y}\\<br>&amp;=\underset{\hat{\boldsymbol{x} } }{\arg \min}  \int_{\boldsymbol{x} }\mathcal{C}(\boldsymbol{\epsilon})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>其中$\mathcal{C}(\boldsymbol{\epsilon})$表示代价函数，$\boldsymbol{\epsilon}=\hat{\boldsymbol{x} }-\boldsymbol{x}$。 为了简化符号，定义<br>\begin{align}<br>g(\epsilon)\overset{\triangle}{=}\int_{\boldsymbol{x} }\mathcal{C}(\epsilon) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>换言之，贝叶斯估计器是通过最小化$g(\boldsymbol{\epsilon})$得到。为了得到贝叶斯估计器的具体表达式，我们需要进一步确定代价函数的具体形式。特别需要注意的是，代价函数的选择应该数学上尽量简单出发。满足此要求的代价函数，如图所示，有二次误差型（quadratic error）、成功-失败型（hit-or-miss error）、绝对误差型（absolute error）。<br><img src="http://static.zybuluo.com/QiuyunZou/8qvnc935b8g64ajvs4505ykh/cost.jpg" alt="cost.jpg-240kB"></p><h1 id="最小均误差估计器"><a href="#最小均误差估计器" class="headerlink" title="最小均误差估计器"></a>最小均误差估计器</h1><p>当选择代价函数为二次误差型函数时，有<br>\begin{align}<br>g(\boldsymbol{\epsilon})=\int_{\boldsymbol{x} } |\hat{\boldsymbol{x} }-\boldsymbol{x}|^2 p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>上式求$\hat{\boldsymbol{x} }$求偏导，并设偏导为0，有<br>\begin{align}<br>\int (\hat{\boldsymbol{x} }-\boldsymbol{x}) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}=0<br>\end{align}<br>整理为<br>\begin{align}<br>\hat{\boldsymbol{x} }=\mathbb{E}\left[\boldsymbol{x}|\boldsymbol{y}\right]=\int_{\boldsymbol{x} }\boldsymbol{x} p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>由于该估计器使得均方误差最小，因此被称之为最小均方误差估计。此外，该估计器的表达形式为后验概率的均值，因此也被称为后验均值估计。</p><h1 id="最大后验概率估计器"><a href="#最大后验概率估计器" class="headerlink" title="最大后验概率估计器"></a>最大后验概率估计器</h1><p>当选择代价函数为“成功-失败”型代价函数（图b）时，有<br>\begin{align}<br>g(\boldsymbol{\epsilon})<br>&amp;=\lim_{\kappa\rightarrow 0} \left[<br>\int_{\hat{\boldsymbol{x} }+\kappa}^{+\infty}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}+\int_{-\infty}^{\hat{\boldsymbol{x} }-\kappa}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\right]\\<br>&amp;=1-\lim_{\kappa\rightarrow 0}\int_{\hat{\boldsymbol{x} }-\kappa}^{\hat{\boldsymbol{x} }+\kappa}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>为了使得$g(\boldsymbol{\epsilon})$最小，需使得$\lim_{\kappa\rightarrow 0}\int_{\hat{\boldsymbol{x} }-\kappa}^{\hat{\boldsymbol{x} }+\kappa}p(\boldsymbol{x}|\boldsymbol{y})$最大，因此选择后验概率的最大值点作为估计器。由于该估计器选择后验概率的最大值点作为估计器，因此被称为最大后验概率估计，即<br>\begin{align}<br>\hat{\boldsymbol{x} }=\underset{\boldsymbol{x} }{\arg \max} \ p(\boldsymbol{x}|\boldsymbol{y})<br>\end{align}<br>若选择绝对误差型误差函数时，此时<br>\begin{align}<br>g(\boldsymbol{\epsilon})<br>&amp;=\int |\boldsymbol{x}-\hat{\boldsymbol{x} }| p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}\\<br>&amp;=\int_{\hat{\boldsymbol{x} } }^{+\infty} (\boldsymbol{x}-\hat{\boldsymbol{x} }) p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}+\int_{-\infty}^{\hat{\boldsymbol{x} } } (\hat{\boldsymbol{x} }-\boldsymbol{x})p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>上式对$\hat{\boldsymbol{x} }$求偏导，并令其为0，得到<br>\begin{align}<br>\int_{-\infty}^{\hat{\boldsymbol{x} } }p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}=\int_{\hat{\boldsymbol{x} } }^{+\infty}p(\boldsymbol{x}|\boldsymbol{y})\text{d}\boldsymbol{x}<br>\end{align}<br>此时估计器$\hat{\boldsymbol{x} }$为后验概率$p(\boldsymbol{x}|\boldsymbol{y})$的中值点，即$\text{Pr}(\boldsymbol{x}\leq \hat{\boldsymbol{x} })=\frac{1}{2}$。</p><p>通常来说，如下图所示后验概率的均值点、最大值点、中值点各不一样。特别地，若后验概率为高斯分布时，三点重合。<br><img src="http://static.zybuluo.com/QiuyunZou/a0fde76998oz5z40u8gevq2p/Points.jpg" alt="Points.jpg-268.5kB"></p><p>事实上，后验概率的中值点通常难以得到，除了某些特殊分布，如高斯分布，因此，常用的贝叶斯估计器主要指最小均方误差估计和最大后验概率估计。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;系统模型&quot;&gt;&lt;a href=&quot;#系统模型&quot; class=&quot;headerlink&quot; title=&quot;系统模型&quot;&gt;&lt;/a&gt;系统模型&lt;/h1&gt;&lt;p&gt;给定系统模型&lt;br&gt;\begin{align}&lt;br&gt;\boldsymbol{y}=g(\boldsymbol{x})&lt;br&gt;\end{align}&lt;br&gt;其中$\boldsymbol{x}\in \mathbb{R}^M$是目标信号，其随机性由先验概率$p(\boldsymbol{x})$刻画；$\boldsymbol{y}\in \mathbb{R}^N$是观测信号；函数$g(\cdot)$表示从$N$维空间到$M$维空间的映射，即$g(\cdot):\mathbb{R}^N\rightarrow \mathbb{R}^M$。在信号重构理论的研究对象中，映射$g(\cdot)$以及先验概率$p(\boldsymbol{x})$均给定，我们需要从观测信号$\boldsymbol{y}$中恢复出目标信号$\boldsymbol{x}$来。映射函数$g(\cdot)$可以是线性的，如线性高斯模型$g(\boldsymbol{x})=\boldsymbol{Hx}+\boldsymbol{w}$，也可以是非线性函数，如ADC量化模型$g(\boldsymbol{x})=Q(\boldsymbol{Hx}+\boldsymbol{w})$，其中$Q(\cdot)$表示均匀量化函数。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Signal Processing" scheme="http://qiuyun-blog.cn/categories/Signal-Processing/"/>
+    
+    
+      <category term="贝叶斯理论" scheme="http://qiuyun-blog.cn/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%90%86%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>压缩感知综述</title>
@@ -417,26 +439,6 @@
     </summary>
     
       <category term="信号系统" scheme="http://qiuyun-blog.cn/categories/%E4%BF%A1%E5%8F%B7%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习笔记之人工智能、机器学习、深度学习之间的关系</title>
-    <link href="http://qiuyun-blog.cn/2018/11/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E3%80%81%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
-    <id>http://qiuyun-blog.cn/2018/11/03/深度学习笔记之人工智能、机器学习、深度学习之间的关系/</id>
-    <published>2018-11-03T14:42:45.000Z</published>
-    <updated>2018-11-06T10:09:34.601Z</updated>
-    
-    <content type="html"><![CDATA[<p>这两年创业圈、技术圈、互联网圈都在热烈讨论人工智能、机器学习、深度学习。那么到底什么是人工智能（AI）、机器学习（ML）和深度学习（DL），这几个概念之间又有什么样的联系呢？首先，我们通过图来理解这三者之间的关系<a id="more"></a><br><img src="/2018/11/03/深度学习笔记之人工智能、机器学习、深度学习之间的关系/AI.jpg" alt="示意图"></p><p>机器学习是实现人工智能的方法；<br>深度学习是实现机器学习的一种技术。</p><ul><li><p>人工智能（Artificial intelligence, AI）: 是指人工制造出来的系统所表现出来的智能。通常人工智能是指通过普通电脑实现的智能。人工智能的研究可以分为几个技术问题。其分支领域主要集中在解决具体问题，其中之一是，如何利用各种不同的工具完成特定的应用程序。AI的核心问题包括推理、知识、规划、学习、交流、感知、移动和操作物体的能力等。</p><p>目前有大量的工具应用了人工智能，其中包括搜索和数学优化、逻辑推演。而基于仿生学、认知心理学，以及基于概率论和经济学的算法等等也在逐步探索当中。</p></li><li><p>机器学习（Machine Learning, ML）：是人工智能的一个分支。人工智能的研究是从以“推理”为重点到“知识”为重点，再到以“学习”为重点，一条自然、清晰的脉络。显然，机器学习是实现人工智能的一个途径，即以机器学习为手段解决人工智能重的问题。机器学习在近30年已经发展为一门多领域交叉学科，设计概率论、统计学、逼近轮、凸优化、计算复杂性理论等多门学科。机器学习理论主要是设计和分析一些让计算机可以自动“学习”的算法。机器学习算法是一类从数据中自动分析获得规律，并利用规律对未知数据进行预测的算法。因为学习算法中设计到了大量的统计学理论，机器学习与腿短统计学联系尤为密切，也被成为统计学习理论。算法设计方面，机器学习理论关注可以实现的，行之有效的学习算法。很多推论问题属于无程序难处理，所以部分机器学习研究是开发容易处理的近似算法。</p><p>机器学习有以下几种定义：<br>（1）机器学习是一门人工智能的科学，该领域的主要研究对象是人工智能，特别是处理在经验学习中改善具体算法的性能。<br>（2）机器学习是对能通过经验自动改进的计算机算法的研究。<br>（3）机器学习是用数据或以往的经验，以此优化计算机程序的性能标准。</p></li><li><p>机器学习已广泛应用于数据挖掘、计算机视觉、自然语言处理、生物特征识别、搜索引擎、医学诊断、检测信号卡欺诈、证券市场分析、DNA序列测序、语音和手写识别、战略游戏和机器人等领域。</p><p>深度学习（Deep Learning）是机器学习拉出的分支，它试图使用包含复杂结构或由多重非线性变换构成的多个处理层对数据进行高层抽象的算法。</p><p>深度学习是机器学习中一种基于对数据进行表征学习的方法。观测值（例如：一幅画）可以使用多种方法来表示，如每个像素强度值得向量，或者更抽象地表示成一系列边、特定形状的区域等。而使用某些特定的表示方法更容易从实例中学习任务（例如：人脸识别或面部表情识别）。深度学习的好处是用无监督式或半监督的特征学习和分层特征提取搞笑算法来替代手工获取特征。</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这两年创业圈、技术圈、互联网圈都在热烈讨论人工智能、机器学习、深度学习。那么到底什么是人工智能（AI）、机器学习（ML）和深度学习（DL），这几个概念之间又有什么样的联系呢？首先，我们通过图来理解这三者之间的关系&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="深度学习" scheme="http://qiuyun-blog.cn/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
   </entry>
