@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qiuyun-blog.cn/"/>
-  <updated>2019-09-22T04:22:00.000Z</updated>
+  <updated>2019-11-17T01:45:18.158Z</updated>
   <id>http://qiuyun-blog.cn/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Thesis of master degree</title>
+    <link href="http://qiuyun-blog.cn/2019/11/17/Thesis-of-master-degree/"/>
+    <id>http://qiuyun-blog.cn/2019/11/17/Thesis-of-master-degree/</id>
+    <published>2019-11-17T01:45:18.000Z</published>
+    <updated>2019-11-17T01:45:18.158Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>贝叶斯估计理论</title>
@@ -419,26 +433,6 @@
     </summary>
     
       <category term="PRML" scheme="http://qiuyun-blog.cn/categories/PRML/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>信号系统笔记之连续时间傅里叶级数</title>
-    <link href="http://qiuyun-blog.cn/2018/11/06/%E4%BF%A1%E5%8F%B7%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%BF%9E%E7%BB%AD%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/"/>
-    <id>http://qiuyun-blog.cn/2018/11/06/信号系统笔记之连续时间傅里叶级数/</id>
-    <published>2018-11-06T09:54:57.000Z</published>
-    <updated>2018-11-06T10:04:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="信号的正交分解"><a href="#信号的正交分解" class="headerlink" title="信号的正交分解"></a>信号的正交分解</h1><h2 id="矢量的几何分解"><a href="#矢量的几何分解" class="headerlink" title="矢量的几何分解"></a>矢量的几何分解</h2><p>为了理解对信号进行分解的目的，我们先从几何学的角度，回味下平面矢量以及空间矢量的分解。如图1所示，(a)$\overrightarrow{A}=c_1\overrightarrow{v_x}+c_2\overrightarrow{v_y}$，即将平面矢量分解成正交的$x$轴和$y$轴的单位矢量；（b）$\overrightarrow{A}=c_1\overrightarrow{v_x}+c_2\overrightarrow{v_y}+c_3\overrightarrow{v_z}$，即将空间矢量分解成正交的$x$轴、$y$轴和$z$轴的单位矢量。<a id="more"></a><br><img src="/2018/11/06/信号系统笔记之连续时间傅里叶级数/test1.jpg" alt="图1"></p><p>为此，我们先理清楚什么是矢量正交？ </p><ul><li>矢量正交的定义<br>若有$\overrightarrow{A}\cdot \overrightarrow{B}=0$，则矢量$\overrightarrow{A}$与$\overrightarrow{B}$正交。</li><li>为什么要对空间矢量进行正交分解？<br>很明显，方便分析！简化计算！为了方便理解，我们举一个高中牛顿力学的一个例子，如图2所示，固定斜面上有一小球，小球与斜面的接触面绝对光滑，现在要研究小球沿斜面的加速度<br><img src="/2018/11/06/信号系统笔记之连续时间傅里叶级数/test2.jpg" alt="图2"><br>这样求得的斜面加速度为<br>\begin{align}<br>g=\sin \theta<br>\end{align}<br>可以看到通过矢量的正交分解，我们可以很轻松的求出小球沿斜面的加速度。将空间矢量正交分解的概念推广到信号空间，在信号空间中找到若干个相互正交的信号为基本信号，使得任意信号可以表示成这组正交的信号集合的线性组合。</li></ul><h2 id="正交信号"><a href="#正交信号" class="headerlink" title="正交信号"></a>正交信号</h2><p><strong>定义</strong>：在区间$(t_1,t_2)$上的两个信号$\phi_1(t)$和$\phi_2(t)$，若满足<br>\begin{align}<br>\int_{t_1}^{t_2}\phi_1(t)\phi_2(t)=0<br>\end{align}<br>则称$\phi_1(t)$和$\phi_2(t)$在区间$(t_1,t_2)$上正交。</p><p><strong>正交函数集</strong>：如果有$n$个函数$\left\{\phi_1(t),\cdots,\phi_n(t)\right\}$构成一个函数集合，若函数集合在区间$(t_1,t_2)$上满足<br>\begin{align}<br>\int_{t_1}^{t_2}\phi_1(t)\phi_2(t)\text{d}t=\left\{<br>\begin{matrix}<br>0 &amp;i\ne j\\<br>K &amp;i=j<br>\end{matrix}<br>\right.<br>\end{align}<br>其中$K$为常数，则称此函数集为正交函数集。</p><p><strong>完备正交函数集</strong>：定义集合$\mathcal{S}=\left\{\phi_1(t),\cdots,\phi_n(t)\right\}$是区间$(t_1,t_2)$上的正交函数集，如果除$\mathcal{S}$外，不存在函数$\phi(t)$满足等式<br>\begin{align}<br>\int_{t_1}^{t_2} \phi_i(t)\phi(t)=0\quad \forall i=\left\{1,\cdots,n\right\}<br>\end{align}<br>则称此函数集为完备正交函数集。我们称该完备集合中的函数$\phi_j(t)$为<strong>基</strong>或者<strong>基底</strong>。常见的完备正交函数集合有三角函数集、虚指数函数集。</p><p>Example: 证明三角函数集$\left\{1,\cos(nw_0t),\sin(nw_0t)\right\},(n=1,2,\cdots)$是正交函数集合<br>证：<br>\begin{align}<br>\int_{t_0}^{t_0+T}\cos(nw_0t)\cos(mw_0t)\text{d}t&amp;=\left\{<br>\begin{matrix}<br>0 &amp;m\ne n\\<br>\frac{T}{2} &amp;m=n\ne 0\\<br>T &amp;m=n=0<br>\end{matrix}<br>\right.\\<br>\int_{t_0}^{t_0+T}\sin(nw_0t)\sin(mw_0t)\text{d}t&amp;=\left\{<br>\begin{matrix}<br>0 &amp;m\ne n\\<br>\frac{T}{2} &amp;m=n\ne 0<br>\end{matrix}<br>\right.\\<br>\int_{t_0}^{t_0+T}\sin(nw_0t)\cos(mw_0t)\text{d}t&amp;=0<br>\end{align}<br>因此三角函数集为正交函数集。<br>【注】如果函数$f(t)$是周期为$T$的周期信号，则有$\int_{a}^{T+a}f(t)\text{d}t=\int_{0}^{T}f(t)\text{d}t$。</p><h2 id="信号的正交分解-1"><a href="#信号的正交分解-1" class="headerlink" title="信号的正交分解"></a>信号的正交分解</h2><p>设$n$个函数$\phi_1(t),\cdots,\phi_n(t)$在区间$(t_1,t_2)$构成一个正交函数集$\mathcal{S}$。将任意信号$f(t)$表示成这$n$个函数的线性组合来近似，可表示为<br>\begin{align}<br>f(t)\approx a_1\phi_1(t)+\cdots a_n\phi_n(t)=\sum\limits_{i=1}^na_i\phi_i(t)<br>\end{align}<br>为此，我们需要确定$a_i (i=1,\cdots n)$的具体取值，来确保$\sum\limits_{i=1}^na_i\phi_i(t)$是对$f(t)$的最佳近似。我们选取均方误差（mean square error, MSE）来衡量这个近似的效果<br>\begin{align}<br>\text{MSE}=\frac{1}{t_2-t_1}\int_{t_1}^{t_2}\left(f(t)-\sum\limits_{i=1}^na_i\phi_i(t)\right)^2\text{d}t<br>\end{align}<br>为使得MSE最小，计算MSE对$a_j$的偏导如下<br>\begin{align}<br>\frac{\partial \text{MSE} }{\partial a_j}<br>&amp;=\frac{1}{t_2-t_1}\frac{\partial }{\partial a_j}\int_{t_1}^{t_2}\left(f(t)-\sum\limits_{i=1}^na_i\phi_i(t)\right)^2\text{d}t\\<br>&amp;\overset{(a)}{=}\frac{1}{t_2-t_1}\int_{t_1}^{t_2}\frac{\partial }{\partial a_j}\left(f(t)-\sum\limits_{i=1}^na_i\phi_i(t)\right)^2\text{d}t\\<br>&amp;=-\frac{1}{t_2-t_1}\int_{t_1}^{t_2}2\left(f(t)-\sum\limits_{i=1}^na_i\phi_i(t)\right)\phi_j(t)\text{d}t\\<br>&amp;\overset{(b)}{=}\frac{2a_j}{t_2-t_1}\int_{t_1}^{t_2}\phi_j^2(t)\text{d}t-\frac{2}{t_2-t_1}\int_{t_1}^{t_2}f(t)\phi_j(t)\text{d}t<br>\end{align}<br>其中步骤$(a)$成立，假设被积函数性质足够好，使得积分和偏导顺序可以交换；步骤$(b)$成立，利用完备正交函数集合，函数正交的性质。令偏导数为零，得到<br>\begin{align}<br>a_j=\frac{\int_{t_1}^{t_2}f(t)\phi_j(t)\text{d}t}{\int_{t_1}^{t_2}\phi_j^2(t)\text{d}t} \quad i=(1,\cdots,n)<br>\end{align}<br>定义$K_j=\int_{t_1}^{t_2}\phi_j^2(t)\text{d}t$，则参数$a_j$可以表示为<br>\begin{align}<br>a_j=\frac{1}{K_j}\int_{t_1}^{t_2}f(t)\phi_j(t)\text{d}t<br>\end{align}<br>到这里，<strong>我们会发现，信号的正交分解，跟矢量投影很相似</strong>。将矢量$\overrightarrow{A}$投影到矢量$\overrightarrow{a}$上，其投影长度$\frac{\overrightarrow{A}\cdot \overrightarrow{a} }{|\overrightarrow{a}|}$。注意这里所得到的$a_j$表达式是基于均方误差最小准则得到的，均方误差刻画的是真实值和近似值的欧式距离，根据不同的规则，可以得到不同的解。</p><h1 id="连续时间傅里叶级数的三角级数形式"><a href="#连续时间傅里叶级数的三角级数形式" class="headerlink" title="连续时间傅里叶级数的三角级数形式"></a>连续时间傅里叶级数的三角级数形式</h1><p>根据上一节知识，我们尝试将信号$f(t)$分解到三角函数集$\mathcal{S}=\left\{1,\cos(nw_0t),\sin(nw_0t)\right\},(n=1,\cdots)$上，即将$f(t)$表示成该集合中基的线性组合，如下<br>\begin{align}<br>f(t)=\frac{a_0}{2}+\sum\limits_{n=1}^{+\infty}a_n\cos(nw_0t)+\sum\limits_{n=1}^{+\infty}b_n\sin (nw_0t)<br>\end{align}<br>为了计算$a_n$</p><ul><li>利用信号正交特性。利用信号正交特性，对等式两边同时乘上$\cos(nw_0t)$项，并在一个周期内进行积分，得到<br>\begin{align}<br>\int_T f(t)\cos(nw_0t)\text{d}t&amp;=\int_T a_n\cos(nw_0t)\cos(nw_0t)\text{d}t\\<br>&amp;=a_n\int _T\frac{1+\cos(2nw_0t)}{2}\text{d}t\\<br>&amp;=\frac{a_nT}{2}<br>\end{align}<br>因此，得到<br>\begin{align}<br>a_n=\frac{2}{T}\int_T f(t)\cos(nw_0t)\text{d}t<br>\end{align}<br>同理，在等式两边乘上$\sin (nw_0t)$项，可以到$b_n$的表达式如下<br>\begin{align}<br>b_n=\frac{2}{T}\int_T f(t)\sin(nw_0t)\text{d}t<br>\end{align}</li><li>利用从均方误差最小得到的公式：$a_j=\frac{\int_{t_1}^{t_2}f(t)\phi_j(t)\text{d}t}{\int_{t_1}^{t_2}\phi_j^2(t)\text{d}t}$，来进行求解<br>\begin{align}<br>a_n&amp;=\frac{\int_{t_1}^{t_2}f(t)\cos(nw_0t)\text{d}t}{\int \cos^2(nw_0t)\text{d}t}=\frac{2}{T}\int_Tf(t)\cos(nw_0t)\text{d}t\\<br>b_n&amp;=\frac{\int_{t_1}^{t_2}f(t)\sin(nw_0t)\text{d}t}{\int \sin^2(nw_0t)\text{d}t}=\frac{2}{T}\int_Tf(t)\sin(nw_0t)\text{d}t\\<br>\end{align}<br>我们惊喜的发现：<strong>最佳近似估计的系数和傅里叶三角系数是相等的，也就是说傅里叶级数是一种对周期信号的最佳近似</strong>！</li></ul><p>合并同频率的$\cos(nw_0t),\sin(nw_0t)$，如下<br>\begin{align}<br>f(t)=\frac{A_0}{2}+\sum\limits_{n=1}^{+\infty}A_n \cos(nw_0t+\psi_n)<br>\end{align}<br>其中<br>\begin{align}<br>\left\{<br>\begin{matrix}<br>A_0=a_0\qquad \quad \quad \quad\\<br>A_n=\sqrt{a_n^2+b_n^2}\quad \quad\\<br>\psi_n=-\arctan (\frac{b_n}{a_n})<br>\end{matrix}<br>\right.<br>\end{align}</p><h1 id="连续时间傅里叶级数的虚指数形式"><a href="#连续时间傅里叶级数的虚指数形式" class="headerlink" title="连续时间傅里叶级数的虚指数形式"></a>连续时间傅里叶级数的虚指数形式</h1><p>傅里叶级数是对周期信号的最佳近似，做这种近似的目的就是为了方便计算和分析信号，但是在实际信号分析中，使用三角级数计算比较麻烦。因此通过欧拉公式将傅里叶级数的三角形式转换成指数形式。<br>\begin{align}<br>\cos(t)=\frac{e^{jt}+e^{-jt} }{2}<br>\end{align}<br>应用欧拉公式，信号$f(t)$表示为<br>\begin{align}<br>f(t)&amp;=\frac{A_0}{2}+\sum\limits_{n=1}^{+\infty}\frac{A_n}{2}\left(e^{j(nw_0t+\psi_n)}+e^{-j(nw_0t+\psi_n)}\right)\\<br>&amp;=\frac{A_0}{2}+\sum\limits_{n=1}^{+\infty}\frac{A_n}{2}e^{j(nw_0t+\psi_n)}+\sum\limits_{n=1}^{+\infty}\frac{A_n}{2}e^{-j(nw_0t+\psi_n)}\\<br>&amp;=\frac{A_0}{2}+\sum\limits_{n=1}^{+\infty}\frac{A_n}{2}e^{j(nw_0t+\psi_n)}+\sum\limits_{n=-1}^{-\infty}\frac{A_{-n} }{2}e^{jnw_0t}e^{-j\psi_{-n} }<br>\end{align}<br>由于$A_n=\sqrt{a_n^2+b_n^2}$是关于$n$的偶函数，$\psi_n$是关于$n$的奇函数，因此有<br>\begin{align}<br>f(t)=\frac{A_0}{2}+\sum\limits_{n=1}^{+\infty}\frac{A_n}{2}e^{j(nw_0t+\psi_n)}+\sum\limits_{n=-1}^{-\infty}\frac{A_n}{2}e^{j(nw_0t+\psi_n)}<br>\end{align}<br>令$A_n|_{n=0}=A_0$，因此有<br>\begin{align}<br>f(t)=\sum\limits_{n=-\infty}^{+\infty}\frac{A_n}{2}e^{j\psi_n}e^{jnw_0t}<br>\end{align}<br>令$F_n=\frac{A_n}{2}e^{j\psi_n}$，即得到信号的傅里叶级数的虚指数形式的表达式<br>\begin{align}<br>f(t)=\sum\limits_{n=-\infty}^{+\infty}F_ne^{jnw_0t}<br>\end{align}<br>类似地，这里$F_n$的表达式也可以利用信号正交或者均方误差最小的方式来求解，得到<br>\begin{align}<br>F_n=\frac{1}{T}\int_T f(t)e^{-jnw_0t}\text{d}t<br>\end{align}</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;信号的正交分解&quot;&gt;&lt;a href=&quot;#信号的正交分解&quot; class=&quot;headerlink&quot; title=&quot;信号的正交分解&quot;&gt;&lt;/a&gt;信号的正交分解&lt;/h1&gt;&lt;h2 id=&quot;矢量的几何分解&quot;&gt;&lt;a href=&quot;#矢量的几何分解&quot; class=&quot;headerlink&quot; title=&quot;矢量的几何分解&quot;&gt;&lt;/a&gt;矢量的几何分解&lt;/h2&gt;&lt;p&gt;为了理解对信号进行分解的目的，我们先从几何学的角度，回味下平面矢量以及空间矢量的分解。如图1所示，(a)$\overrightarrow{A}=c_1\overrightarrow{v_x}+c_2\overrightarrow{v_y}$，即将平面矢量分解成正交的$x$轴和$y$轴的单位矢量；（b）$\overrightarrow{A}=c_1\overrightarrow{v_x}+c_2\overrightarrow{v_y}+c_3\overrightarrow{v_z}$，即将空间矢量分解成正交的$x$轴、$y$轴和$z$轴的单位矢量。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="信号系统" scheme="http://qiuyun-blog.cn/categories/%E4%BF%A1%E5%8F%B7%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
